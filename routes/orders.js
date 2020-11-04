@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/product");
 const User = require("../models/user");
 const Order = require("../models/order");
 const middleware = require("../middleware");
-const soap = require('soap');
 
 router.get("/orders", (req, res) => {
 	// var noMatch = null;
