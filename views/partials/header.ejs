@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Health Complex Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
+		<link rel="icon" type="image/png" href="/images/favicon-16x16.png"/>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+				<a class="navbar-brand" href="/"><img class="logo" src="/images/hcm-white-green-back.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                        	<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+						<li class="nav-item active">
+                        	<a class="nav-link" href="/products">Products <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<% if (!currentUser) { %>
+									<a class="dropdown-item" href="/login">Login</a>
+								<% } else { %>
+									<a class="dropdown-item" href="#"><%= currentUser.username %></a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/logout">Logout</a>
+								<% } %>
+							</div>
+                        </li>
+                    </ul>
+                </div> -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+						<% if (!currentUser) { %>
+							<li class="nav-item active">
+                        		<a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                        	</li>
+						<% } else { %>
+							<li class="nav-item active">
+                        		<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        	</li>
+							<li class="nav-item active">
+    							<a class="nav-link" href="/products">Inventory <span class="sr-only"></span></a>
+                        	</li>
+							<li class="nav-item active">
+    							<a class="nav-link" href="/orders">Orders <span class="sr-only"></span></a>
+                        	</li>
+								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= currentUser.username %></a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="/users/<%= currentUser._id %>">Profile</a>
+									<% if (currentUser.isAdmin) { %>
+										<a class="dropdown-item" href="/admin">Admin</a>
+									<% } %>
+									<a class="dropdown-item" href="/logout">Logout</a>
+								</div>
+                        	</li>
+						<% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		<div class="container">
+			<% if (error && error.length > 0) { %>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<%= error %>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<% } %>
+			<% if (success && success.length > 0) { %>
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<%= success %>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<% } %>
+		</div>
+		<div class="page-spacing">
+			
+		

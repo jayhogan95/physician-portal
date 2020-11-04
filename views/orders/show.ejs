@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<a class="btn button-style btn-md show-button green-btn" href="/orders" role="button">Back To Order Search</a>
+	<div class="row">
+		<div class="col-md-5">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Patient Information</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Full Name</th>
+					 	<td><%= order.firstName + " " + order.lastName %></td>
+					</tr>
+					<tr>
+						<th scope="row">Date of Birth</th>
+					 	<td><%= order.dateOfBirth %></td>
+					</tr>
+					<tr>
+						<th scope="row">City</th>
+					 	<td><%= order.city %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-5">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Sales Order <%= order.id %></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Date Created</th>
+					 	<td><%= order.dateCreated %></td>
+					</tr>
+					<tr>
+						<th scope="row">WIP State</th>
+					 	<td><%= order.wipState %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

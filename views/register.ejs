@@ -1,0 +1,41 @@
+<%- include("./partials/header") %>
+
+<div class="container">
+	<h1 class="new-prod-header">Register</h1>
+	<form action="/register" method="POST">
+		<div class="form-group form-width">
+			<p class="text-center">Username</p>
+			<input class="form-control form-align" type="text" name="username" required>
+		</div>
+		<div class="form-group form-width">
+			<p class="text-center">Password</p>
+			<input class="form-control form-align" id="pass" type="password" name="password" required>
+		</div>
+		<div class="form-group form-width">
+			<p class="text-center">First Name</p>
+			<input class="form-control form-align" type="text" name="firstName" required>
+		</div>
+		<div class="form-group form-width">
+			<p class="text-center">Last Name</p>
+			<input class="form-control form-align" type="text" name="lastName" required>
+		</div>
+		<div class="form-group form-width">
+			<p class="text-center">Email</p>
+			<input class="form-control form-align" type="email" name="email" required>
+		</div>
+		<div class="form-group form-width">
+			<p class="text-center">Avatar URL</p>
+			<input class="form-control form-align" type="text" name="avatar">
+		</div>
+		<!-- <div class="form-group form-width">
+			<p class="text-center">Admin Code</p>
+			<input class="form-control form-align" type="text" name="adminCode">
+		</div> -->
+		<div class="form-group form-width">
+			<button class="btn btn-md btn-default button-style btn-block green-btn">Sign Up</button>
+		</div>
+	</form>
+</div>
+
+
+<%- include("./partials/footer") %>

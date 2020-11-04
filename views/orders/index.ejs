@@ -1,0 +1,58 @@
+<%- include("../partials/header") %>
+
+	<div class="container">
+		<header class=jumbotron>
+			<div class="container">
+				<h1>Orders</h1>
+				<hr>
+				<form class="form-group my-2 my-lg-0" action="/orders" method="GET">
+					<!-- <input class="form-control mr-sm-2" type="text" name="search" placeholder="Full Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full Name'">
+					<fieldset>
+						<p class="text-left">Last Name</p>
+						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="search">
+					</fieldset> -->
+					<fieldset>
+						<p class="text-left">Date of Birth (MM/DD/YYY) <i class="fa fa-info-circle order-note" title="For DOB's that contain a single digit month or day (03/08/2020), remove the 0's in your search (3/8/2020)" aria-hidden="true"></i></p>
+						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="search" placeholder="mm/dd/yyyy">
+					</fieldset>
+					<div class="mt-3">
+						<input class="btn green-btn my-sm-0" type="submit" value="Search">
+						<button class="btn green-btn my-2 my-sm-0 mx-sm-2">
+							<a class="clear-all text-decoration-none" href="/orders">Clear All</a>
+						</button>
+					</div>
+				</form>
+			</div>
+		</header>
+		<% if (noSearch) { %>
+		<% } else { %>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Order ID</th>
+								<th scope="col">Full Name</th>
+								<th scope="col">WIP State</th>
+								<th scope="col">Date Of Birth</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% orders.forEach(function(order){ %>
+								<tr>
+									<td scope="row"><%= order.id %></td>
+									<td><%= order.firstName + " " + order.lastName %></td>
+									<td><%= order.wipState %></td>
+									<td><%= order.dateOfBirth %></td>
+									<td><a class="btn button-style btn-md green-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+								</tr>
+							<% }) %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		<% }%>
+	</div>
+	
+<%- include("../partials/footer") %>

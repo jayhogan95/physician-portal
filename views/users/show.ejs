@@ -1,0 +1,33 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div>
+				<h4 class="profile-header">Username: <%= user.username %></h4>
+				<img class="avatar" src="<%= user.avatar %>">
+			</div>
+			<a class="btn button-style btn-md green-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th scope="row">Full Name</th>
+						<td><%= user.firstName + " " + user.lastName %></td>
+					</tr>
+					<tr>
+						<th scope="row">Email</th>
+						<td><%= user.email %></td>
+					</tr>
+					<% if (user.isAdmin) { %>
+						<tr>
+							<th scope="row">Admin</th>
+							<td><a class="btn button-style btn-sm green-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>
