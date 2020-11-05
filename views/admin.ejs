@@ -4,7 +4,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div>
-				<h4 class="admin-header">Users</h4>
+				<h3 class="admin-header">Users</h3>
+				<a class="btn button-style btn-md green-btn float-right" id="md-spacing" href="/register" role="button">Add New User</a>
 			</div>
 			<table class="table table-striped">
 				<thead>
@@ -31,8 +32,8 @@
 							<% } else { %>
 								<td><input type="checkbox" disabled></td>
 							<% } %>
-							<td><a class="btn button-style btn-sm green-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a></td>
 							<td>
+								<a class="btn button-style btn-sm green-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a>
 								<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
 									<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
 								</form>

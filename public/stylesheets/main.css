@@ -1,0 +1,222 @@
+/* Header page */
+
+.logo {
+	height: 70px;
+	width: auto;
+	margin-left: 20%;
+}
+
+.navbar {
+	margin-bottom: 50px;
+}
+
+.page-spacing {
+	margin-bottom: 200px;
+}
+
+#navbarSupportedContent {
+	margin-right: 10%;
+}
+
+/* Landing page */
+
+.thumbnail {
+	border: 2px solid #D3D3D3;
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 20px 10px;
+}
+
+/* Index page */
+
+.product-main-img {
+	height: 200px;
+	width: auto;
+}
+
+.clear-all, .clear-all:hover {
+	color: white;
+}
+
+.product-details {
+	margin: 3% 0;
+}
+
+.no-match {
+	color: #006846;
+}
+
+.no-match:hover {
+	color: #0E9D54;
+}
+
+/* .index-img {
+	height: auto;
+	width: auto;
+} */
+
+#btn-spacing {
+	margin: 1.5% 0;
+}
+
+#btn-inline-spacing {
+	margin-left: 20px;
+}
+
+#product-qty {
+	display: inline-block;
+}
+
+#md-spacing {
+	margin-bottom: 20px;
+}
+
+/* New page/forms */
+
+.new-prod-header {
+	text-align: center;
+	margin: 3% 0;
+}
+
+.form-width {
+	width: 40%;
+	margin: 10px auto;
+}
+.form-btn-width {
+	width: 30%;
+	margin: 30px auto;
+}
+
+.form-align {
+	text-align: center;
+}
+
+#strong {
+	font-weight: 600;
+}
+
+/* Show page */
+
+.show-button {
+	margin-bottom: 10%;
+	/* width: 50%; */
+}
+
+.delete-btn {
+	color: white;
+	background: red;
+}
+
+.comment-section {
+	display: flex;
+	align-items: flex-end;
+}
+
+.comment {
+	margin: 0 auto;
+}
+
+.comment-area {
+	background: #F8F9FA;
+}
+
+.btn-format {
+	width: 25%;
+	margin: 0 auto;
+}
+
+.order-note {
+	position: relative;
+  	display: inline-block;
+}
+	
+#delete-form {
+	display: inline;
+}
+
+#delete-form:hover {
+	background: #ff4538;
+	color: white;
+}
+
+/* Login/Register */
+
+.form-group p {
+	margin: 5px;
+}
+
+/* Profile Page */
+.avatar {
+	height: 125px;
+	width: 125px;
+	border-radius: 50%;
+	margin-left: 20px;
+}
+
+.comment-avatar {
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.profile-header {
+	display: inline;
+}
+
+.pass-align {
+	text-align: center;
+}
+
+.btn-inline {
+	display: flex;
+	float: right;
+}
+
+
+/* Admin Page */
+.admin-header {
+	margin-bottom: 30px;
+}
+
+/* On all pages (or most) */
+.green-btn {
+	background: #006846;
+	color: #ffffff;
+}
+
+.green-btn:hover {
+	background: #0E9D54;
+	color: #ffffff;
+}
+
+.add-avatar-btn {
+	background: #006846;
+	color: #ffffff;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+}
+
+/* Footer */
+
+footer {
+	background: #006846;
+	position: absolute;
+	bottom: 0;
+	height: 80px;
+	width: 100%;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+.spacing {
+	margin-bottom: 200px;
+}
+
+#co-color {
+	color: white;
+}

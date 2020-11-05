@@ -5,7 +5,11 @@
 		<div class="col-md-12">
 			<div>
 				<h4 class="profile-header">Username: <%= user.username %></h4>
-				<img class="avatar" src="<%= user.avatar %>">
+				<% if (user.avatar === "") { %>
+					<a class="btn button-style btn-sm add-avatar-btn ml-2" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Add Avatar</a>
+				<% } else { %>
+					<img class="avatar" src="<%= user.avatar %>">
+				<% } %>
 			</div>
 			<a class="btn button-style btn-md green-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
 			<table class="table table-striped">
