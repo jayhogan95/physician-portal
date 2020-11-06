@@ -34,8 +34,12 @@
 	width: auto;
 }
 
-.clear-all, .clear-all:hover {
-	color: white;
+.clear-all {
+	color: #006846;
+}
+
+.clear-all:hover {
+	color: #ffffff;
 }
 
 .product-details {
@@ -49,7 +53,6 @@
 .no-match:hover {
 	color: #0E9D54;
 }
-
 /* .index-img {
 	height: auto;
 	width: auto;
@@ -88,6 +91,11 @@
 }
 
 .form-align {
+	text-align: center;
+}
+
+.reg-label {
+	display: block;
 	text-align: center;
 }
 
@@ -181,21 +189,26 @@
 
 /* On all pages (or most) */
 .green-btn {
-	background: #006846;
-	color: #ffffff;
+	border: 1px solid #006846;
+	color: #006846;
 }
 
 .green-btn:hover {
-	background: #0E9D54;
+	background: #006846;
 	color: #ffffff;
 }
 
 .add-avatar-btn {
-	background: #006846;
-	color: #ffffff;
+	border: 1px solid #006846;
+	color: #006846;
 	height: 60px;
 	width: 60px;
 	border-radius: 50%;
+}
+
+.add-avatar-btn:hover {
+	background: #006846;
+	color: #ffffff;
 }
 
 /* Footer */

@@ -4,13 +4,14 @@ const User = require("../models/user");
 const Order = require("../models/order");
 const middleware = require("../middleware");
 
-router.get("/orders", (req, res) => {
+router.get("/orders", middleware.isLoggedIn, (req, res) => {
 	// var noMatch = null;
-	/* const noSearch = !req.query.search;
-    if(req.query.search) {
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+	let { lastName, dob } = req.query;
+    if(lastName && dob) {
+        dob = new RegExp(escapeRegex(dob), 'gi');
+		lastName = new RegExp(escapeRegex(lastName), 'gi');
         // Get all orders from DB - this still needs work
-        Order.find({$and:[{lastName: regex}, {dateOfBirth: regex}]}, function(err, allOrders){
+        Order.find({$and:[{lastName: lastName}, {dateOfBirth: dob}]}, function(err, allOrders){
            if(err){
                console.log(err);
            } else {
@@ -18,8 +19,7 @@ router.get("/orders", (req, res) => {
 					req.flash("error", "No order matches that search. Please try again!");
 					return res.redirect("back");
               }
-			   console.log(req.query.search);
-				res.render("orders/index", {orders: allOrders, noSearch: noSearch});
+				res.render("orders/index", {orders: allOrders, noSearch: false});
            }
         });
     } else {
@@ -28,42 +28,14 @@ router.get("/orders", (req, res) => {
            if(err){
                console.log(err);
            } else {
-              res.render("orders/index",{orders: allOrders, noSearch: noSearch});
-           }
-        });
-    } */
-	const noSearch = !req.query.search;
-	const querySearch = req.query.search;
-    if(req.query.search) {
-        // const regexName = new RegExp(nameRegex(req.query.search), 'gi');
-		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        // Get all campgrounds from DB
-        Order.find({dateOfBirth: regex}, (err, allOrders) => {
-           if(err){
-               console.log(err);
-           } else {
-              if(allOrders.length < 1) {
-                  req.flash("error", "No order matches that search. Please try again!");
-				  return res.redirect("back");
-              }
-			   console.log(req.query.search);
-              res.render("orders/index", {orders: allOrders, noSearch: noSearch});
-           }
-        });
-    } else {
-        // Get all campgrounds from DB
-        Order.find({}, (err, allOrders) => {
-           if(err){
-               console.log(err);
-           } else {
-              res.render("orders/index",{orders: allOrders, noSearch: noSearch});
+              res.render("orders/index",{orders: allOrders, noSearch: true});
            }
         });
     }
 });
 
 // SHOW route
-router.get("/orders/:id", (req, res) => {
+router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 	Order.findById(req.params.id, (err, foundOrder) => {
 		if (err) {
 			req.flash("error", "That order does not exist");
@@ -73,27 +45,6 @@ router.get("/orders/:id", (req, res) => {
 		}
 	});
 });
-
-// Test BT API
-/* const user = "jashogan@capemedical";
-const password = "Viktoria1995";
-var url = 'https://webservices.brightree.net/v0100-1501/OrderEntryService/SalesOrderService.svc ';
-const auth = 'Basic ' + Buffer.from(`${user}:${password}`).toString('base64')
-      const options = {
-        wsdl_headers: {
-          'Authorization': auth
-        }
-	  }
-
-soap.createClient(url, options, function(err, client) {
-});
-
-var url = 'https://webservices.brightree.net/v0100-1501/OrderEntryService/SalesOrderService.svc ';
-router.get(url, function(req, res) {
-	var responseJson = xml2Json(responseBody);
-	console.log(responseJson)
-	console.log(responseJson['wsdl:definitions']["wsdl:types"]["xs:schema"][0]["xs:element"][8]["xs:complexType"]["xs:sequence"]["xs:element"]["$"]["name"]);
-}); */
 
 /* function nameRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

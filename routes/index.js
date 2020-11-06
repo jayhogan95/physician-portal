@@ -24,21 +24,20 @@ router.post("/register", middleware.isAdmin, (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		email: req.body.email,
-		avatar: req.body.avatar
+		role: req.body.role
 	});
 	
 	let adminCode;
 	if(adminCode === process.env.ADMINCODE) {
 		newUser.isAdmin = true;
 	}
-	console.log(adminCode);
 	User.register(newUser, req.body.password, (err, user) => {
 		if (err) {
 			// req.flash("error", err.message);
 			return res.render("register", {"error": err.message});
 		}
 		passport.authenticate("local")(req, res, () => {
-			req.flash("success", "Welcome, " + user.username);
+			req.flash("success", user.username + " has been registered!");
 			res.redirect("/");
 		});
 	});
@@ -221,13 +220,38 @@ router.put("/users/:id", (req, res) => {
 
 // ADMIN route 
 router.get("/admin", middleware.isAdmin, (req, res) => {
-	User.find({}, (err, foundUser) => {
+	/* User.find({}, (err, foundUser) => {
 		if (err) {
-			res.redirect("/products");
+			res.redirect("/login");
 		} else {
 			res.render("admin", {users: foundUser});
 		}
-	});
+	}); */
+	const querySearch = req.query.search;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all users from DB
+        User.find({$or:[{username: regex}, {lastName: regex}, {role: regex}]}, (err, allUsers) => {
+           if(err){
+               console.log(err);
+           } else {
+              if(allUsers.length < 1) {
+                  req.flash("error", "No user matches that search. Please try again!");
+				  return res.redirect("back");
+              }
+              res.render("admin", {users: allUsers});
+           }
+        });
+    } else {
+        // Get all users from DB
+        User.find({}, (err, allUsers) => {
+           if(err){
+               console.log(err);
+           } else {
+              res.render("admin", {users: allUsers});
+           }
+        });
+    }
 });
 
 // ADMIN DESTROY user route 
@@ -236,11 +260,14 @@ router.delete("/users/:id", middleware.isAdmin, (req, res) => {
 		if (err) {
 			res.redirect("/admin");
 		} else {
-			req.flash("success", "User has been deleted!");
+			req.flash("success", "User has successfully been deleted!");
 			res.redirect("/admin");
 		}
 	});
 });
 
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

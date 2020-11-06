@@ -4,35 +4,41 @@
 	<h1 class="new-prod-header">Register</h1>
 	<form action="/register" method="POST">
 		<div class="form-group form-width">
-			<p class="text-center">Username</p>
-			<input class="form-control form-align" type="text" name="username" required>
+			<label class="reg-label">Username</label>
+			<input class="form-control form-align" type="text" name="username" id="username" required>
 		</div>
 		<div class="form-group form-width">
-			<p class="text-center">Password</p>
-			<input class="form-control form-align" id="pass" type="password" name="password" required>
+			<label class="reg-label">Password</label>
+			<input class="form-control form-align" id="pass" type="password" name="password" id="password" required>
 		</div>
 		<div class="form-group form-width">
-			<p class="text-center">First Name</p>
-			<input class="form-control form-align" type="text" name="firstName" required>
+			<label class="reg-label">First Name</label>
+			<input class="form-control form-align" type="text" name="firstName" id="firstName" required>
 		</div>
 		<div class="form-group form-width">
-			<p class="text-center">Last Name</p>
-			<input class="form-control form-align" type="text" name="lastName" required>
+			<label class="reg-label">Last Name</label>
+			<input class="form-control form-align" type="text" name="lastName" id="lastName" required>
 		</div>
 		<div class="form-group form-width">
-			<p class="text-center">Email</p>
-			<input class="form-control form-align" type="email" name="email" required>
+			<label class="reg-label">Email</label>
+			<input class="form-control form-align" type="email" name="email" id="email" required>
 		</div>
 		<div class="form-group form-width">
-			<p class="text-center">Avatar URL</p>
-			<input class="form-control form-align" type="text" name="avatar">
+			<label class="reg-label">Account Type</label>
+			<select name="role" id="role" class="form-control form-align" required>
+				<option disabled selected value>Select an Option</option>
+				<option value="Employee" name="role">Employee</option>
+				<option value="Physician" name="role">Physician</option>
+			</select>
 		</div>
-		<!-- <div class="form-group form-width">
-			<p class="text-center">Admin Code</p>
-			<input class="form-control form-align" type="text" name="adminCode">
-		</div> -->
 		<div class="form-group form-width">
-			<button class="btn btn-md btn-default button-style btn-block green-btn">Sign Up</button>
+			<div class="mt-4">
+				<input type="checkbox" name="isAdmin" id="isAdmin" checked="true">
+				<label>This user is an administrator</label>
+			</div>
+		</div>
+		<div class="form-group form-width">
+			<button class="btn btn-md btn-default button-style btn-block green-btn mt-4">Register</button>
 		</div>
 	</form>
 </div>

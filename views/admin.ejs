@@ -5,7 +5,13 @@
 		<div class="col-md-12">
 			<div>
 				<h3 class="admin-header">Users</h3>
-				<a class="btn button-style btn-md green-btn float-right" id="md-spacing" href="/register" role="button">Add New User</a>
+				<a class="btn button-style btn-md green-btn float-left" id="md-spacing" href="/register" role="button">Add New User</a>
+				<button class="btn green-btn btn-md float-right ml-2">
+					<a class="clear-all text-decoration-none" href="/admin">Clear Search</a>
+				</button>
+				<form class="form-group admin-search float-right" action="/admin" method="GET">
+					<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
+				</form>
 			</div>
 			<table class="table table-striped">
 				<thead>
@@ -14,6 +20,7 @@
 						<th scope="col">First Name</th>
 						<th scope="col">Last Name</th>
 						<th scope="col">Email</th>
+						<th scope="col">Role</th>
 						<th scope="col">Admin</th>
 						<th scope="col"></th>
 						<th scope="col"></th>
@@ -22,16 +29,17 @@
 				<tbody>
 					<% users.forEach(function(user) { %>
 						<tr>
-							<td scope="row"><%= user.username %></td>
+							<td scope="row" ><a class="no-match" href="/users/<%= user._id %>"><%= user.username %></a></td>
 							<td><%= user.firstName %></td>
 							<td><%= user.lastName %></td>
 							<td><%= user.email %></td>
-							<!--<td><%= user.isAdmin %></td>-->
+							<td><%= user.role %></td>
 							<% if (user.isAdmin) { %>
 								<td><input type="checkbox" checked disabled></td>
 							<% } else { %>
 								<td><input type="checkbox" disabled></td>
 							<% } %>
+							<td></td>
 							<td>
 								<a class="btn button-style btn-sm green-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a>
 								<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">

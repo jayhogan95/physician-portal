@@ -13,7 +13,7 @@ middlewareObj.isAdmin = (req, res, next) => {
 		return next();
 	}
 	req.flash("error", "You do not have permission to do that!");
-	res.redirect("/products");
+	res.redirect("/orders");
 };
 
 module.exports = middlewareObj;

@@ -38,7 +38,7 @@ app.use(flash());
 
 // Passport Configuration
 app.use(require("express-session")({
-	secret: "Our products page",
+	secret: "Our doctor portal",
 	resave: false,
 	saveUninitialized: false
 }));
