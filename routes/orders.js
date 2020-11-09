@@ -9,7 +9,11 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
     if(lastName && dob) {
         dob = new RegExp(escapeRegex(dob), 'gi');
 		lastName = new RegExp(escapeRegex(lastName), 'gi');
-        Order.find({$and:[{lastName: lastName}, {dateOfBirth: dob}]}, function(err, allOrders){
+        Order.find(
+			{$and:[
+				{lastName: lastName}, 
+				{dateOfBirth: dob}
+			]}, function(err, allOrders){
            if(err){
                console.log(err);
            } else {
@@ -19,7 +23,7 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
               }
 				res.render("orders/index", {orders: allOrders, noSearch: false});
            }
-        });
+        }).sort({dateCreated : 1});
     } else {
         // Get all orders from DB
         Order.find({}, function(err, allOrders){
