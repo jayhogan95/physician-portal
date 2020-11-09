@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md show-button green-btn" href="/orders" role="button">Back To Order Search</a>
+	<a class="btn button-style btn-md show-button green-btn" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>" role="button">Back To Order Search</a>
 	<div class="row">
 		<div class="col-md-5">
 			<table class="table table-hover">

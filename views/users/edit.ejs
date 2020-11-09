@@ -17,7 +17,7 @@
 							</tr>
 							<tr>
 								<th scope="row">Avatar</th>
-								<td><input class="form-control" type="text" name="user[avatar]" value="<%= user.avatar %>"></td>
+								<td><input class="form-control" type="text" name="user[avatar]" placeholder="Image URL" value="<%= user.avatar %>"></td>
 							</tr>
 							<tr>
 								<th scope="row">First Name</th>
@@ -47,7 +47,7 @@
 							</tr>
 							<tr>
 								<th scope="row">Avatar</th>
-								<td><input class="form-control" type="text" name="user[avatar]" value="<%= user.avatar %>"></td>
+								<td><input class="form-control" type="text" name="user[avatar]" placeholder="Image URL" value="<%= user.avatar %>"></td>
 							</tr>
 							<tr>
 								<th scope="row">First Name</th>
@@ -74,7 +74,7 @@
 				</table>
 				<div class="btn-inline">
 					<button class="btn btn-md btn-default button-style green-btn">Save</button>
-					<a class="btn button-style btn-md green-btn ml-2" href="/admin" role="button">Cancel</a>
+					<a class="btn button-style btn-md green-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
 				</div>
 			</div>
 		</div>

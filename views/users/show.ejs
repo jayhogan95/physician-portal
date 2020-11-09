@@ -6,7 +6,7 @@
 			<div>
 				<h4 class="profile-header">Username: <%= user.username %></h4>
 				<% if (user.avatar === "") { %>
-					<a class="btn button-style btn-sm add-avatar-btn ml-2" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Add Avatar</a>
+					<img class="avatar" src="https://www.state.gov/wp-content/uploads/2018/11/Sweden-2109x1406.jpg">
 				<% } else { %>
 					<img class="avatar" src="<%= user.avatar %>">
 				<% } %>
@@ -21,6 +21,10 @@
 					<tr>
 						<th scope="row">Email</th>
 						<td><%= user.email %></td>
+					</tr>
+					<tr>
+						<th scope="row">Role</th>
+						<td><%= user.role %></td>
 					</tr>
 					<% if (user.isAdmin) { %>
 						<tr>

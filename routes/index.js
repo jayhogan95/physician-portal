@@ -38,7 +38,7 @@ router.post("/register", middleware.isAdmin, (req, res) => {
 		}
 		passport.authenticate("local")(req, res, () => {
 			req.flash("success", user.username + " has been registered!");
-			res.redirect("/");
+			res.redirect("/login");
 		});
 	});
 });
@@ -220,13 +220,6 @@ router.put("/users/:id", (req, res) => {
 
 // ADMIN route 
 router.get("/admin", middleware.isAdmin, (req, res) => {
-	/* User.find({}, (err, foundUser) => {
-		if (err) {
-			res.redirect("/login");
-		} else {
-			res.render("admin", {users: foundUser});
-		}
-	}); */
 	const querySearch = req.query.search;
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');

@@ -5,12 +5,10 @@ const Order = require("../models/order");
 const middleware = require("../middleware");
 
 router.get("/orders", middleware.isLoggedIn, (req, res) => {
-	// var noMatch = null;
 	let { lastName, dob } = req.query;
     if(lastName && dob) {
         dob = new RegExp(escapeRegex(dob), 'gi');
 		lastName = new RegExp(escapeRegex(lastName), 'gi');
-        // Get all orders from DB - this still needs work
         Order.find({$and:[{lastName: lastName}, {dateOfBirth: dob}]}, function(err, allOrders){
            if(err){
                console.log(err);
@@ -23,7 +21,7 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
            }
         });
     } else {
-        // Get all products from DB
+        // Get all orders from DB
         Order.find({}, function(err, allOrders){
            if(err){
                console.log(err);
@@ -32,6 +30,8 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
            }
         });
     }
+	// needed to hold values of search
+	res.locals.query = req.query;
 });
 
 // SHOW route

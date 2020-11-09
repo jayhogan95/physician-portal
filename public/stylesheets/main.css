@@ -198,19 +198,6 @@
 	color: #ffffff;
 }
 
-.add-avatar-btn {
-	border: 1px solid #006846;
-	color: #006846;
-	height: 60px;
-	width: 60px;
-	border-radius: 50%;
-}
-
-.add-avatar-btn:hover {
-	background: #006846;
-	color: #ffffff;
-}
-
 /* Footer */
 
 footer {
