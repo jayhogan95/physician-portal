@@ -7,7 +7,10 @@ const orderSchema = new mongoose.Schema({
 	dateOfBirth: String,
 	wipState: String,
 	dateCreated: String,
-	city: String
+	address: String,
+	city: String,
+	state: String,
+	zipCode: String
 });
 
 module.exports = mongoose.model("Order", orderSchema);

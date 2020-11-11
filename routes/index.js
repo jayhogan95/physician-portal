@@ -37,6 +37,7 @@ router.post("/register", middleware.isAdmin, (req, res) => {
 			return res.render("register", {"error": err.message});
 		}
 		passport.authenticate("local")(req, res, () => {
+			req.logout();
 			req.flash("success", user.username + " has been registered!");
 			res.redirect("/login");
 		});
@@ -226,6 +227,7 @@ router.get("/admin", middleware.isAdmin, (req, res) => {
         // Get all users from DB
         User.find({$or:[{username: regex}, {lastName: regex}, {role: regex}]}, (err, allUsers) => {
            if(err){
+			   res.render("404");
                console.log(err);
            } else {
               if(allUsers.length < 1) {
@@ -257,6 +259,11 @@ router.delete("/users/:id", middleware.isAdmin, (req, res) => {
 			res.redirect("/admin");
 		}
 	});
+});
+
+// 404 page
+router.get("/404", (req, res) => {
+	res.render("404");
 });
 
 function escapeRegex(text) {

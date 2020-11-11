@@ -1,13 +1,33 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md show-button green-btn" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>" role="button">Back To Order Search</a>
+	<a class="btn button-style btn-md show-button green-btn" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.address %>" role="button">Back To Order Search</a>
 	<div class="row">
-		<div class="col-md-5">
-			<table class="table table-hover">
+		<div class="col-md-6">
+			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">Patient Information</th>
+						<th class="table-title" scope="col">Sales Order: <%= order.id %></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Date Created</th>
+					 	<td><%= order.dateCreated %></td>
+					</tr>
+					<tr>
+						<th scope="row">Order Status</th>
+					 	<td><%= order.wipState %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- <div class="col-md-2"></div> -->
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="table-title" scope="col">Patient Information</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,29 +40,60 @@
 					 	<td><%= order.dateOfBirth %></td>
 					</tr>
 					<tr>
+						<th scope="row">Address</th>
+					 	<td><%= order.address %></td>
+					</tr>
+					<tr>
 						<th scope="row">City</th>
 					 	<td><%= order.city %></td>
+					</tr>
+					<tr>
+						<th scope="row">State</th>
+					 	<td><%= order.state %></td>
+					</tr>
+					<tr>
+						<th scope="row">Zip Code</th>
+					 	<td><%= order.zipCode %></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-2"></div>
-		<div class="col-md-5">
-			<table class="table table-hover">
-				<thead>
+		<div class="col-md-12">
+			<h4 class="mt-5 mb-3">Order Status Clarification</h4>
+			<table class="table table-bordered">
+				<thead class="thead-light">
 					<tr>
-						<th scope="col">Sales Order <%= order.id %></th>
+						<th scope="col">Order Status Name</th>
+						<th scope="col">Order Status Description</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">Date Created</th>
-					 	<td><%= order.dateCreated %></td>
-					</tr>
-					<tr>
-						<th scope="row">WIP State</th>
-					 	<td><%= order.wipState %></td>
-					</tr>
+					<% if (order.wipState === "In Progress") { %>
+						<tr>
+							<th scope="row">In Progress</th>
+							<td>In the course of being done or carried out.</td>
+						</tr>
+					<% } else if (order.wipState === "Complete") { %>
+						<tr>
+							<th scope="row">Complete</th>
+							<td>Patient has received all products</td>
+						</tr>
+					<% } else if (order.wipState === "Out for Delivery") { %>
+						<tr>
+							<th scope="row">Out for Delivery</th>
+							<td>The order has been processed and will be delivered in the next 5 business days</td>
+						</tr>
+					<% } else if (order.wipState === "Not yet created") { %>
+						<tr>
+							<th scope="row">Not Yet Created</th>
+							<td>The order has not been created in our system</td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<th scope="row">Need More Info</th>
+							<td>We have received the order but need more information to qualify the patient</td>
+						</tr>
+					<% } %>
 				</tbody>
 			</table>
 		</div>

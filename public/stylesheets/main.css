@@ -53,6 +53,11 @@
 .no-match:hover {
 	color: #0E9D54;
 }
+
+.table-title {
+	color: #006846;
+}
+
 /* .index-img {
 	height: auto;
 	width: auto;
@@ -196,6 +201,34 @@
 .green-btn:hover {
 	background: #006846;
 	color: #ffffff;
+}
+
+/* 404 page */
+.no-page {
+	margin: 0 auto;
+	text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+	table {
+    	table-layout: fixed;
+  	}
+	
+	table th, table td {
+		overflow: hidden;
+	}
+
+	#phone-hide {
+		display: none;
+	}
+	
+	#phone-input {
+		width: 150px;
+	}
+	
+	#phone-header {
+		font-size: 40px;
+	}
 }
 
 /* Footer */

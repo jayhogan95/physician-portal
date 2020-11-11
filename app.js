@@ -12,6 +12,9 @@ const 	express = require("express"),
 		User = require("./models/user"),
 		Order = require("./models/order");
 
+/* let Client = require("ssh2-sftp-client");
+let sftp = new Client(); */
+
 // configure dotenv
 require('dotenv').config();
 
@@ -59,7 +62,24 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(orderRoutes);
 
+// SFTP connection
+/* const root = "/file";
+sftp.connect({
+	host: "sftp.brightree.net",
+	port: 22,
+	username: "EXT_CapeMedical",
+	password: "C@p3medU$3r!!1"
+}).then(() => {
+	return sftp.exists("/file/Doctor_11-11-20.zip")
+}).then(data => {
+    console.log(data);          // will be false or d, -, l (dir, file or link)
+}).then(() => {
+    sftp.end();
+}).catch(err => {
+    console.error(err.message);
+}); */
+
 app.listen(3000, () => { 
-  console.log("Inventory App Server has Started!"); 
+  console.log("Physicians Portal Server has Started!"); 
 });
 
