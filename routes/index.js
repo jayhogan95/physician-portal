@@ -3,7 +3,7 @@ const 	express = require("express"),
 		passport = require("passport"),
 		User = require("../models/user"),
 		middleware = require("../middleware"),
-		// async = require("async"),
+		async = require("async"),
 		nodemailer = require("nodemailer"),
 		smtpTransport = require("nodemailer-smtp-transport"),
 		crypto = require("crypto"),
@@ -15,12 +15,12 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 
 // AUTH routes
 // middleware.isLoggedIn, middleware.isAdmin,
-router.get("/register", (req, res) => {
+router.get("/register", middleware.isLoggedIn, middleware.isAdmin, (req, res) => {
 	res.render("register");
 });
 
 // middleware.isAdmin,
-router.post("/register", (req, res) => {
+router.post("/register", middleware.isAdmin, (req, res) => {
 	const newUser = new User({
 		username: req.body.username, 
 		firstName: req.body.firstName,
