@@ -37,14 +37,14 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
     } */
 	let { lastName, dob, address } = req.query;
     if((lastName && dob) || (lastName && dob && address)) {
-        dob = new RegExp(escapeRegex(dob), 'gi');
-		lastName = new RegExp(textRegex(lastName), 'gi');
+        dob = new RegExp(dobRegex(dob), 'gi');
+		lastName = new RegExp(lastNameRegex(lastName), 'gi');
 		address = new RegExp(addressRegex(address), 'gi');
         Order.find(
 			{$and:[
 				{lastName: lastName}, 
 				{dateOfBirth: dob},
-				{address: address}
+				{address: address},
 			]}, function(err, allOrders){
            if(err){
                console.log(err);
@@ -82,7 +82,7 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 	});
 });
 
-function textRegex(text) {
+function lastNameRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
@@ -90,7 +90,7 @@ function addressRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
-function escapeRegex(text) {
+function dobRegex(text) {
 	return text.replace(/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/);
     // return text.replace(/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, "\\$&");
 }; 
