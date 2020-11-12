@@ -14,11 +14,13 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 });
 
 // AUTH routes
-router.get("/register", middleware.isLoggedIn, middleware.isAdmin, (req, res) => {
+// middleware.isLoggedIn, middleware.isAdmin,
+router.get("/register", (req, res) => {
 	res.render("register");
 });
 
-router.post("/register", middleware.isAdmin, (req, res) => {
+// middleware.isAdmin,
+router.post("/register", (req, res) => {
 	const newUser = new User({
 		username: req.body.username, 
 		firstName: req.body.firstName,
