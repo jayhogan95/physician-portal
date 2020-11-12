@@ -15,7 +15,7 @@ const 	express = require("express"),
 
 /* let Client = require("ssh2-sftp-client");
 let sftp = new Client(); */
-
+const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
 
@@ -89,7 +89,7 @@ soap.createClient(url, function(err, client) {
     console.log(client);
 }); */
 
-app.listen(3000, () => { 
+app.listen(port, () => { 
   console.log("Physicians Portal Server has Started!"); 
 });
 
