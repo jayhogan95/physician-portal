@@ -217,6 +217,10 @@
 	table th, table td {
 		overflow: hidden;
 	}
+	
+	.form-width {
+		width: 80%;
+	}
 
 	#phone-hide {
 		display: none;

@@ -23,8 +23,6 @@ require('dotenv').config();
 const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders");
 
-// mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/<dbname>?retryWrites=true&w=majority
-// mongoose.connect("mongodb://localhost:27017/orders", 
 console.log(process.env.DATABASEURL);
 mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
