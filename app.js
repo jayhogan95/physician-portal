@@ -9,6 +9,7 @@ const 	express = require("express"),
 		session = require("express-session"),
 		flash = require("connect-flash"),
 		csv = require("fast-csv"),
+		soap = require("soap"),
 		User = require("./models/user"),
 		Order = require("./models/order");
 
@@ -22,7 +23,9 @@ require('dotenv').config();
 const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders");
 
-mongoose.connect("mongodb://localhost:27017/orders", {
+// mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/<dbname>?retryWrites=true&w=majority
+// mongoose.connect("mongodb://localhost:27017/orders", 
+mongoose.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
   	useUnifiedTopology: true
 })
@@ -77,6 +80,13 @@ sftp.connect({
     sftp.end();
 }).catch(err => {
     console.error(err.message);
+}); */
+
+// SOAP Connection
+/* const url = "https://webservices.brightree.net/v0100-1501/OrderEntryService/SalesOrderService.svc?singleWsdl";
+const args = {};
+soap.createClient(url, function(err, client) {
+    console.log(client);
 }); */
 
 app.listen(3000, () => { 
