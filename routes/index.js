@@ -108,7 +108,7 @@ router.post('/forgot', async (req, res) => {
 			service: 'Gmail',
 			auth: {
 				user: 'spirohealthservices@gmail.com',
-				pass: process.env.GMAILPW
+				pass: 'Spiro2020!'
 			}
 		});
 		// set options
