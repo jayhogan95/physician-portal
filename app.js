@@ -23,7 +23,6 @@ require('dotenv').config();
 const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders");
 
-console.log(process.env.DATABASEURL);
 mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
   	useUnifiedTopology: true
@@ -79,13 +78,6 @@ sftp.connect({
     sftp.end();
 }).catch(err => {
     console.error(err.message);
-}); */
-
-// SOAP Connection
-/* const url = "https://webservices.brightree.net/v0100-1501/OrderEntryService/SalesOrderService.svc?singleWsdl";
-const args = {};
-soap.createClient(url, function(err, client) {
-    console.log(client);
 }); */
 
 app.listen(port, () => { 

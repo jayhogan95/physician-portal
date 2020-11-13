@@ -3,7 +3,7 @@ const 	express = require("express"),
 		passport = require("passport"),
 		User = require("../models/user"),
 		middleware = require("../middleware"),
-		// async = require("async"),
+		async = require("async"),
 		nodemailer = require("nodemailer"),
 		smtpTransport = require("nodemailer-smtp-transport"),
 		crypto = require("crypto"),
@@ -101,13 +101,13 @@ router.post('/forgot', (req, res, next) => {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: process.env.GMAILUSER,
-          pass: process.env.GMAILPW
+          	user: "spirohealthservices@gmail.com",
+          	pass: process.env.GMAILPW
         }
       });
       var mailOptions = {
         to: user.email,
-        from: process.env.GMAILUSER,
+        from: "spirohealthservices@gmail.com",
         subject: 'HCM Physician Portal Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -165,13 +165,13 @@ router.post('/reset/:token', (req, res) => {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: process.env.GMAILUSER,
+          user: "spirohealthservices@gmail.com",
           pass: process.env.GMAILPW
         }
       });
       var mailOptions = {
         to: user.email,
-        from: process.env.GMAILUSER,
+        from: "spirohealthservices@gmail.com",
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
