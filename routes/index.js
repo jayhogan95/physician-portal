@@ -3,7 +3,7 @@ const 	express = require("express"),
 		passport = require("passport"),
 		User = require("../models/user"),
 		middleware = require("../middleware"),
-		async = require("async"),
+		// async = require("async"),
 		nodemailer = require("nodemailer"),
 		smtpTransport = require("nodemailer-smtp-transport"),
 		crypto = require("crypto"),
@@ -74,6 +74,19 @@ router.get('/forgot', (req, res) => {
   res.render('forgot');
 });
 
+var generateResetToken = () => {
+	return new Promise((resolve, reject) => {
+		crypto.randomBytes(20, (err, buf) => {
+			if (err) reject(err);
+			else {
+				let reset_token = buf.toString('hex');
+				resolve(reset_token);
+			}
+		})
+	})
+}
+
+// NEW forgot post
 router.post('/forgot', (req, res, next) => {
   async.waterfall([
     (done) => {
