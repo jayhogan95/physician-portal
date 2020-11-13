@@ -86,8 +86,54 @@ var generateResetToken = () => {
 	})
 }
 
+router.post('/forgot', async (req, res) => {
+	try {
+		// generate reset token to send.
+		let reset_token = await generateResetToken();
+		console.log(reset_token);
+
+		// find the specified user by email.
+		let user = await User.findOne({email: req.body.email});
+		if (!user) {
+      		req.flash('error', 'No account with that email address.');
+			throw 'user not found.'
+		}
+		user.resetPasswordToken = reset_token;
+		user.resetPasswordExpires = Date.now() + 3600000; // 1 hour in ms
+		// passport local mongoose allows for promises inherently.
+		await user.save();
+
+		// create transport
+		var smtpTransport = nodemailer.createTransport({
+			service: 'Gmail',
+			auth: {
+				user: 'spirohealthservices@gmail.com',
+				pass: process.env.GMAILPW
+			}
+		});
+		// set options
+		var mailOptions = {
+			to: user.email,
+			from: 'spirohealthservices@gmail.com',
+			subject: 'Test Password Reset',
+			text: 'You are receiving this because you (or someone else) have requested the reset of the password linked to your Yelpcamp account.' +
+				'Please click on the following link, or paste this into your browser to complete the process.' + '\n\n' +
+				'http://' + req.headers.host + '/users/reset/' + reset_token + '\n\n' + 
+				'If you did not request this, please ignore this email and your password will remain unchanged.'
+		};
+		// send mail uses promise if no callback is specified.
+		await	smtpTransport.sendMail(mailOptions);
+		console.log('mail sent');
+		req.flash('success', 'an email has been sent to ' + user.email + ' with further instructions.');
+		res.redirect('/forgot');
+	} catch (error) {
+		console.log(error);
+		res.redirect('/forgot');
+	}	
+});
+
 // NEW forgot post
-router.post('/forgot', (req, res, next) => {
+/* router.post('/forgot', (req, res, next) => {
   async.waterfall([
     (done) => {
       crypto.randomBytes(20, (err, buf) => {
@@ -137,7 +183,7 @@ router.post('/forgot', (req, res, next) => {
     if (err) return next(err);
     res.redirect('/forgot');
   });
-});
+}); */
 
 router.get('/reset/:token', (req, res) => {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, (err, user) => {
