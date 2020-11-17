@@ -10,6 +10,7 @@ const 	express = require("express"),
 		flash = require("connect-flash"),
 		csv = require("fast-csv"),
 		soap = require("soap"),
+		// sgMail = require("@sendgrid/mail"),
 		User = require("./models/user"),
 		Order = require("./models/order");
 
@@ -73,7 +74,7 @@ sftp.connect({
 }).then(() => {
 	return sftp.exists("/file/Doctor_11-11-20.zip")
 }).then(data => {
-    console.log(data);          // will be false or d, -, l (dir, file or link)
+    console.log(data);
 }).then(() => {
     sftp.end();
 }).catch(err => {
