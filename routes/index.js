@@ -94,7 +94,6 @@ const generateResetToken = () => {
 router.post('/forgot', async (req, res) => {
 	try {
 		let reset_token = await generateResetToken();
-		console.log(reset_token);
 		
 		let user = await User.findOne({email: req.body.email});
 		if (!user) {
@@ -110,16 +109,15 @@ router.post('/forgot', async (req, res) => {
 			to: user.email,
 			from: 'info@hcmatco.com',
 			subject: 'HCM Physician Portal Password Reset',
-			html: 'Please click on the following link, or paste this into your browser to complete the process.' + '\n\n' +
-				'http://' + req.headers.host + '/reset/' + reset_token + '\n\n' + 
-				'If you did not request this, please ignore this email and your password will remain unchanged.',
+			html: '<p style="font-size:16px;line-height:20px">Hi ' + user.username + ',</p>' + '<p style="font-size:16px;">Forgot your password? No problem!</p>' + '<p style="font-size:16px;">Please click the following link, or paste it into your browser to change your password:</p>' + '<p style="font-size:16px;line-height:20px">' +
+				'http://' + req.headers.host + '/reset/' + reset_token + '</p>' + '<p style="font-size:16px;line-height:20px">If you did not request this, please ignore this email and your password will remain unchanged.</p>' + '<p style="font-size:16px;line-height:20px">If you have any trouble, please respond back to this email and we will get back to you as soon as possible!</p>' + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Health Complex Medical Team</p>',
 		}
 		sgMail
 		.send(msg)
 		.then(() => {
+			res.redirect("/reset-confirmation");
+			// req.flash('success', 'Email has been sent'); not rendering
 			console.log('Email Sent')
-			req.flash("success", + "Email has been sent!"); // This isn't rendering
-			res.redirect("back");
 		})
 	}
 	catch (error) {
@@ -351,6 +349,11 @@ router.delete("/users/:id", middleware.isAdmin, (req, res) => {
 		}
 	});
 });
+
+// Email Confirmation Page
+router.get("/reset-confirmation", (req, res) => {
+	res.render("reset-confirmation");
+})
 
 // 404 page
 router.get("/404", (req, res) => {
