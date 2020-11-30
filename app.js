@@ -10,12 +10,12 @@ const 	express = require("express"),
 		flash = require("connect-flash"),
 		csv = require("fast-csv"),
 		soap = require("soap"),
-		// sgMail = require("@sendgrid/mail"),
+		sgMail = require("@sendgrid/mail"),
 		User = require("./models/user"),
 		Order = require("./models/order");
 
-/* let Client = require("ssh2-sftp-client");
-let sftp = new Client(); */
+// let Client = require("ssh2-sftp-client");
+// let sftp = new Client();
 const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
@@ -65,21 +65,21 @@ app.use(indexRoutes);
 app.use(orderRoutes);
 
 // SFTP connection
-/* const root = "/file";
-sftp.connect({
-	host: "sftp.brightree.net",
-	port: 22,
-	username: "EXT_CapeMedical",
-	password: "C@p3medU$3r!!1"
-}).then(() => {
-	return sftp.exists("/file/Doctor_11-11-20.zip")
-}).then(data => {
-    console.log(data);
-}).then(() => {
-    sftp.end();
-}).catch(err => {
-    console.error(err.message);
-}); */
+// const root = "/file";
+// sftp.connect({
+// 	host: "sftp.brightree.com",
+// 	port: 22,
+// 	username: "EXT_CapeMedical2",
+// 	password: "@vWDNL0&"
+// }).then(() => {
+// 	return sftp.list("/")
+// }).then(data => {
+//     console.log(data);
+// }).then(() => {
+//     sftp.end();
+// }).catch(err => {
+//     console.error(err.message);
+// });
 
 app.listen(port, () => { 
   console.log("Physicians Portal Server has Started!"); 

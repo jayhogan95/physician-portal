@@ -58,7 +58,7 @@
 						<tbody>
 							<% orders.forEach(function(order){ %>
 								<tr>
-									<td scope="row" id="phone-hide"><%= order.id %></td>
+									<td scope="row" id="phone-hide"><%= order.orderId %></td>
 									<td><%= order.dateCreated %></td>
 									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.firstName + " " + order.lastName %></a></td>
 									<td><%= order.dateOfBirth %></td>

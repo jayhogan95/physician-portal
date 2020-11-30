@@ -1,4 +1,4 @@
-id,firstName,lastName,dateOfBirth,wipState,dateCreated,address,city,state,zipCode
+orderId,firstName,lastName,dateOfBirth,wipState,dateCreated,address,city,state,zipCode
 14595,Demetrius,Raymond,7/28/1973,In Progress,10/25/2020,462-2401 Rhoncus. Street,Roxboro,CT,40947
 15010,Brittany,Castro,6/5/1980,Complete,10/10/2020,"Ap #340-7287 A, St.",Klemskerke,CT,40947
 38513,Brady,Hale,7/28/2026,Need More Info,8/17/2020,596-6628 Eget Avenue,Polcenigo,CT,40947

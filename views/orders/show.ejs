@@ -1,23 +1,49 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md show-button green-btn" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.address %>" role="button">Back To Order Search</a>
+	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.address %>" role="button">Back To Order Search</a>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Sales Order: <%= order.id %></th>
+						<th class="table-title" scope="col">Sales Order: <%= order.orderId %></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">Date Created</th>
-					 	<td><%= order.dateCreated %></td>
+						<th scope="row">Order Status</th>
+						<td><%= order.wipState %></td>
 					</tr>
 					<tr>
-						<th scope="row">Order Status</th>
-					 	<td><%= order.wipState %></td>
+						<th scope="row">Date Created</th>
+						<td><%= order.dateCreated %></td>
+					</tr>
+					<% if (!order.qualDate) { %>
+						<tr>
+							<th scope="row">Qualification Date</th>
+							<td>Pending Qualification</td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<th scope="row">Qualification Date</th>
+							<td><%= order.qualDate %></td>
+						</tr>
+					<% } %>
+					<% if (!order.actualDate) { %>
+						<tr>
+							<th scope="row">Actual Date</th>
+							<td>Pending Delivery</td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<th scope="row">Actual Date</th>
+							<td><%= order.actualDate %></td>
+						</tr>
+					<% } %>
+					<tr>
+						<th scope="row">Marketing Rep</th>
+						<td>Jay Hogan</td>
 					</tr>
 				</tbody>
 			</table>
@@ -27,34 +53,41 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Patient Information</th>
+						<th class="table-title" scope="col">Patient Information: 10000</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">Full Name</th>
-					 	<td><%= order.firstName + " " + order.lastName %></td>
+						<td><%= order.firstName + " " + order.lastName %></td>
 					</tr>
 					<tr>
 						<th scope="row">Date of Birth</th>
-					 	<td><%= order.dateOfBirth %></td>
+						<td><%= order.dateOfBirth %></td>
 					</tr>
 					<tr>
 						<th scope="row">Address</th>
-					 	<td><%= order.address %></td>
+						<td><%= order.address %></td>
 					</tr>
 					<tr>
-						<th scope="row">City</th>
-					 	<td><%= order.city %></td>
+						<th scope="row">City / State / Zip Code</th>
+						<td><%= order.city + ", " + order.state + " " + order.zipCode %></td>
 					</tr>
 					<tr>
-						<th scope="row">State</th>
-					 	<td><%= order.state %></td>
+						<th scope="row">Primary Insurance</th>
+						<td>Aetna</td>
 					</tr>
-					<tr>
-						<th scope="row">Zip Code</th>
-					 	<td><%= order.zipCode %></td>
-					</tr>
+					<% if (!order.secInsurance) { %>
+						<tr>
+							<th scope="row">Secondary Insurance</th>
+							<td>No Secondary Insurance on file</td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<th scope="row">Secondary Insurance</th>
+							<td><%= order.secInsurance %></td>
+						</tr>
+					<% } %>
 				</tbody>
 			</table>
 		</div>
@@ -96,6 +129,34 @@
 					<% } %>
 				</tbody>
 			</table>
+		</div>
+		<div class="col-md-12">
+			<h4 class="mt-5 mb-3">Still Have Questions?</h4>
+			<a class="btn green-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
+			<span aria-hidden="true"></span>Send Email</a>
+			<div class="collapse" id="collapseEmail">
+				<form action="/orders/<%= order._id %>" method="POST">
+					<div class="form-group mt-3">
+						<label>From</label>
+						<input name="from" autofocus class="form-control" value="<%= currentUser.email %>" disabled>
+					</div>
+					<div class="form-group">
+						<label>To</label>
+						<input name="to" autofocus class="form-control" value="info@hcmatco.com" disabled>
+					</div>
+					<div class="form-group">
+						<label>Subject</label>
+						<input name="subject" autofocus class="form-control" value="Question Regarding Order #<%= order.orderId %>" disabled>
+					</div>
+					<div class="form-group">
+						<label>Message</label>
+						<textarea name="message" autofocus class="form-control" rows="4" cols="100%" required></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn button-style btn-md green-btn" value="Send">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

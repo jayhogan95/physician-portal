@@ -3,38 +3,9 @@ const router = express.Router();
 const User = require("../models/user");
 const Order = require("../models/order");
 const middleware = require("../middleware");
+const sgMail = require('@sendgrid/mail');
 
 router.get("/orders", middleware.isLoggedIn, (req, res) => {
-	/* let { lastName, dob, address } = req.query;
-    if(lastName && dob) {
-        dob = new RegExp(escapeRegex(dob), 'gi');
-		lastName = new RegExp(textRegex(lastName), 'gi');
-        Order.find(
-			{$and:[
-				{lastName: lastName}, 
-				{dateOfBirth: dob}
-			]}, function(err, allOrders){
-           if(err){
-               console.log(err);
-           } else {
-            	if (allOrders.length < 1) {
-					req.flash("error", "No order matches that search. Please try again!");
-					return res.redirect("back");
-              }
-			   console.log(dob);
-				res.render("orders/index", {orders: allOrders, noSearch: false});
-           }
-        }).sort({dateCreated : 1});
-    } else {
-        // Get all orders from DB
-        Order.find({}, function(err, allOrders){
-           if(err){
-               console.log(err);
-           } else {
-              res.render("orders/index",{orders: allOrders, noSearch: true});
-           }
-        });
-    } */
 	let { lastName, dob, address } = req.query;
     if((lastName && dob) || (lastName && dob && address)) {
         dob = new RegExp(dobRegex(dob), 'gi');
@@ -81,6 +52,32 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 		}
 	});
 });
+
+router.post("/orders/:id", middleware.isLoggedIn, (req, res) => {
+	try {
+		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+		const msg = {
+			to: 'jasonhogan18@gmail.com',
+			from: 'info@hcmatco.com',
+			subject: req.body.subject,
+			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
+		}
+		sgMail
+		.send(msg)
+		.then(() => {
+			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
+			console.log('Email Sent');
+		})
+		.then(() => {
+			res.redirect("back");
+		});
+	}
+	catch (error) {
+		console.log(error);
+		res.redirect('back')
+	}
+})
+
 
 function lastNameRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
