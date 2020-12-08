@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema({
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
 	isAdmin: {type: Boolean, default: false},
-	role: {type: String, enum: ["Employee", "Physician"]}
+	role: {type: String, enum: ["Employee", "Physician"]},
+	branchAssoc: [String]
 });
 
 UserSchema.plugin(passportLocalMongoose);

@@ -32,12 +32,12 @@
 								<td><input class="form-control" type="email" name="user[email]" value="<%= user.email %>"></td>
 							</tr>
 							<tr>
+								<th scope="row">Associated Branch</th>
+								<td><input class="form-control" type="text" name="user[branchAssoc]" value="<%= user.branchAssoc %>"></td>
+							</tr>
+							<tr>
 								<th scope="row">Admin</th>
-								<% if (user.isAdmin) { %>
-									<td><input type="checkbox" checked></td>
-								<% } else { %>
-									<td><input type="checkbox"></td>
-								<% } %>
+									<td><input class="form-control" type="text" name="user[isAdmin]" value="<%= user.isAdmin %>"></td>
 								<!-- <td><input class="form-control" type="type" name="user[isAdmin]" value="<%= user.isAdmin %>"></td> -->
 							</tr>
 						<% } else { %>
@@ -66,8 +66,12 @@
 								<td><input class="form-control" type="text" name="user[role]" value="<%= user.role %>" disabled></td>
 							</tr>
 							<tr>
+								<th scope="row">Associated Branch</th>
+								<td><input class="form-control" type="text" name="user[assocBranch]" value="<%= user.assocBranch %>" disabled></td>
+							</tr>
+							<tr>
 								<th scope="row">Admin</th>
-								<td><input class="form-control" type="type" name="user[isAdmin]" value="<%= user.isAdmin %>" disabled></td>
+								<td><input class="form-control" type="checkbox" name="user[isAdmin]" value="<%= user.isAdmin %>" disabled></td>
 							</tr>
 						<% } %>
 					</tbody>

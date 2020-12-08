@@ -27,7 +27,8 @@ router.post("/register", middleware.isAdmin, (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		email: req.body.email,
-		role: req.body.role
+		role: req.body.role,
+		branchAssoc: req.body.branchAssoc
 	});
 	
 	let adminCode;

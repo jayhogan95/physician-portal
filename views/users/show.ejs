@@ -26,9 +26,15 @@
 						<th scope="row">Role</th>
 						<td><%= user.role %></td>
 					</tr>
+					<tr>
+					<% for (let i = 0; i < user.branchAssoc.length; i++) { %>
+						<th scope="row">Associated Branch</th>
+						<td><%= user.branchAssoc[i] %></td>
+					</tr>
+					<% } %>
 					<% if (user.isAdmin) { %>
 						<tr>
-							<th scope="row">Admin</th>
+						<th scope="row">Admin</th>
 							<td><a class="btn button-style btn-sm green-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
 						</tr>
 					<% } %>
