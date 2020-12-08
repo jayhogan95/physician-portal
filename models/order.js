@@ -6,6 +6,8 @@ const orderSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	dateOfBirth: String,
+	branch: String,
+	classification: String,
 	wipState: String,
 	dateCreated: String,
 	qualDate: String,

@@ -53,7 +53,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Patient Information: 10000</th>
+						<th class="table-title" scope="col">Patient Information: <%= order.patientId %></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,7 +75,7 @@
 					</tr>
 					<tr>
 						<th scope="row">Primary Insurance</th>
-						<td>Aetna</td>
+						<td><%= order.priInsurance %></td>
 					</tr>
 					<% if (!order.secInsurance) { %>
 						<tr>

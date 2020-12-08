@@ -50,8 +50,8 @@
 								<th scope="col">Date Created</th>
 								<th scope="col">Full Name</th>
 								<th scope="col">Date Of Birth</th>
-								<th scope="col" id="phone-hide">City</th>
-								<th scope="col">State</th>
+								<th scope="col">Branch</th>
+								<th scope="col" id="phone-hide">State</th>
 								<th scope="col" id="phone-hide"></th>
 							</tr>
 						</thead>
@@ -62,8 +62,8 @@
 									<td><%= order.dateCreated %></td>
 									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.firstName + " " + order.lastName %></a></td>
 									<td><%= order.dateOfBirth %></td>
-									<td id="phone-hide"><%= order.city %></td>
-									<td><%= order.state %></td>
+									<td><%= order.branch %></td>
+									<td id="phone-hide"><%= order.state %></td>
 									<td id="phone-hide"><a class="btn button-style btn-md green-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
 								</tr>
 							<% }) %>
