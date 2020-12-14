@@ -27,6 +27,10 @@
 	padding: 20px 10px;
 }
 
+.jumbotron {
+	background: #F8F9FA;
+}
+
 .landing-grid {
 	display: flex;
 	text-align: center;
