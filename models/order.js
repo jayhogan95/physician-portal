@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema({
 	LastName: String,
 	dateOfBirth: String, //MISSING
 	Patientid: String,
-	branch: String, //MISSING
+	Branch: String, //MISSING
 	Classification: String,
 	CreateDT: String,
 	"Date Qualified_15": String,

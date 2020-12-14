@@ -69,56 +69,55 @@ app.use(indexRoutes);
 app.use(orderRoutes);
 
 // SFTP connection
-const root = "/file";
-sftp.connect({
-	host: process.env.SFTPHOST,
-	port: process.env.SFTPPORT,
-	username: process.env.SFTPUSER,
-	password: process.env.SFTPPASS
-}).then(() => {
-	return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-09-20.zip", "public/files/testconnection.zip")
-}).then(data => {
-    console.log(data);
-}).then(() => {
-    sftp.end();
-}).catch(err => {
-    console.error(err.message);
-});
+// const root = "/file";
+// sftp.connect({
+// 	host: process.env.SFTPHOST,
+// 	port: process.env.SFTPPORT,
+// 	username: process.env.SFTPUSER,
+// 	password: process.env.SFTPPASS
+// }).then(() => {
+// 	return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-09-20.zip", "public/files/testconnection.zip")
+// }).then(data => {
+//     console.log(data);
+// }).then(() => {
+//     sftp.end();
+// }).catch(err => {
+//     console.error(err.message);
+// });
 
-(async () => {
-	try {
-		const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
-		console.log(files);
-	} catch (error) {
-		console.log(error)
-	}
-})();
+// (async () => {
+// 	try {
+// 		const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
+// 		console.log(files);
+// 	} catch (error) {
+// 		console.log(error)
+// 	}
+// })();
 
-const csvFilePath = "public/files/unzippedfile/CustomSOUnconfirm.csv";
+// const csvFilePath = "public/files/unzippedfile/CustomSOUnconfirm.csv";
 
-let MongoClient = require('mongodb').MongoClient;
-function importCsvData2MongoDB(filePath){
-    csvjson()
-        .fromFile(filePath)
-        .then((jsonObj)=>{
-            console.log(jsonObj);
-		
-		MongoClient.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", { useNewUrlParser: true }, (err, db) => {
-                if (err) throw err;
-                let dbo = db.db("orders");
-                dbo.collection("orders").insertMany(jsonObj, (err, res) => {
-                   if (err) throw err;
-                   console.log("Number of documents inserted: " + res.insertedCount);
-                   /**
-                       Number of documents inserted: 5
-                   */
-                   db.close();
-                });
-            });
-	})
-}
+// let MongoClient = require('mongodb').MongoClient;
+// function importCsvData2MongoDB(filePath){
+//     csvjson()
+//         .fromFile(filePath)
+//         .then((jsonObj)=>{
+//             console.log(jsonObj);
+// 			MongoClient.connect(process.env.DATABASEURL, { useNewUrlParser: true }, (err, db) => {
+//                 if (err) throw err;
+//                 let dbo = db.db("orders");
+//                 dbo.collection("orders").insertMany(jsonObj, (err, res) => {
+//                    if (err) throw err;
+//                    console.log("Number of documents inserted: " + res.insertedCount);
+//                    /**
+//                        Number of documents inserted: 5
+//                    */
+//                    db.close();
+//                 });
+//             });
+// 	})
+// }
 
-importCsvData2MongoDB(csvFilePath);
+// importCsvData2MongoDB(csvFilePath);
 
 // const date = new Date(moment());
 

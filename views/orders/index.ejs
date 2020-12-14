@@ -15,10 +15,6 @@
 						<label class="text-left mt-2">Date of Birth * (MM/DD/YYY) <i class="fa fa-info-circle order-note" type="button" title="For DOB's that contain a single digit month or day (01/01/1900), remove the 0's in your search (1/1/1900)" aria-hidden="true"></i></label>
 						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="dob" value="<%= query.dob %>" required>
 					</fieldset>
-					<!-- <fieldset>
-						<label class="text-left mt-2">Address</label>
-						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="address" value="<%= query.address %>">
-					</fieldset> -->
 					<div class="collapse" id="collapseComment">
 						<div class="well">
 							<fieldset>
@@ -58,12 +54,12 @@
 						<tbody>
 							<% orders.forEach(function(order){ %>
 								<tr>
-									<td scope="row" id="phone-hide"><%= order.orderId %></td>
-									<td><%= order.dateCreated %></td>
-									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.firstName + " " + order.lastName %></a></td>
+									<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
+									<td><%= order.CreateDT %></td>
+									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
 									<td><%= order.dateOfBirth %></td>
-									<td><%= order.branch %></td>
-									<td id="phone-hide"><%= order.state %></td>
+									<td><%= order.Branch %></td>
+									<td id="phone-hide"><%= order.st %></td>
 									<td id="phone-hide"><a class="btn button-style btn-md green-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
 								</tr>
 							<% }) %>

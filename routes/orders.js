@@ -13,9 +13,9 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
 		address = new RegExp(addressRegex(address), 'gi');
         Order.find(
 			{$and:[
-				{lastName: lastName}, 
+				{LastName: lastName}, 
 				{dateOfBirth: dob},
-				{address: address},
+				{Street: address},
 			]}, function(err, allOrders){
            if(err){
                console.log(err);

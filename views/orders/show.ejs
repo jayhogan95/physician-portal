@@ -1,25 +1,25 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.lastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.address %>" role="button">Back To Order Search</a>
+	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.street %>" role="button">Back To Order Search</a>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Sales Order: <%= order.orderId %></th>
+						<th class="table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">Order Status</th>
-						<td><%= order.wipState %></td>
+						<td><%= order["Work In Progress_WIP State"] %></td>
 					</tr>
 					<tr>
 						<th scope="row">Date Created</th>
-						<td><%= order.dateCreated %></td>
+						<td><%= order.CreateDT %></td>
 					</tr>
-					<% if (!order.qualDate) { %>
+					<% if (!order["Date Qualified_15"]) { %>
 						<tr>
 							<th scope="row">Qualification Date</th>
 							<td>Pending Qualification</td>
@@ -27,10 +27,10 @@
 					<% } else { %>
 						<tr>
 							<th scope="row">Qualification Date</th>
-							<td><%= order.qualDate %></td>
+							<td><%= order["Date Qualified_15"] %></td>
 						</tr>
 					<% } %>
-					<% if (!order.actualDate) { %>
+					<% if (!order.ActualDeliveryDt) { %>
 						<tr>
 							<th scope="row">Actual Date</th>
 							<td>Pending Delivery</td>
@@ -38,12 +38,12 @@
 					<% } else { %>
 						<tr>
 							<th scope="row">Actual Date</th>
-							<td><%= order.actualDate %></td>
+							<td><%= order.ActualDeliveryDt %></td>
 						</tr>
 					<% } %>
 					<tr>
 						<th scope="row">Marketing Rep</th>
-						<td>Jay Hogan</td>
+						<td><%= order["Marketing Rep_Full Name"] %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -53,13 +53,13 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Patient Information: <%= order.patientId %></th>
+						<th class="table-title" scope="col">Patient Information: <%= order.Patientid %></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">Full Name</th>
-						<td><%= order.firstName + " " + order.lastName %></td>
+						<td><%= order.FirstName + " " + order.LastName %></td>
 					</tr>
 					<tr>
 						<th scope="row">Date of Birth</th>
@@ -67,17 +67,17 @@
 					</tr>
 					<tr>
 						<th scope="row">Address</th>
-						<td><%= order.address %></td>
+						<td><%= order.Street + " " + order.Suite %></td>
 					</tr>
 					<tr>
 						<th scope="row">City / State / Zip Code</th>
-						<td><%= order.city + ", " + order.state + " " + order.zipCode %></td>
+						<td><%= order.City + ", " + order.st + " " + order.Zip %></td>
 					</tr>
 					<tr>
 						<th scope="row">Primary Insurance</th>
-						<td><%= order.priInsurance %></td>
+						<td><%= order["Insurance_Pri Insurance Name"] %></td>
 					</tr>
-					<% if (!order.secInsurance) { %>
+					<% if (!order["Insurance_Sec Insurance Name"]) { %>
 						<tr>
 							<th scope="row">Secondary Insurance</th>
 							<td>No Secondary Insurance on file</td>
@@ -85,7 +85,7 @@
 					<% } else { %>
 						<tr>
 							<th scope="row">Secondary Insurance</th>
-							<td><%= order.secInsurance %></td>
+							<td><%= order["Insurance_Sec Insurance Name"] %></td>
 						</tr>
 					<% } %>
 				</tbody>
@@ -101,22 +101,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if (order.wipState === "In Progress") { %>
+					<% if (order["Work In Progress_WIP State"] === "In Progress") { %>
 						<tr>
 							<th scope="row">In Progress</th>
 							<td>In the course of being done or carried out.</td>
 						</tr>
-					<% } else if (order.wipState === "Complete") { %>
+					<% } else if (order["Work In Progress_WIP State"] === "Complete") { %>
 						<tr>
 							<th scope="row">Complete</th>
 							<td>Patient has received all products</td>
 						</tr>
-					<% } else if (order.wipState === "Out for Delivery") { %>
+					<% } else if (order["Work In Progress_WIP State"] === "Out for Delivery") { %>
 						<tr>
 							<th scope="row">Out for Delivery</th>
 							<td>The order has been processed and will be delivered in the next 5 business days</td>
 						</tr>
-					<% } else if (order.wipState === "Not yet created") { %>
+					<% } else if (order["Work In Progress_WIP State"] === "Not yet created") { %>
 						<tr>
 							<th scope="row">Not Yet Created</th>
 							<td>The order has not been created in our system</td>
@@ -146,7 +146,7 @@
 					</div>
 					<div class="form-group">
 						<label>Subject</label>
-						<input name="subject" autofocus class="form-control" value="Question Regarding Order #<%= order.orderId %>" disabled>
+						<input name="subject" autofocus class="form-control" value="Question Regarding Order #<%= order.SalesOrderId %>" disabled>
 					</div>
 					<div class="form-group">
 						<label>Message</label>
