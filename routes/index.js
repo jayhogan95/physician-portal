@@ -3,7 +3,6 @@ const 	express = require("express"),
 		passport = require("passport"),
 		User = require("../models/user"),
 		middleware = require("../middleware"),
-		// async = require("async"),
 		nodemailer = require("nodemailer"),
 		smtpTransport = require("nodemailer-smtp-transport"),
 		crypto = require("crypto"),
@@ -60,7 +59,7 @@ router.post("/login", (req, res, next) => {
 			successRedirect: "/",
 			failureRedirect: "/login",
 			failureFlash: true,
-			successFlash: "Welcome, " + req.body.username + "!"
+			// successFlash: "Welcome, " + req.body.username + "!"
 		})(req, res);
 });
 

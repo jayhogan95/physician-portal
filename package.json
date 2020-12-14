@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node process.env.NODE_OPTIONS app.js"
   },
   "author": "Jay Hogan",
   "license": "ISC",
@@ -36,6 +36,7 @@
     "request": "^2.88.2",
     "soap": "^0.34.0",
     "ssh2-sftp-client": "^5.3.1",
-    "unzipper": "^0.10.11"
+    "unzipper": "^0.10.11",
+    "v8": "^0.1.0"
   }
 }

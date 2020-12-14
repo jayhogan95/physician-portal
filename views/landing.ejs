@@ -1,49 +1,62 @@
 <%- include("partials/header") %>
 
 	<div class="container">
+		<h1 class="landing-header">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
-			<div class="col-md-3 landing-grid">
+			<div class="col-md-4">
 				<a href="/orders">
-					<h4 class="landing-cta">
-						Orders
-					</h4>
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							Orders
+						</h4>
+					</div>
 				</a>
 			</div>
-			<div class="col-md-3 landing-grid">
+			<div class="col-md-4">
 				<a href="/orders">
-					<h4 class="landing-cta">
-						Profile
-					</h4>
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							How to Contact Us
+						</h4>
+					</div>
 				</a>
 			</div>
-			<div class="col-md-3 landing-grid">
-				<a href="/orders">
-					<h4 class="landing-cta">
-						How To Contact Us
-					</h4>
+			<div class="col-md-4">
+				<a href="/users/<%= currentUser._id %>">
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							Profile
+						</h4>
+					</div>
 				</a>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3 landing-grid">
+			<div class="col-md-4">
 				<a href="/orders">
-					<h4 class="landing-cta">
-						Order Status Meaning
-					</h4>
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							Order Status Meaning
+						</h4>
+					</div>
 				</a>
 			</div>
-			<div class="col-md-3 landing-grid">
+			<div class="col-md-4">
 				<a href="/orders">
-					<h4 class="landing-cta">
-						FAQ's
-					</h4>
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							FAQ's
+						</h4>
+					</div>
 				</a>
 			</div>
-			<div class="col-md-3 landing-grid">
-				<a href="/orders">
-					<h4 class="landing-cta">
-						Website
-					</h4>
+			<div class="col-md-4">
+				<a href="http://www.healthcomplexmedical.com">
+					<div class="landing-grid">
+						<h4 class="landing-cta">
+							Website
+						</h4>
+					</div>
 				</a>
 			</div>
 		</div>

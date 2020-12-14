@@ -68,6 +68,16 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(orderRoutes);
 
+// const v8 = require('v8');
+
+// // console.log(v8.getHeapStatistics())
+
+// const totalHeapSize = v8.getHeapStatistics().total_available_size;
+// console.log(totalHeapSize);
+// let totalHeapSizeInGB = (totalHeapSize / 1024 / 1024 / 1024).toFixed(2)
+
+// console.log("Total heap size (bytes) " + totalHeapSize + " GB " + totalHeapSizeInGB);
+
 // SFTP connection
 // const root = "/file";
 // sftp.connect({
