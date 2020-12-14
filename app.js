@@ -8,14 +8,18 @@ const 	express = require("express"),
 		methodOverride = require("method-override"),
 		session = require("express-session"),
 		flash = require("connect-flash"),
+		moment = require("moment"),
 		csv = require("fast-csv"),
+		csvjson = require("csvtojson"),
+		cron = require("node-cron"),
+		decompress = require('decompress'),
 		soap = require("soap"),
 		sgMail = require("@sendgrid/mail"),
 		User = require("./models/user"),
 		Order = require("./models/order");
 
-// let Client = require("ssh2-sftp-client");
-// let sftp = new Client();
+let Client = require("ssh2-sftp-client");
+let sftp = new Client();
 const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
@@ -65,20 +69,71 @@ app.use(indexRoutes);
 app.use(orderRoutes);
 
 // SFTP connection
-// const root = "/file";
-// sftp.connect({
-// 	host: "sftp.brightree.com",
-// 	port: 22,
-// 	username: "EXT_CapeMedical2",
-// 	password: "@vWDNL0&"
-// }).then(() => {
-// 	return sftp.list("/")
-// }).then(data => {
-//     console.log(data);
-// }).then(() => {
-//     sftp.end();
-// }).catch(err => {
-//     console.error(err.message);
+const root = "/file";
+sftp.connect({
+	host: process.env.SFTPHOST,
+	port: process.env.SFTPPORT,
+	username: process.env.SFTPUSER,
+	password: process.env.SFTPPASS
+}).then(() => {
+	return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-09-20.zip", "public/files/testconnection.zip")
+}).then(data => {
+    console.log(data);
+}).then(() => {
+    sftp.end();
+}).catch(err => {
+    console.error(err.message);
+});
+
+(async () => {
+	try {
+		const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
+		console.log(files);
+	} catch (error) {
+		console.log(error)
+	}
+})();
+
+const csvFilePath = "public/files/unzippedfile/CustomSOUnconfirm.csv";
+
+let MongoClient = require('mongodb').MongoClient;
+function importCsvData2MongoDB(filePath){
+    csvjson()
+        .fromFile(filePath)
+        .then((jsonObj)=>{
+            console.log(jsonObj);
+		
+		MongoClient.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", { useNewUrlParser: true }, (err, db) => {
+                if (err) throw err;
+                let dbo = db.db("orders");
+                dbo.collection("orders").insertMany(jsonObj, (err, res) => {
+                   if (err) throw err;
+                   console.log("Number of documents inserted: " + res.insertedCount);
+                   /**
+                       Number of documents inserted: 5
+                   */
+                   db.close();
+                });
+            });
+	})
+}
+
+importCsvData2MongoDB(csvFilePath);
+
+// const date = new Date(moment());
+
+// function getFormattedDate(date) {
+// 	const year = date.getFullYear().toString().substr(-2);
+// 	const month = (1 + date.getMonth()).toString();
+// 	const day = date.getDate().toString();
+// 	return month + "-" + day + "-" + year;
+// }
+
+// console.log("/CAPEMEDICAL/CustomSOUnconfirm_" + getFormattedDate(date) + ".zip");
+
+// Runs every minute
+// cron.schedule("* * * * *", function () {
+// 	console.log(getFormattedDate(date));
 // });
 
 app.listen(port, () => { 

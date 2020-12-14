@@ -11,17 +11,22 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
+    "adm-zip": "^0.5.1",
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "cron": "^1.8.2",
     "csvtojson": "^2.0.10",
+    "decompress": "^4.2.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "fast-csv": "^4.3.5",
     "method-override": "^3.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.12",
+    "node-cron": "^2.0.3",
     "nodemailer": "^6.4.14",
     "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.4.1",
@@ -30,6 +35,7 @@
     "path": "^0.12.7",
     "request": "^2.88.2",
     "soap": "^0.34.0",
-    "ssh2-sftp-client": "^5.3.1"
+    "ssh2-sftp-client": "^5.3.1",
+    "unzipper": "^0.10.11"
   }
 }

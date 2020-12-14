@@ -27,6 +27,40 @@
 	padding: 20px 10px;
 }
 
+.landing-grid {
+	display: flex;
+	text-align: center;
+	margin: 20px auto;
+	position: relative;
+	border: 2px solid #006846;
+	border-radius: 5%;
+}
+
+.landing-grid a {
+	height: 200px;
+}
+
+.landing-cta {
+	font-size: 25px;
+	color: #006846;
+	text-align: center;
+	text-decoration: none;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+.landing-grid:hover {
+	background: #F8F9FA;
+}
+
+.landing-cta:hover {
+	text-decoration: none;
+	color: #006846;
+}
+
 /* Index page */
 
 .product-main-img {
@@ -156,6 +190,17 @@
 
 .form-group p {
 	margin: 5px;
+}
+
+.form-animation {
+	animation: 1s fadein 0.5s forwards;
+	opacity: 0;
+}
+
+@keyframes fadein {
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Profile Page */
