@@ -12,6 +12,7 @@ const 	express = require("express"),
 		csv = require("fast-csv"),
 		csvjson = require("csvtojson"),
 		cron = require("node-cron"),
+		fs = require("fs"),
 		decompress = require('decompress'),
 		soap = require("soap"),
 		sgMail = require("@sendgrid/mail"),
@@ -98,7 +99,6 @@ app.use(orderRoutes);
 // (async () => {
 // 	try {
 // 		const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
-// 		console.log(files);
 // 	} catch (error) {
 // 		console.log(error)
 // 	}
@@ -111,21 +111,26 @@ app.use(orderRoutes);
 //     csvjson()
 //         .fromFile(filePath)
 //         .then((jsonObj)=>{
-//             console.log(jsonObj);
-// 			MongoClient.connect(process.env.DATABASEURL, { useNewUrlParser: true }, (err, db) => {
+// 			MongoClient.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
 //                 if (err) throw err;
 //                 let dbo = db.db("orders");
 //                 dbo.collection("orders").insertMany(jsonObj, (err, res) => {
 //                    if (err) throw err;
 //                    console.log("Number of documents inserted: " + res.insertedCount);
-//                    /**
-//                        Number of documents inserted: 5
-//                    */
 //                    db.close();
 //                 });
 //             });
 // 	})
 // }
+
+
+
+// const csvWriteFilePath = "public/files/unzippedfile/CustomSOUnconfirmWrite.csv"
+
+// const readableFile = fs.createReadStream("public/files/unzippedfile/CustomSOUnconfirm.csv", 'utf8');
+// const writeableStream = fs.createWriteStream("public/files/unzippedfile/CustomSOUnconfirmWrite.csv");
+
+// readableFile.pipe(writeableStream);
 
 // importCsvData2MongoDB(csvFilePath);
 

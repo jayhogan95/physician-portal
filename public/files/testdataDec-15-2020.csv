@@ -1,0 +1,103 @@
+SalesOrderId,Work In Progress_WIP State,CreateDT,Date Qualified_15,ActualDeliveryDt,Classification,PatientBranch,Marketing Rep_Full Name,Patientid,LastName,FirstName,DOB,Insurance_Pri Insurance Name,Insurance_Sec Insurance Name,Street,Suite,City,st,Zip,NickName
+14595,In Progress,10/25/2020,11/1/2020,11/10/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100000,Raymond,Demetrius,7/12/1934,Aetna,,462-2401 Rhoncus. Street,,Roxboro,CT,40947,CapeMedical
+15010,Complete,10/10/2020,11/2/2020,11/11/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100001,Castro,Brittany,6/5/1980,HPHC,,"Ap #340-7287 A, St.",,Klemskerke,CT,40947,CapeMedical
+99999,In Progress,9/15/2020,11/3/2020,11/12/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100002,Castro,Brittany,6/5/1980,Medicare,,240 Smith Pond Rd,,Waterbury,CT,6708,CapeMedical
+99998,Complete,10/11/2020,11/4/2020,11/13/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100003,Castro,Brittany,6/5/1980,Aetna,,100 Williams Rd,,Austin,TX,78704,CapeMedical
+38513,Need More Info,8/17/2020,11/5/2020,11/14/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100004,Hale,Brady,6/8/1980,Aetna,,596-6628 Eget Avenue,,Polcenigo,CT,40947,CapeMedical
+58136,Out for Delivery,10/12/2020,11/6/2020,11/15/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100005,Frye,Paula,6/9/1980,Aetna,,367-4884 Nisi Road,,Trinità d'Agultu e Vignola,CT,40947,CapeMedical
+43441,Not yet created,7/3/2020,11/7/2020,11/16/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100006,Carlson,Austin,6/10/1980,Aetna,,6954 Sociis St.,,Campbelltown,CT,40947,CapeMedical
+31890,In Progress,8/2/2020,11/8/2020,11/17/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100007,Talley,Louis,6/11/1980,Aetna,,Ap #701-5461 Facilisis Rd.,,La Cisterna,CT,40947,CapeMedical
+31827,Complete,10/11/2020,11/1/2020,11/18/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100008,Simpson,Kevin,6/12/1980,Aetna,,452-9103 Pellentesque Av.,,Bouge,CT,40947,CapeMedical
+51683,Need More Info,7/28/2020,11/2/2020,11/19/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100009,Foreman,Jenna,6/13/1980,Aetna,,"P.O. Box 282, 3043 Nullam Ave",,Windermere,CT,40947,CapeMedical
+15213,Out for Delivery,7/15/2020,11/3/2020,11/20/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100010,Stone,Stewart,6/14/1980,HPHC,,4836 Integer St.,,Panchià,CT,40947,CapeMedical
+51331,Not yet created,7/25/2020,11/4/2020,11/21/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100011,Brady,Scarlett,6/15/1980,Medicare,,554-1820 Molestie St.,,Kallo,CT,40947,CapeMedical
+11998,In Progress,10/17/2020,11/5/2020,11/22/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100012,Villarreal,Tyrone,6/16/1980,Aetna,,"P.O. Box 633, 785 Eu Avenue",,Rezé,CT,40947,CapeMedical
+55892,Complete,7/6/2020,11/6/2020,11/23/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100013,Strong,Rhonda,6/17/1980,Aetna,,8086 Interdum St.,,Jacksonville,CT,40947,CapeMedical
+36586,Need More Info,8/25/2020,11/7/2020,11/24/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100014,Mckay,Shellie,6/18/1980,Aetna,,693-1010 Ac St.,,Beaumaris,CT,40947,CapeMedical
+53004,Out for Delivery,9/17/2020,11/8/2020,11/25/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100015,Hart,Beverly,6/19/1980,HPHC,,"P.O. Box 361, 7113 Purus. Rd.",,Zeitz,CT,40947,CapeMedical
+57938,Not yet created,11/1/2020,11/9/2020,11/26/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100016,Andrews,Camille,6/20/1980,Medicare,,"P.O. Box 912, 9953 Vestibulum, Ave",,Ghanche,CT,11017,CapeMedical
+14910,In Progress,8/31/2020,11/10/2020,11/27/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100017,Waters,Zachery,6/21/1980,Aetna,,759 Nulla Rd.,,Andong,MA,11017,CapeMedical
+40089,Complete,9/11/2020,11/11/2020,11/28/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100018,Decker,Madeline,6/22/1980,,,Ap #434-908 Vulputate Ave,,Anchorage,MA,11017,CapeMedical
+45717,Need More Info,10/30/2020,11/12/2020,11/29/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100019,Landry,Leah,6/23/1980,,,Ap #675-2917 Commodo Av.,,Raymond,MA,11017,CapeMedical
+22780,Out for Delivery,7/15/2020,11/13/2020,11/30/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100020,Page,Felix,6/24/1980,Aetna,,358 Sed St.,,Saavedra,MA,11017,CapeMedical
+35823,Not yet created,9/27/2020,11/14/2020,11/10/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100021,Shaw,Kyla,6/25/1980,HPHC,,Ap #855-526 Nec Street,,Sainte-Flavie,MA,20118,CapeMedical
+14757,In Progress,9/17/2020,11/15/2020,11/11/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100022,Leblanc,Reuben,6/26/1980,Medicare,,7372 Eleifend Road,,Lampa,MA,45055,CapeMedical
+57591,Complete,10/9/2020,11/16/2020,11/12/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100023,Roberts,Berk,6/27/1980,Aetna,,Ap #805-2936 Luctus Rd.,,Mustafakemalpaşa,CT,45055,CapeMedical
+42849,Need More Info,7/27/2020,11/1/2020,11/13/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100024,Horton,Rooney,6/28/1980,Aetna,,345-7018 Porttitor Ave,,Grembergen,CT,75639,CapeMedical
+29817,Out for Delivery,6/19/2020,11/2/2020,11/14/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100025,Harvey,Eleanor,6/29/1980,Aetna,,"P.O. Box 794, 4097 Dui Road",,Baulers,CT,77513,CapeMedical
+58814,Not yet created,6/26/2020,11/3/2020,11/15/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100026,Mcintyre,John,6/30/1980,Aetna,,"P.O. Box 886, 3459 Est. St.",,Chernogolovka,CT,10122,CapeMedical
+12788,In Progress,9/2/2020,11/4/2020,11/16/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100027,Bullock,Bruce,7/1/1980,Aetna,,975-6065 Luctus Ave,,Chambord,CT,10122,CapeMedical
+23333,Complete,8/18/2020,11/5/2020,11/17/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100028,George,Noel,7/2/1980,Aetna,,"P.O. Box 905, 2702 Quam Avenue",,Malle,CT,10122,CapeMedical
+56262,Need More Info,6/12/2020,11/6/2020,11/18/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100029,Harrington,Ora,7/3/1980,Aetna,,101-7451 Tempus Av.,,Pietrasanta,CT,10122,CapeMedical
+16999,Out for Delivery,10/15/2020,11/7/2020,11/19/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100030,Boone,Alden,7/4/1980,HPHC,,2839 Varius. Ave,,Vänersborg,CT,10122,CapeMedical
+10756,Not yet created,10/25/2020,11/8/2020,11/20/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100031,Shepard,Abbot,7/5/1980,Medicare,,323-7910 Arcu. Av.,,Kerkrade,CT,10122,CapeMedical
+13685,In Progress,11/4/2020,11/9/2020,11/21/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100032,Keith,Arden,7/6/1980,Aetna,,478-1104 Adipiscing Road,,Palestrina,CT,10122,CapeMedical
+15660,Complete,9/30/2020,11/10/2020,11/22/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100033,Rodgers,Jerry,7/7/1980,Aetna,,Ap #341-1732 Cras Street,,Jolanda di Savoia,CT,10122,CapeMedical
+46922,Need More Info,8/1/2020,11/11/2020,11/23/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100034,Rich,Hanna,7/8/1980,Aetna,,544-7849 Nunc Ave,,Maltignano,CT,10122,CapeMedical
+49846,Out for Delivery,8/22/2020,11/12/2020,11/24/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100035,Holloway,Hammett,7/9/1980,HPHC,,3897 Nisl. Avenue,,Coldstream,CT,10122,CapeMedical
+22361,Not yet created,8/18/2020,11/13/2020,11/25/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100036,Henderson,Jordan,7/10/1980,Medicare,,"P.O. Box 690, 3143 Dolor. Rd.",,Bettiah,CT,49594,CapeMedical
+39399,In Progress,7/23/2020,11/14/2020,11/26/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100037,Pratt,Aphrodite,7/11/1980,Aetna,,"P.O. Box 931, 5336 Risus. Street",,Reading,CT,49594,CapeMedical
+18724,Complete,6/23/2020,11/15/2020,11/27/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100038,Cross,Naomi,7/12/1980,,,"P.O. Box 917, 1502 Leo Avenue",,Outremont,MA,49594,CapeMedical
+18719,Need More Info,9/2/2020,11/16/2020,11/28/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100039,Madden,Ava,7/13/1980,,,6640 Malesuada Avenue,,Tongrinne,MA,49594,CapeMedical
+26039,Out for Delivery,9/10/2020,11/17/2020,11/29/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100040,Rosa,Rhea,7/14/1980,,,4619 At St.,,San Damiano al Colle,MA,49594,CapeMedical
+44900,Not yet created,6/14/2020,11/18/2020,11/30/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100041,Nash,Sandra,7/15/1980,,,Ap #211-1866 Quisque St.,,Biez,MA,49594,CapeMedical
+41244,In Progress,8/30/2020,11/19/2020,11/10/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100042,Dean,Lilah,7/16/1980,,,139-6592 Ut Avenue,,Vitrolles,MA,76238,CapeMedical
+20248,Complete,8/1/2020,11/20/2020,11/11/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100043,Leonard,Aretha,7/17/1980,Aetna,,"P.O. Box 472, 7027 Sed Ave",,Pembroke,MA,76238,CapeMedical
+19513,Need More Info,10/10/2020,11/21/2020,11/12/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100044,Decker,Damian,7/18/1980,HPHC,,"P.O. Box 115, 7157 Dui. Avenue",,Aparecida de Goiânia,CT,76238,CapeMedical
+40237,Out for Delivery,6/21/2020,11/22/2020,11/13/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100045,Wilkerson,Gareth,7/19/1980,Medicare,,1945 Donec Street,,Civo,CT,76238,CapeMedical
+56518,Not yet created,8/7/2020,11/23/2020,11/14/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100046,Hensley,Daphne,7/20/1980,Aetna,,"P.O. Box 340, 3349 Quis Rd.",,San Javier,CT,76238,CapeMedical
+56915,In Progress,7/19/2020,11/24/2020,11/15/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100047,Henson,Phillip,7/21/1980,Aetna,,834-7400 Eu Rd.,,Poucet,CT,76238,CapeMedical
+48029,Complete,11/7/2020,11/13/2020,11/16/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100048,Curtis,Karina,7/22/1980,Aetna,,Ap #642-6891 Duis Av.,,Brechin,CT,76238,CapeMedical
+56833,Need More Info,8/24/2020,11/14/2020,11/17/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100049,Cruz,Beatrice,7/23/1980,Aetna,,439-6254 Gravida St.,,Bienne-lez-Happart,CT,76238,CapeMedical
+40238,Out for Delivery,9/27/2020,11/15/2020,11/18/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100050,Livingston,Xander,7/24/1980,Aetna,,4016 Curabitur Street,,Linlithgow,CT,76238,CapeMedical
+12767,Not yet created,6/2/2020,11/16/2020,11/19/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100051,Gillespie,Alvin,7/25/1980,Aetna,,Ap #657-5951 Purus Street,,Rionegro,CT,76238,CapeMedical
+31146,In Progress,7/13/2020,11/17/2020,11/20/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100052,Burks,Laura,7/26/1980,Aetna,,"P.O. Box 677, 9056 Nonummy St.",,Athens,CT,27849,CapeMedical
+25438,Complete,9/12/2020,11/18/2020,11/21/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100053,Byers,Amery,7/27/1980,HPHC,,606-7738 Diam Street,,Nantes,CT,27849,CapeMedical
+11178,Need More Info,9/17/2020,11/19/2020,11/22/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100054,Ortiz,Kamal,7/28/1980,Medicare,,368-9557 Varius. Av.,,Grayvoron,CT,27849,CapeMedical
+27449,Out for Delivery,9/16/2020,11/20/2020,11/23/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100055,Randall,Karina,7/29/1980,Aetna,,Ap #294-9117 Orci Avenue,,Villach,CT,27849,CapeMedical
+38586,Not yet created,8/29/2020,11/21/2020,11/24/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100056,Vaughn,Jescie,7/30/1980,Aetna,,Ap #220-9243 Consequat Ave,,Karimnagar,CT,27849,CapeMedical
+13300,In Progress,9/23/2020,11/22/2020,11/25/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100057,Hendricks,Basil,7/31/1980,Aetna,,"P.O. Box 763, 5113 Maecenas Avenue",,Sobral,CT,27849,CapeMedical
+23361,Complete,6/24/2020,11/23/2020,11/26/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100058,Burt,Dahlia,8/1/1980,HPHC,,"P.O. Box 419, 6718 Sem Rd.",,College,CT,27849,CapeMedical
+11043,Need More Info,10/29/2020,11/24/2020,11/27/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100059,Baldwin,Arsenio,8/2/1980,Medicare,,3277 Vulputate Street,,Norderstedt,MA,27849,CapeMedical
+57706,Out for Delivery,6/23/2020,11/25/2020,11/28/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100060,Koch,Aristotle,8/3/1980,Aetna,,Ap #990-9926 Integer Road,,Dover,MA,27849,CapeMedical
+37215,Not yet created,11/6/2020,11/26/2020,11/29/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100061,Hardin,Damian,8/4/1980,Aetna,,4367 Ornare Ave,,Henstedt-Ulzburg,MA,27849,CapeMedical
+32746,In Progress,9/8/2020,11/27/2020,11/30/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100062,Faulkner,Haley,8/5/1980,HPHC,,"4778 Vitae, Road",,Longueville,MA,27849,CapeMedical
+23267,Complete,7/8/2020,11/28/2020,11/25/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100063,Rowland,Alfreda,8/6/1980,Medicare,,"P.O. Box 467, 4689 Non Road",,Welland,MA,27849,CapeMedical
+54014,Need More Info,8/21/2020,11/29/2020,11/26/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100064,Church,Kelly,8/7/1980,Aetna,,9811 Neque. St.,,Des Moines,MA,27849,CapeMedical
+27241,Out for Delivery,11/4/2020,11/30/2020,11/27/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100065,Beach,Robin,8/8/1980,Aetna,,"P.O. Box 724, 2082 Laoreet, Road",,Hattiesburg,CT,27849,CapeMedical
+15133,Not yet created,8/15/2020,12/1/2020,11/28/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100066,Sellers,Piper,8/9/1980,Aetna,,494-8156 Semper Street,,Schoonaarde,CT,27849,CapeMedical
+48819,In Progress,9/27/2020,12/2/2020,11/29/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100067,Acevedo,Amos,8/10/1980,Aetna,,Ap #254-6355 Etiam Ave,,Drumheller,CT,27849,CapeMedical
+28442,Complete,10/21/2020,11/13/2020,11/30/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100068,Parker,Mira,8/11/1980,Aetna,,461-8383 Sed St.,,Gillette,CT,27849,CapeMedical
+37883,Need More Info,9/9/2020,11/14/2020,12/1/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100069,Pittman,Jemima,8/12/1980,Aetna,,Ap #492-4395 Odio St.,,Newquay,CT,27849,CapeMedical
+45980,Out for Delivery,9/7/2020,11/15/2020,12/2/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100070,Gentry,Damon,8/13/1980,Aetna,,Ap #393-6598 Lacus. Avenue,,Logroño,CT,27849,CapeMedical
+45992,Not yet created,10/10/2020,11/16/2020,12/3/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100071,Mcgowan,Anika,8/14/1980,HPHC,,"P.O. Box 895, 4596 Elit Rd.",,Pemuco,CT,27849,CapeMedical
+40133,In Progress,6/8/2020,11/17/2020,12/4/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100072,Morin,Imelda,8/15/1980,Medicare,,Ap #137-5779 Lorem Street,,Barahanagar,CT,73373,CapeMedical
+42397,Complete,7/6/2020,11/18/2020,12/5/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100073,Mckenzie,Anastasia,8/16/1980,Aetna,,7702 Lobortis St.,,Aschersleben,CT,73373,CapeMedical
+38070,Need More Info,10/29/2020,11/19/2020,12/6/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100074,Riddle,Reese,8/17/1980,Aetna,,Ap #161-173 Aliquet Av.,,Gimpo,CT,73373,CapeMedical
+20168,Out for Delivery,7/1/2020,11/20/2020,12/7/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100075,Gilliam,Dylan,8/18/1980,Aetna,,"P.O. Box 929, 9262 Aenean Rd.",,San Javier,CT,73373,CapeMedical
+54084,Not yet created,8/31/2020,11/21/2020,11/25/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100076,Cameron,Nevada,8/19/1980,HPHC,,Ap #105-6237 Ultricies Street,,Innisfail,CT,73373,CapeMedical
+45044,In Progress,9/26/2020,11/22/2020,11/26/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100077,Burns,Wynter,8/20/1980,Medicare,,"P.O. Box 506, 5799 Proin Avenue",,Villata,CT,73373,CapeMedical
+14380,Complete,6/20/2020,11/23/2020,11/27/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100078,Boyle,Ivan,8/21/1980,Aetna,,4915 Dolor Road,,Saint-Prime,CT,73373,CapeMedical
+49837,Need More Info,7/17/2020,11/24/2020,11/28/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100079,Conway,Sean,8/22/1980,Aetna,,"P.O. Box 392, 4969 Sagittis St.",,Amqui,CT,73373,CapeMedical
+44506,Out for Delivery,9/21/2020,11/25/2020,11/29/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100080,Chen,Alvin,8/23/1980,HPHC,,Ap #616-788 Magna. Ave,,Thalassery,MA,73373,CapeMedical
+45681,Not yet created,11/8/2020,11/26/2020,11/30/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100081,Woodward,Shelly,8/24/1980,Medicare,,4092 Dictum Avenue,,Valda,MA,73373,CapeMedical
+26126,In Progress,6/28/2020,11/27/2020,12/1/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100082,Tanner,Vance,8/25/1980,Aetna,,667-6941 Eleifend Av.,,Villingen-Schwenningen,MA,73373,CapeMedical
+35164,Complete,6/18/2020,11/28/2020,12/2/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100083,Gregory,Kadeem,8/26/1980,Aetna,,"P.O. Box 421, 4782 Nulla Road",,Hindupur,MA,73373,CapeMedical
+36416,Need More Info,11/7/2020,11/29/2020,12/3/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100084,Mclean,Kirk,8/27/1980,Aetna,,426-3343 Cursus Av.,,Steenhuffel,MA,73373,CapeMedical
+13191,Out for Delivery,8/14/2020,11/30/2020,12/4/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100085,Puckett,Hedy,8/28/1980,Aetna,,"P.O. Box 364, 1291 Nisi. Street",,Rewa,MA,73373,CapeMedical
+31012,Not yet created,7/9/2020,12/1/2020,12/5/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100086,Faulkner,Warren,8/29/1980,Aetna,,"P.O. Box 540, 8972 Erat Rd.",,Akron,CT,73373,CapeMedical
+51526,In Progress,7/22/2020,12/2/2020,12/6/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100087,Torres,Knox,8/30/1980,Aetna,,3537 Nec St.,,Allumiere,CT,10325,CapeMedical
+16283,Complete,10/24/2020,12/3/2020,12/7/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100088,Mcknight,Eden,8/31/1980,Aetna,,Ap #640-9910 Vitae Rd.,,Dingwall,CT,10325,CapeMedical
+58050,Need More Info,10/31/2020,12/4/2020,11/27/2020,Sleep,Heath Complex-Waterbury,Jack Hogan,100089,Pratt,Sebastian,9/1/1980,HPHC,,623 Quisque Road,,Pamel,CT,10325,CapeMedical
+42464,Out for Delivery,6/27/2020,12/5/2020,11/28/2020,Sleep,Heath Complex-Waterbury,Scott McDonald,100090,Cotton,Halla,9/2/1980,Medicare,,Ap #693-8726 Morbi St.,,Lowell,CT,10325,CapeMedical
+40013,Not yet created,9/28/2020,12/6/2020,11/29/2020,Sleep,Heath Complex-Waterbury,Dave Hogan,100091,Glass,Isaiah,9/3/1980,Aetna,,Ap #583-1321 Arcu St.,,Flint,CT,10325,CapeMedical
+20758,In Progress,7/8/2020,11/29/2020,11/30/2020,Sleep,Heath Complex-Waterbury,Jay Hogan,100092,Poole,Cooper,9/4/1980,Aetna,,Ap #457-6653 Integer Road,,Cowdenbeath,CT,10325,CapeMedical
+40150,Complete,8/24/2020,11/30/2020,12/1/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100093,Dominguez,Ferris,9/5/1980,Aetna,,265-3291 Risus Street,,Colli a Volturno,CT,10325,CapeMedical
+59178,Need More Info,6/13/2020,12/1/2020,12/2/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100094,Page,Julian,9/6/1980,HPHC,,5938 Eget Road,,Shreveport,CT,10325,CapeMedical
+21231,Out for Delivery,7/12/2020,12/2/2020,12/3/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100095,Mathews,Bruce,9/7/1980,Medicare,,912-8128 Suspendisse Street,,Schaarbeek,CT,10325,CapeMedical
+26382,Not yet created,9/21/2020,12/3/2020,12/4/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100096,Lamb,Malcolm,9/8/1980,Aetna,,"P.O. Box 225, 301 Semper Avenue",,Lodelinsart,CT,10325,CapeMedical
+36904,In Progress,6/5/2020,12/4/2020,12/5/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100097,Holman,Jocelyn,9/9/1980,,,"5987 At, Rd.",,Leduc,MA,10325,CapeMedical
+43626,Complete,8/10/2020,12/5/2020,12/6/2020,Sleep,Cape Medical Supply Sandwich,Jay Hogan,100098,Simmons,Carolyn,9/10/1980,,,5033 Aliquam Rd.,,Bergeggi,MA,10325,CapeMedical
+10714,Need More Info,9/1/2020,12/6/2020,12/7/2020,Sleep,Cape Medical Supply Sandwich,Jack Hogan,100099,Fry,Darrel,9/11/1980,,,368-5989 Mollis. Ave,,Sant'Agata sul Santerno,MA,10325,CapeMedical
+55274,Out for Delivery,6/14/2020,12/5/2020,11/28/2020,Sleep,Cape Medical Supply Sandwich,Scott McDonald,100100,Jarvis,Ferdinand,9/12/1980,,,1992 Natoque Avenue,,Casperia,MA,10325,CapeMedical
+27513,Not yet created,6/1/2020,12/6/2020,11/29/2020,Sleep,Cape Medical Supply Sandwich,Dave Hogan,100101,Huffman,Timon,9/13/1980,,,272-3487 Nascetur St.,,Arnesano,MA,10325,CapeMedical

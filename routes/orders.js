@@ -4,9 +4,11 @@ const User = require("../models/user");
 const Order = require("../models/order");
 const middleware = require("../middleware");
 const sgMail = require('@sendgrid/mail');
+const fs = require("fs");
 
-router.get("/orders", middleware.isLoggedIn, (req, res) => {
-	let { lastName, dob, address } = req.query;
+router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
+	try {
+		let { lastName, dob, address } = req.query;
     if((lastName && dob) || (lastName && dob && address)) {
         dob = new RegExp(dobRegex(dob), 'gi');
 		lastName = new RegExp(lastNameRegex(lastName), 'gi');
@@ -14,7 +16,7 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
         Order.find(
 			{$and:[
 				{LastName: lastName}, 
-				{dateOfBirth: dob},
+				{DOB: dob},
 				{Street: address},
 			]}, function(err, allOrders){
            if(err){
@@ -26,7 +28,8 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
               }
 				res.render("orders/index", {orders: allOrders, noSearch: false});
            }
-        }).sort({dateCreated : 1});
+        })
+			.sort({dateCreated : 1});
     } else {
         // Get all orders from DB
         Order.find({}, function(err, allOrders){
@@ -39,6 +42,10 @@ router.get("/orders", middleware.isLoggedIn, (req, res) => {
     } 
 	// needed to hold values of search
 	res.locals.query = req.query;
+	} catch (error) {
+		console.log(error);
+	}
+
 });
 
 // SHOW route

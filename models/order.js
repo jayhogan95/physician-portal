@@ -5,9 +5,9 @@ const orderSchema = new mongoose.Schema({
 	"Work In Progress_WIP State": String,
 	FirstName: String,
 	LastName: String,
-	dateOfBirth: String, //MISSING
+	DOB: String,
 	Patientid: String,
-	Branch: String, //MISSING
+	PatientBranch: String,
 	Classification: String,
 	CreateDT: String,
 	"Date Qualified_15": String,
