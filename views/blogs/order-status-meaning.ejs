@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+	<div class="container">
+		<h1>
+			Order Status Meaning
+		</h1>
+		<h2>
+			Clarification on where your patient stands in the setup process
+		</h2>
+		<table class="table table-striped col-md-12">
+			<thead>
+					<tr>
+						<th class="status-name" scope="col">Order Status</th>
+						<th class="status-meaning" scope="col">Order Status Meaning</th>
+					</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<td scope="row"><%= status.orderStatusName %></td>
+						<td scope="row"><%= status.orderStatusMeaning %></td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+
+<%- include("../partials/footer") %>

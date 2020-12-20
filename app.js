@@ -10,24 +10,22 @@ const 	express = require("express"),
 		flash = require("connect-flash"),
 		moment = require("moment"),
 		csv = require("fast-csv"),
-		csvjson = require("csvtojson"),
 		cron = require("node-cron"),
 		fs = require("fs"),
-		decompress = require('decompress'),
 		soap = require("soap"),
 		sgMail = require("@sendgrid/mail"),
 		User = require("./models/user"),
-		Order = require("./models/order");
+		Order = require("./models/order"),
+		OrderStatus = require("./models/status");
 
-let Client = require("ssh2-sftp-client");
-let sftp = new Client();
 const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
 
 // Requiring routes
 const indexRoutes = require("./routes/index"),
-	  orderRoutes = require("./routes/orders");
+	  orderRoutes = require("./routes/orders"),
+	  blogRoutes = require("./routes/blogs");
 
 mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
@@ -68,71 +66,8 @@ app.use((req, res, next) => {
 // Due to refactoring of code - need the app to know to use these routes
 app.use(indexRoutes);
 app.use(orderRoutes);
+app.use(blogRoutes);
 
-// const v8 = require('v8');
-
-// // console.log(v8.getHeapStatistics())
-
-// const totalHeapSize = v8.getHeapStatistics().total_available_size;
-// console.log(totalHeapSize);
-// let totalHeapSizeInGB = (totalHeapSize / 1024 / 1024 / 1024).toFixed(2)
-
-// console.log("Total heap size (bytes) " + totalHeapSize + " GB " + totalHeapSizeInGB);
-
-// SFTP connection
-// const root = "/file";
-// sftp.connect({
-// 	host: process.env.SFTPHOST,
-// 	port: process.env.SFTPPORT,
-// 	username: process.env.SFTPUSER,
-// 	password: process.env.SFTPPASS
-// }).then(() => {
-// 	return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-09-20.zip", "public/files/testconnection.zip")
-// }).then(data => {
-//     console.log(data);
-// }).then(() => {
-//     sftp.end();
-// }).catch(err => {
-//     console.error(err.message);
-// });
-
-// (async () => {
-// 	try {
-// 		const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
-// 	} catch (error) {
-// 		console.log(error)
-// 	}
-// })();
-
-// const csvFilePath = "public/files/unzippedfile/CustomSOUnconfirm.csv";
-
-// let MongoClient = require('mongodb').MongoClient;
-// function importCsvData2MongoDB(filePath){
-//     csvjson()
-//         .fromFile(filePath)
-//         .then((jsonObj)=>{
-// 			MongoClient.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
-//                 if (err) throw err;
-//                 let dbo = db.db("orders");
-//                 dbo.collection("orders").insertMany(jsonObj, (err, res) => {
-//                    if (err) throw err;
-//                    console.log("Number of documents inserted: " + res.insertedCount);
-//                    db.close();
-//                 });
-//             });
-// 	})
-// }
-
-
-
-// const csvWriteFilePath = "public/files/unzippedfile/CustomSOUnconfirmWrite.csv"
-
-// const readableFile = fs.createReadStream("public/files/unzippedfile/CustomSOUnconfirm.csv", 'utf8');
-// const writeableStream = fs.createWriteStream("public/files/unzippedfile/CustomSOUnconfirmWrite.csv");
-
-// readableFile.pipe(writeableStream);
-
-// importCsvData2MongoDB(csvFilePath);
 
 // const date = new Date(moment());
 

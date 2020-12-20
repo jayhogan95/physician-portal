@@ -7,8 +7,7 @@ const sgMail = require('@sendgrid/mail');
 const fs = require("fs");
 
 router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
-	try {
-		let { lastName, dob, address } = req.query;
+	let { lastName, dob, address } = req.query;
     if((lastName && dob) || (lastName && dob && address)) {
         dob = new RegExp(dobRegex(dob), 'gi');
 		lastName = new RegExp(lastNameRegex(lastName), 'gi');
@@ -28,8 +27,7 @@ router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
               }
 				res.render("orders/index", {orders: allOrders, noSearch: false});
            }
-        })
-			.sort({dateCreated : 1});
+        }).sort({CreateDT : 1});
     } else {
         // Get all orders from DB
         Order.find({}, function(err, allOrders){
@@ -42,9 +40,6 @@ router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
     } 
 	// needed to hold values of search
 	res.locals.query = req.query;
-	} catch (error) {
-		console.log(error);
-	}
 
 });
 

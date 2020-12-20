@@ -18,7 +18,7 @@
 					<div class="collapse" id="collapseComment">
 						<div class="well">
 							<fieldset>
-								<label class="text-left mt-2">Street Address</label>
+								<label class="text-left mt-2"><strong>Street Address</strong></label>
 								<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="address" value="<%= query.address %>">
 							</fieldset>
 						</div>
@@ -57,7 +57,7 @@
 									<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
 									<td><%= order.CreateDT %></td>
 									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
-									<td><%= order.DOB %></td>
+									<td><%= order.DOB.slice(0, -12) %></td>
 									<td><%= order.PatientBranch %></td>
 									<td id="phone-hide"><%= order.st %></td>
 									<td id="phone-hide"><a class="btn button-style btn-md green-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>

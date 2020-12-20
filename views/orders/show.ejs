@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.dateOfBirth %>&address=<%= order.street %>" role="button">Back To Order Search</a>
+	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table">
@@ -38,7 +38,7 @@
 					<% } else { %>
 						<tr>
 							<th scope="row">Actual Date</th>
-							<td><%= order.ActualDeliveryDt %></td>
+							<td><%= order.ActualDeliveryDt.slice(0, -12) %></td>
 						</tr>
 					<% } %>
 					<tr>
@@ -63,7 +63,7 @@
 					</tr>
 					<tr>
 						<th scope="row">Date of Birth</th>
-						<td><%= order.DOB %></td>
+						<td><%= order.DOB.slice(0, -12) %></td>
 					</tr>
 					<tr>
 						<th scope="row">Address</th>

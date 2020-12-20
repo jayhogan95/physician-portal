@@ -291,6 +291,16 @@
 	}
 }
 
+/* Blog */
+
+.status-name {
+	width: 15%;
+}
+
+.status-meaning {
+	width: 85%;
+}
+
 /* Footer */
 
 footer {
