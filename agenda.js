@@ -20,8 +20,8 @@ mongoose.connect(process.env.DATABASEURL, {
 	if (jobTypes.length) {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
-		  // agenda.schedule("now", "importcsv");
-		  agenda.every("13 23 * * *", "importcsv");
+		  agenda.schedule("now", "importcsv");
+		  // agenda.every("13 23 * * *", "importcsv");
 		  // agenda.every('30 minutes', 'importcsv').then(() => {
 		  // console.log('importcsv running every 30 minutes');
 		  // })
@@ -30,13 +30,5 @@ mongoose.connect(process.env.DATABASEURL, {
 })
 .catch(error => console.log(error.message));
 
-// function connectToMongo() {
-// 	mongoose.connect(process.env.DATABASEURL, {
-// 		useNewUrlParser: true,
-// 		useUnifiedTopology: true,
-// 		useCreateIndex: true
-// 	});
-// 	console.log("Connected to db!");
-// }
 
 module.exports = Agenda;

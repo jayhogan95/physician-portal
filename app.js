@@ -80,11 +80,6 @@ app.use(blogRoutes);
 
 // console.log("/CAPEMEDICAL/CustomSOUnconfirm_" + getFormattedDate(date) + ".zip");
 
-// Runs every minute
-// cron.schedule("* * * * *", function () {
-// 	console.log(getFormattedDate(date));
-// });
-
 app.listen(port, () => { 
   console.log("Physicians Portal Server has Started!"); 
 });

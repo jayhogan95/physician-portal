@@ -8,7 +8,7 @@ const fs = require("fs");
 
 router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 	let { lastName, dob, address } = req.query;
-	const perPage = 8;
+	const perPage = 20;
 	const pageQuery = parseInt(req.query.page);
 	const pageNumber = pageQuery ? pageQuery : 1;
     if((lastName && dob) || (lastName && dob && address)) {
@@ -20,7 +20,7 @@ router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 				{LastName: lastName}, 
 				{DOB: dob},
 				{Street: address},
-			]}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
+			]}).sort({CreateDT : 1}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
 			Order.countDocuments().exec(function (err, count) {
 				if(err){
             		console.log(err);
@@ -32,8 +32,7 @@ router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 				res.render("orders/index", {orders: allOrders, current: pageNumber, pages: Math.ceil(count / perPage), noSearch: false});
            		}
 			})
-        });
-		// sort({CreateDT : 1})
+        })
     } else {
         // Get all orders from DB
         Order.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
