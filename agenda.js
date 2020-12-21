@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 
 // const connectionOpts = {db: {address: process.env.DATABASEURL, collection: 'agendaJobs'}};
 // let agenda;
-mongoose.connect(process.env.DATABASEURL, {
+mongoose.connect(process.env.HEROKU_DBURL, {
 	useNewUrlParser: true,
   	useUnifiedTopology: true,
 	useCreateIndex: true

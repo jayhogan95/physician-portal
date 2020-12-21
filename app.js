@@ -27,7 +27,8 @@ const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders"),
 	  blogRoutes = require("./routes/blogs");
 
-mongoose.connect(process.env.DATABASEURL, {
+let dbURL = process.env.NODE_ENV === "production" ? process.env.HEROKU_DBURL : process.env.DATABASEURL;
+mongoose.connect(dbURL, {
 	useNewUrlParser: true,
   	useUnifiedTopology: true
 })
@@ -67,6 +68,8 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(orderRoutes);
 app.use(blogRoutes);
+
+
 
 
 // const date = new Date(moment());
