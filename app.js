@@ -27,7 +27,7 @@ const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders"),
 	  blogRoutes = require("./routes/blogs");
 
-mongoose.connect(process.env.DATABASEURL, {
+mongoose.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
   	useUnifiedTopology: true
 })
