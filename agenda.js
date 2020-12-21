@@ -6,8 +6,7 @@ mongoose.Promise = global.Promise;
 
 // const connectionOpts = {db: {address: process.env.DATABASEURL, collection: 'agendaJobs'}};
 // let agenda;
-// mongoose.connect(process.env.DATABASEURL
-mongoose.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
   	useUnifiedTopology: true,
 	useCreateIndex: true
