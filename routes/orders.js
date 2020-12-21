@@ -6,8 +6,49 @@ const middleware = require("../middleware");
 const sgMail = require('@sendgrid/mail');
 const fs = require("fs");
 
-router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
+// router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
+// 	let { lastName, dob, address } = req.query;
+//     if((lastName && dob) || (lastName && dob && address)) {
+//         dob = new RegExp(dobRegex(dob), 'gi');
+// 		lastName = new RegExp(lastNameRegex(lastName), 'gi');
+// 		address = new RegExp(addressRegex(address), 'gi');
+//         Order.find(
+// 			{$and:[
+// 				{LastName: lastName}, 
+// 				{DOB: dob},
+// 				{Street: address},
+// 			]}, function(err, allOrders){
+//         		if(err){
+//             		console.log(err);
+//         		} else {
+//             	if (allOrders.length < 1) {
+// 					req.flash("error", "No order matches that search. Please try again!");
+// 					return res.redirect("back");
+//             	}
+// 				res.render("orders/index", {orders: allOrders, noSearch: false});
+//            	}
+//         });
+// 		// sort({CreateDT : 1})
+//     } else {
+//         // Get all orders from DB
+//         Order.find({}, function(err, allOrders){
+//            if(err){
+//                console.log(err);
+//            } else {
+//               res.render("orders/index",{orders: allOrders, noSearch: true});
+//            }
+//         });
+//     } 
+// 	// needed to hold values of search
+// 	res.locals.query = req.query;
+
+// });
+
+router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 	let { lastName, dob, address } = req.query;
+	const perPage = 8;
+	const pageQuery = parseInt(req.query.page);
+	const pageNumber = pageQuery ? pageQuery : 1;
     if((lastName && dob) || (lastName && dob && address)) {
         dob = new RegExp(dobRegex(dob), 'gi');
 		lastName = new RegExp(lastNameRegex(lastName), 'gi');
@@ -17,30 +58,34 @@ router.get("/orders", middleware.isLoggedIn, (req, res, next) => {
 				{LastName: lastName}, 
 				{DOB: dob},
 				{Street: address},
-			]}, function(err, allOrders){
-           if(err){
-               console.log(err);
-           } else {
+			]}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
+			Order.countDocuments().exec(function (err, count) {
+				if(err){
+            		console.log(err);
+        		} else {
             	if (allOrders.length < 1) {
 					req.flash("error", "No order matches that search. Please try again!");
 					return res.redirect("back");
-              }
-				res.render("orders/index", {orders: allOrders, noSearch: false});
-           }
-        }).sort({CreateDT : 1});
+            	}
+				res.render("orders/index", {orders: allOrders, current: pageNumber, pages: Math.ceil(count / perPage), noSearch: false});
+           		}
+			})
+        });
+		// sort({CreateDT : 1})
     } else {
         // Get all orders from DB
-        Order.find({}, function(err, allOrders){
-           if(err){
-               console.log(err);
-           } else {
-              res.render("orders/index",{orders: allOrders, noSearch: true});
-           }
-        });
-    } 
+        Order.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
+			Order.countDocuments().exec(function (err, count) {
+				if(err){
+            		console.log(err);
+           		} else {
+            		res.render("orders/index",{orders: allOrders, current: pageNumber, pages: Math.ceil(count / perPage), noSearch: true});
+           		} 
+			})
+		})
+    }
 	// needed to hold values of search
 	res.locals.query = req.query;
-
 });
 
 // SHOW route

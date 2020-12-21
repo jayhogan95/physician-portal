@@ -6,50 +6,7 @@ const decompress = require('decompress');
 const csvjson = require("csvtojson");
 const csv = require("fast-csv");
 const mongoose = require('mongoose');
-
-// module.exports = function(agenda) {
-//   agenda.define('importcsv', async job => {
-// 	  console.log("running importcsv");
-//     // SFTP connection
-// 	const root = "/file";
-// 	sftp.connect({
-// 		host: process.env.SFTPHOST,
-// 		port: process.env.SFTPPORT,
-// 		username: process.env.SFTPUSER,
-// 		password: process.env.SFTPPASS
-// 	}).then(() => {
-// 		console.log("connected to SFTP. Running fastGet");
-// 		return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-15-20.zip", "public/files/testconnection.zip")
-// 	}).then(async data => {
-// 		console.log("FastGet done running");
-// 		console.log(data);
-// 		try {
-// 			const files = await decompress("public/files/testconnection.zip", "public/files/unzippedfile");
-			
-// 			const csvFilePath = "public/files/unzippedfile/CustomSOUnconfirm.csv";
-
-// 			csvjson()
-// 				.fromFile(csvFilePath)
-// 				.then( async jsonObj => {
-// 					// need try/catch here?
-// 					let res = await Order.insertMany(jsonObj);
-// 					console.log("Number of documents inserted: " + res.insertedCount);
-// 			}).catch(err => {
-// 				console.log(err.message);
-// 				throw new Error(err);	
-// 			})
-// 		} catch (error) {
-// 			console.log(error)
-// 		}
-// 	}).then(() => {
-// 		sftp.end();
-// 	}).catch(err => {
-// 		console.error(err.message);
-// 	});
-
-//   });
-
-// };
+const cluster = require("cluster");
 
 function disconnectFromMongo() {
 	mongoose.disconnect();
