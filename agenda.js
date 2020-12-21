@@ -6,7 +6,8 @@ mongoose.Promise = global.Promise;
 
 // const connectionOpts = {db: {address: process.env.DATABASEURL, collection: 'agendaJobs'}};
 // let agenda;
-mongoose.connect(process.env.DATABASEURL, {
+// mongoose.connect(process.env.DATABASEURL
+mongoose.connect("mongodb+srv://jayhogan95:Tori1995!@orders.biwit.mongodb.net/orders?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
   	useUnifiedTopology: true,
 	useCreateIndex: true
@@ -21,7 +22,7 @@ mongoose.connect(process.env.DATABASEURL, {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
 		  // agenda.schedule("now", "importcsv");
-		  agenda.schedule("5 23 * * *", "importcsv");
+		  agenda.every("10 23 * * *", "importcsv");
 		  // agenda.every('30 minutes', 'importcsv').then(() => {
 		  // console.log('importcsv running every 30 minutes');
 		  // })
