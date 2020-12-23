@@ -4,6 +4,16 @@ const Agenda = require('agenda');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+function dropCollection() {
+	mongoose.connection.db.dropCollection("orders", (err) => {
+		if (err) {
+			console.log(err)
+		} else {
+			console.log("Dropped Collection");
+		}
+	});
+}
+
 // const connectionOpts = {db: {address: process.env.DATABASEURL, collection: 'agendaJobs'}};
 // let agenda;
 mongoose.connect(process.env.HEROKU_DBURL, {
@@ -20,11 +30,9 @@ mongoose.connect(process.env.HEROKU_DBURL, {
 	if (jobTypes.length) {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
-		  agenda.schedule("now", "importcsv");
-		  // agenda.every("13 23 * * *", "importcsv");
-		  // agenda.every('30 minutes', 'importcsv').then(() => {
-		  // console.log('importcsv running every 30 minutes');
-		  // })
+		  dropCollection();
+		  // agenda.schedule("now", "importcsv");
+		  agenda.every("35 4 * * *", "importcsv");
 	  })
 	}
 })

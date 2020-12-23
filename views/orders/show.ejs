@@ -13,7 +13,62 @@
 				<tbody>
 					<tr>
 						<th scope="row">Order Status</th>
-						<td><%= order["Work In Progress_WIP State"] %></td>
+						<% for (i = 0; i < qualPending.length; i++) { %>
+							<% if (order["Work In Progress_WIP State"] === apptBooked[i]) { %>
+								<td>Appointment Booked</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === awaitConfirmation[i]) { %>
+								<td>Awaiting Confirmation</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === billingReview[i]) { %>
+								<td>Billing Review</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === delivered[i]) { %>
+								<td>Delivered</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === idsOrdPending[i]) { %>
+								<td>IDS Order Pending</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === idsOrdStaged[i]) { %>
+								<td>IDS Order Staged for Shipment</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === inWarehouse[i]) { %>
+								<td>In Warehouse, Awaiting Shipping</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === misc[i]) { %>
+								<td>Misc - Contact Provider for Additional Information</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === notApplic[i]) { %>
+								<td>Not Applicable</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === withScheduling[i]) { %>
+								<td>Order With Scheduling</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === pendingPatientContact[i]) { %>
+								<td>Pending Patient Contact</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === priAuthPending[i]) { %>
+								<td>Prior Authorization Pending</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === ptReqDelay[i]) { %>
+								<td>PT Requested Delay</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === qualPending[i]) { %>
+								<td>Qualification Pending</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === remoteSetupPend[i]) { %>
+								<td>Remote Setup Pending</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === setupComplete[i]) { %>
+								<td>Setup Complete</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === stagedDelivery[i]) { %>
+								<td>Staged for Delivery</td>
+							<% } %>
+							<% if (order["Work In Progress_WIP State"] === stagedPickup[i]) { %>
+								<td>Staged for Pickup</td>
+							<% } %>
+						<% } %>
 					</tr>
 					<tr>
 						<th scope="row">Date Created</th>
@@ -22,7 +77,7 @@
 					<% if (!order["Date Qualified_15"]) { %>
 						<tr>
 							<th scope="row">Qualification Date</th>
-							<td>Pending Qualification</td>
+							<td>Qualification Pending</td>
 						</tr>
 					<% } else { %>
 						<tr>
@@ -41,10 +96,17 @@
 							<td><%= order.ActualDeliveryDt.slice(0, -12) %></td>
 						</tr>
 					<% } %>
-					<tr>
-						<th scope="row">Marketing Rep</th>
-						<td><%= order["Marketing Rep_Full Name"] %></td>
-					</tr>
+					<% if (!order["Marketing Rep_Full Name"]) { %>
+						<tr>
+							<th scope="row">Marketing Rep</th>
+							<td>No Rep Assigned</td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<th scope="row">Marketing Rep</th>
+							<td><%= order["Marketing Rep_Full Name"] %></td>
+						</tr>
+					<% } %>
 				</tbody>
 			</table>
 		</div>
@@ -101,32 +163,67 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if (order["Work In Progress_WIP State"] === "In Progress") { %>
-						<tr>
-							<th scope="row">In Progress</th>
-							<td>In the course of being done or carried out.</td>
-						</tr>
-					<% } else if (order["Work In Progress_WIP State"] === "Complete") { %>
-						<tr>
-							<th scope="row">Complete</th>
-							<td>Patient has received all products</td>
-						</tr>
-					<% } else if (order["Work In Progress_WIP State"] === "Out for Delivery") { %>
-						<tr>
-							<th scope="row">Out for Delivery</th>
-							<td>The order has been processed and will be delivered in the next 5 business days</td>
-						</tr>
-					<% } else if (order["Work In Progress_WIP State"] === "Not yet created") { %>
-						<tr>
-							<th scope="row">Not Yet Created</th>
-							<td>The order has not been created in our system</td>
-						</tr>
-					<% } else { %>
-						<tr>
-							<th scope="row">Need More Info</th>
-							<td>We have received the order but need more information to qualify the patient</td>
-						</tr>
-					<% } %>
+					<tr>
+						<% for (i = 0; i < qualPending.length; i++) { %>
+						<% if (order["Work In Progress_WIP State"] === apptBooked[i]) { %>
+							<th scope="row">Appointment Booked</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === awaitConfirmation[i]) { %>
+							<th scope="row">Awaiting Confirmation</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === billingReview[i]) { %>
+							<th scope="row">Billing Review</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === delivered[i]) { %>
+							<th scope="row">Delivered</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === idsOrdPending[i]) { %>
+							<th scope="row">IDS Order Pending</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === idsOrdStaged[i]) { %>
+							<th scope="row">IDS Order Staged for Shipment</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === inWarehouse[i]) { %>
+							<th scope="row">In Warehouse, Awaiting Shipping</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === misc[i]) { %>
+							<th scope="row">Misc - Contact Provider for Additional Information</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === notApplic[i]) { %>
+							<th scope="row">Not Applicable</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === withScheduling[i]) { %>
+							<th scope="row">Order With Scheduling</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === pendingPatientContact[i]) { %>
+							<th scope="row">Pending Patient Contact</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === priAuthPending[i]) { %>
+							<th scope="row">Prior Authorization Pending</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === ptReqDelay[i]) { %>
+							<th scope="row">PT Requested Delay</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === qualPending[i]) { %>
+							<th scope="row">Qualification Pending</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === remoteSetupPend[i]) { %>
+							<th scope="row">Remote Setup Pending</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === setupComplete[i]) { %>
+							<th scope="row">Setup Complete</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === stagedDelivery[i]) { %>
+							<th scope="row">Staged for Delivery</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else if (order["Work In Progress_WIP State"] === stagedPickup[i]) { %>
+							<th scope="row">Staged for Pickup</th>
+							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+						<% } else { %>
+							
+						<% } %>
+						<% } %>
+					</tr>
 				</tbody>
 			</table>
 		</div>

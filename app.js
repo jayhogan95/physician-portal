@@ -22,6 +22,8 @@ const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
 
+// const workerRoute = require("./worker");
+
 // Requiring routes
 const indexRoutes = require("./routes/index"),
 	  orderRoutes = require("./routes/orders"),
@@ -68,9 +70,6 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(orderRoutes);
 app.use(blogRoutes);
-
-
-
 
 // const date = new Date(moment());
 

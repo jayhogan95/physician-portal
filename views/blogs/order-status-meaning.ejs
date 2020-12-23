@@ -15,10 +15,12 @@
 					</tr>
 			</thead>
 			<tbody>
+				<% status.forEach(function(status){ %>
 					<tr>
 						<td scope="row"><%= status.orderStatusName %></td>
 						<td scope="row"><%= status.orderStatusMeaning %></td>
 					</tr>
+				<% }) %>
 			</tbody>
 		</table>
 	</div>

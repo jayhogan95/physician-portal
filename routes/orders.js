@@ -5,6 +5,7 @@ const Order = require("../models/order");
 const middleware = require("../middleware");
 const sgMail = require('@sendgrid/mail');
 const fs = require("fs");
+const wipState = require("../middleware/wip-states");
 
 router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 	let { lastName, dob, address } = req.query;
@@ -20,7 +21,7 @@ router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 				{LastName: lastName}, 
 				{DOB: dob},
 				{Street: address},
-			]}).sort({CreateDT : 1}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allOrders) {
+			]}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({SalesOrderId : -1}).exec(function(err, allOrders) {
 			Order.countDocuments().exec(function (err, count) {
 				if(err){
             		console.log(err);
@@ -56,7 +57,26 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 			req.flash("error", "That order does not exist");
 			res.redirect("/orders");
 		} else {
-			res.render("orders/show", {order: foundOrder});
+			res.render("orders/show", {order: foundOrder,  
+									   apptBooked: wipState.apptBooked, 
+									   awaitConfirmation: wipState.awaitConfirmation,
+									   billingReview: wipState.billingReview,
+									   delivered: wipState.delivered,
+									   idsOrdPending: wipState.idsOrdPending,
+									   idsOrdStaged: wipState.idsOrdStaged,
+									   inWarehouse: wipState.inWarehouse,
+									   misc: wipState.misc,
+									   notApplic: wipState.notApplic,
+									   withScheduling: wipState.withScheduling,
+									   pendingPatientContact: wipState.pendingPatientContact,
+									   priAuthPending: wipState.priAuthPending,
+									   ptReqDelay: wipState.ptReqDelay,
+									   qualPending: wipState.qualPending,
+									   remoteSetupPend: wipState.remoteSetupPend,
+									   setupComplete: wipState.setupComplete,
+									   stagedDelivery: wipState.stagedDelivery,
+									   stagedPickup: wipState.stagedPickup
+			});
 		}
 	});
 });
@@ -96,8 +116,10 @@ function addressRegex(text) {
 };
 
 function dobRegex(text) {
-	return text.replace(/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/);
-    // return text.replace(/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, "\\$&");
-}; 
+	// return text.replace(/^([1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)([0-9]{2})/);
+    // return text.replace(/^([1-9]|1[0-2])\/([1-9]|1\d|2\d|3[01])\/(19|20)([0-9]{2})/);
+	return text.replace(/.+?(?=abc)/);
+};
+
 
 module.exports = router;
