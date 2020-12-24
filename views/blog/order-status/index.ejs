@@ -1,0 +1,50 @@
+<%- include("../../partials/header") %>
+
+	<div class="container">
+		<h1 class="landing-header">
+			Order Status
+		</h1>
+		<!-- <h2>
+			Clarification on where your patient stands in the setup process
+		</h2> -->
+		<% if (currentUser.isAdmin) { %>
+			<a class="btn button-style btn-md green-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% } %>
+		<form action="/blog/order-status-meaning">
+			<a class="btn green-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
+		</form>
+		<form class="form-group admin-search float-right" id="phone-input" action="/blog/order-status-meaning" method="GET">
+			<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
+		</form>
+		<table class="table table-striped col-md-12">
+			<thead>
+					<tr>
+						<th class="status-name" scope="col">Order Status</th>
+						<th class="status-meaning" scope="col">Order Status Meaning</th>
+						<% if (currentUser.isAdmin) { %>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						<% } %>
+					</tr>
+			</thead>
+			<tbody>
+				<% status.forEach(function(status){ %>
+					<tr>
+						<td scope="row"><%= status.orderStatusName %></td>
+						<td scope="row"><%= status.orderStatusMeaning %></td>
+						<% if (currentUser.isAdmin) { %>
+							<td></td>
+							<td style="display:flex">
+								<a class="btn button-style btn-sm green-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
+								<form id="delete-form" action="order-status-meaning/<%= status._id %>?_method=DELETE" method="POST">
+									<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
+								</form>
+							</td>
+						<% } %>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+<%- include("../../partials/footer") %>

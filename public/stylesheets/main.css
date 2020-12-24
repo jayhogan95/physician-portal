@@ -18,6 +18,15 @@
 	margin-right: 10%;
 }
 
+.progress {
+	height: 30px;
+	font-size: 15px;
+}
+
+.progress-bar {
+	background: #006846;
+}
+
 /* Landing page */
 
 .thumbnail {
@@ -34,7 +43,7 @@
 .landing-header {
 	color: #006846;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .landing-grid {
@@ -302,7 +311,7 @@
 }
 
 .status-meaning {
-	width: 75%;
+	width: 750%;
 }
 
 /* Footer */

@@ -14,7 +14,6 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 });
 
 // AUTH routes
-// middleware.isLoggedIn, middleware.isAdmin,
 router.get("/register", middleware.isLoggedIn, middleware.isAdmin, (req, res) => {
 	res.render("register");
 });
@@ -74,9 +73,6 @@ router.get("/logout", (req, res) => {
 router.get('/forgot', (req, res) => {
   res.render('forgot');
 });
-
-// NEW forgot post
-// add next after res
 
 const generateResetToken = () => {
 	return new Promise((resolve, reject) => {
@@ -177,6 +173,23 @@ router.post('/reset/:token', async (req, res) => {
 	};
 });
 
+// Temp Password
+// router.get("/change-password", async (req, res) => {
+// 	try {
+// 		let reset_token = await generateResetToken();
+		
+// 		let user = await User.findOne({email: req.body.email});
+// 		if (!user) {
+// 			req.flash('error', 'No account with that email address exists.');
+// 			return res.redirect('/forgot');
+// 		}
+// 		user.resetPasswordToken = reset_token;
+// 		user.resetPasswordExpires = Date.now() + 3600000;
+// 		await user.save();
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// })
 
 // USER PROFILE route
 router.get("/users/:id", (req, res) => {

@@ -7,6 +7,7 @@ const csvjson = require("csvtojson");
 const csv = require("fast-csv");
 const mongoose = require('mongoose');
 const cluster = require("cluster");
+const moment = require("moment");
 
 function disconnectFromMongo() {
 	mongoose.disconnect();
@@ -76,6 +77,15 @@ const options = {
 	]
 }
 
+const date = new Date(moment());
+
+function getFormattedDate(date) {
+	const year = date.getFullYear().toString().substr(-2);
+	const month = (1 + date.getMonth()).toString();
+	const day = date.getDate().toString();
+	return month + "-" + day + "-" + year;
+}
+
 module.exports = function(agenda) {
   agenda.define('importcsv', async job => {
 	  console.log("running importcsv");
@@ -88,7 +98,7 @@ module.exports = function(agenda) {
 		password: process.env.SFTPPASS
 	}).then(() => {
 		console.log("connected to SFTP. Running fastGet");
-		return sftp.fastGet("/CAPEMEDICAL/CustomSOUnconfirm_12-15-20.zip", "public/files/testconnection.zip")
+		return sftp.fastGet("/CustomSOUnconfirm_" + getFormattedDate(date) + ".zip", "public/files/testconnection.zip")
 	}).then(async data => {
 		console.log("FastGet done running");
 		console.log(data);

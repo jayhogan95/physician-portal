@@ -12,6 +12,7 @@ const 	express = require("express"),
 		csv = require("fast-csv"),
 		cron = require("node-cron"),
 		fs = require("fs"),
+		_ = require("lodash"),
 		soap = require("soap"),
 		sgMail = require("@sendgrid/mail"),
 		User = require("./models/user"),
@@ -21,8 +22,6 @@ const 	express = require("express"),
 const port = process.env.PORT || 3000;
 // configure dotenv
 require('dotenv').config();
-
-// const workerRoute = require("./worker");
 
 // Requiring routes
 const indexRoutes = require("./routes/index"),
@@ -70,17 +69,6 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(orderRoutes);
 app.use(blogRoutes);
-
-// const date = new Date(moment());
-
-// function getFormattedDate(date) {
-// 	const year = date.getFullYear().toString().substr(-2);
-// 	const month = (1 + date.getMonth()).toString();
-// 	const day = date.getDate().toString();
-// 	return month + "-" + day + "-" + year;
-// }
-
-// console.log("/CAPEMEDICAL/CustomSOUnconfirm_" + getFormattedDate(date) + ".zip");
 
 app.listen(port, () => { 
   console.log("Physicians Portal Server has Started!"); 

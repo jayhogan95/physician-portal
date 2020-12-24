@@ -5,6 +5,7 @@ const Order = require("../models/order");
 const middleware = require("../middleware");
 const sgMail = require('@sendgrid/mail');
 const fs = require("fs");
+const _ = require("lodash");
 const wipState = require("../middleware/wip-states");
 
 router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {

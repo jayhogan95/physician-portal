@@ -14,6 +14,28 @@ function dropCollection() {
 	});
 }
 
+function removeDups() {
+	mongoose.connection.db.orders.aggregate([
+		{
+			"$group": {
+				_id: {SalesOrderId: "$SalesOrderId"},
+				dups: { $addToSet: "$_id"},
+				count: {$sum: 1}
+			}
+		},
+		{
+			"$match": {
+				count: {"$gt": 1}
+			}
+		}
+	]).forEach(function(doc) {
+		doc.dups.shift();
+		db.orders.remove({
+			_id: {$in: doc.dups}
+		});
+	})
+}
+
 // const connectionOpts = {db: {address: process.env.DATABASEURL, collection: 'agendaJobs'}};
 // let agenda;
 mongoose.connect(process.env.HEROKU_DBURL, {
@@ -30,9 +52,9 @@ mongoose.connect(process.env.HEROKU_DBURL, {
 	if (jobTypes.length) {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
-		  dropCollection();
-		  // agenda.schedule("now", "importcsv");
-		  agenda.every("35 4 * * *", "importcsv");
+		  // dropCollection();
+		  agenda.schedule("now", "importcsv");
+		  // agenda.every("30 11 * * *", "importcsv");
 	  })
 	}
 })

@@ -1,0 +1,28 @@
+<%- include("../../partials/header") %>
+
+<div class="container">
+	<form action="/blog/order-status-meaning/<%= status._id %>?_method=PUT" method="POST">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th scope="row">Order Status Name</th>
+							<td><input class="form-control" type="text" name="status[orderStatusName]" value="<%= status.orderStatusName %>"></td>
+						</tr>
+						<tr>
+							<th scope="row">Order Status Meaning</th>
+							<td><input class="form-control" type="text" name="status[orderStatusMeaning]" value="<%= status.orderStatusMeaning %>"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn-inline">
+					<button class="btn btn-md btn-default button-style green-btn">Save</button>
+					<a class="btn button-style btn-md green-btn ml-2" href="/blog/order-status-meaning" role="button">Cancel</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<%- include("../../partials/footer") %>
