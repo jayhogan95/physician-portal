@@ -8,17 +8,17 @@
 				<form class="form-group my-2 my-lg-0" action="/orders" method="GET">
 					<!-- <input class="form-control mr-sm-2" type="text" name="search" placeholder="Full Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full Name'"> -->
 					<fieldset>
-						<label class="text-left"><strong>Last Name *</strong></label>
+						<label class="text-left">Last Name *</label>
 						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="lastName" value="<%= query.lastName %>" required>
 					</fieldset>
 					<fieldset>
-						<label class="text-left mt-2"><strong>Date of Birth * (MM/DD/YYYY)</strong> <i class="fa fa-info-circle order-note" type="button" title="For DOB's that contain a single digit month or day (01/01/1900), remove the 0's in your search (1/1/1900)" aria-hidden="true"></i></label>
+						<label class="text-left mt-2">Date of Birth * (MM/DD/YYYY) <i class="fa fa-info-circle order-note" type="button" title="For DOB's that contain a single digit month or day (01/01/1900), remove the 0's in your search (1/1/1900)" aria-hidden="true"></i></label>
 						<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="dob" value="<%= query.dob %>" required>
 					</fieldset>
 					<div class="collapse" id="collapseComment">
 						<div class="well">
 							<fieldset>
-								<label class="text-left mt-2"><strong>Street Address</strong></label>
+								<label class="text-left mt-2">Street Address</label>
 								<input class="form-control mr-sm-2 col-lg-4 col-md-6 col-sm-12" type="text" name="address" value="<%= query.address %>">
 							</fieldset>
 						</div>
