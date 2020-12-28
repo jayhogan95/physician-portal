@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
 	email: {type: String, unique: true, required: true},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
-	isAdmin: {type: Boolean, default: true},
+	isAdmin: {type: Boolean, default: false},
 	role: {type: String, enum: ["Employee", "Physician"]},
 	branchAssoc: [String]
 });
