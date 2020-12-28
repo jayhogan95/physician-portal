@@ -87,12 +87,12 @@
 					<% } %>
 					<% if (!order.ActualDeliveryDt) { %>
 						<tr>
-							<th scope="row">Actual Date</th>
+							<th scope="row">Date of Shipment</th>
 							<td>Pending Delivery</td>
 						</tr>
 					<% } else { %>
 						<tr>
-							<th scope="row">Actual Date</th>
+							<th scope="row">Date of Shipment</th>
 							<td><%= order.ActualDeliveryDt.slice(0, -12) %></td>
 						</tr>
 					<% } %>
