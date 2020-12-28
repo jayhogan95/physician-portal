@@ -39,7 +39,11 @@
 		<% } else { %>
 			<div class="row">
 				<div class="col-md-12">
-					<h6 class="float-right"><%= orders.length %> Results</h6>
+					<% if (orders.length >= 1) { %>
+						<h6 class="float-right"><%= orders.length %> Result</h6>
+					<% } else { %>
+						<h6 class="float-right"><%= orders.length %> Results</h6>
+					<% } %>
 					<table class="table table-striped" id="order-table">
 						<thead>
 							<tr>

@@ -18,7 +18,6 @@ router.get("/register", middleware.isLoggedIn, middleware.isAdmin, (req, res) =>
 	res.render("register");
 });
 
-// middleware.isAdmin,
 router.post("/register", middleware.isAdmin, (req, res) => {
 	const newUser = new User({
 		username: req.body.username, 
