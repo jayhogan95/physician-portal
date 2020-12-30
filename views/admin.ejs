@@ -3,54 +3,107 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div>
-				<h1 class="landing-header">Users</h1>
-				<a class="btn button-style btn-md green-btn float-left" id="md-spacing" href="/register" role="button">Add New User</a>
-				<!-- Refactor - two links in this form -->
-				<form action="/admin">
-					<a class="btn green-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/admin">Clear Search</a>
-				</form>
-				<form class="form-group admin-search float-right" id="phone-input" action="/admin" method="GET">
-					<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
-				</form>
-			</div>
-			<table class="table table-striped col-md-12">
-				<thead>
-					<tr>
-						<th scope="col">Username</th>
-						<th scope="col" id="phone-hide">First Name</th>
-						<th scope="col">Last Name</th>
-						<th scope="col" id="phone-hide">Email</th>
-						<th scope="col" id="phone-hide">Role</th>
-						<th scope="col">Admin</th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% users.forEach(function(user) { %>
+			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+				<div>
+					<h1 class="landing-header-hcm">Users</h1>
+					<a class="btn button-style btn-md hcm-btn float-left" id="md-spacing" href="/register" role="button">Add New User</a>
+					<!-- Refactor - two links in this form -->
+					<form action="/admin">
+						<a class="btn hcm-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/admin">Clear Search</a>
+					</form>
+					<form class="form-group admin-search float-right" id="phone-input" action="/admin" method="GET">
+						<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
+					</form>
+				</div>
+				<table class="table table-striped col-md-12">
+					<thead>
 						<tr>
-							<td scope="row" ><a class="no-match" href="/users/<%= user._id %>"><%= user.username %></a></td>
-							<td id="phone-hide"><%= user.firstName %></td>
-							<td><%= user.lastName %></td>
-							<td id="phone-hide"><%= user.email %></td>
-							<td id="phone-hide"><%= user.role %></td>
-							<% if (user.isAdmin) { %>
-								<td><input type="checkbox" checked disabled></td>
-							<% } else { %>
-								<td><input type="checkbox" disabled></td>
-							<% } %>
-							<td></td>
-							<td>
-								<a class="btn button-style btn-sm green-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a>
-								<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
-									<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
-								</form>
-							</td>
+							<th scope="col">Username</th>
+							<th scope="col" id="phone-hide">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col" id="phone-hide">Email</th>
+							<th scope="col" id="phone-hide">Role</th>
+							<th scope="col">Admin</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
 						</tr>
-					<% }) %>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<% users.forEach(function(user) { %>
+							<tr>
+								<td scope="row" ><a class="hcm-no-match" href="/users/<%= user._id %>"><%= user.username %></a></td>
+								<td id="phone-hide"><%= user.firstName %></td>
+								<td><%= user.lastName %></td>
+								<td id="phone-hide"><%= user.email %></td>
+								<td id="phone-hide"><%= user.role %></td>
+								<% if (user.isAdmin) { %>
+									<td><input type="checkbox" checked disabled></td>
+								<% } else { %>
+									<td><input type="checkbox" disabled></td>
+								<% } %>
+								<td></td>
+								<td>
+									<a class="btn button-style btn-sm hcm-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a>
+									<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+										<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
+									</form>
+								</td>
+							</tr>
+						<% }) %>
+					</tbody>
+				</table>	
+			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+				<div>
+					<h1 class="landing-header-cape">Users</h1>
+					<a class="btn button-style btn-md cape-btn float-left" id="md-spacing" href="/register" role="button">Add New User</a>
+					<!-- Refactor - two links in this form -->
+					<form action="/admin">
+						<a class="btn cape-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/admin">Clear Search</a>
+					</form>
+					<form class="form-group admin-search float-right" id="phone-input" action="/admin" method="GET">
+						<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
+					</form>
+				</div>
+				<table class="table table-striped col-md-12">
+					<thead>
+						<tr>
+							<th scope="col">Username</th>
+							<th scope="col" id="phone-hide">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col" id="phone-hide">Email</th>
+							<th scope="col" id="phone-hide">Role</th>
+							<th scope="col">Admin</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% users.forEach(function(user) { %>
+							<tr>
+								<td scope="row" ><a class="cape-no-match" href="/users/<%= user._id %>"><%= user.username %></a></td>
+								<td id="phone-hide"><%= user.firstName %></td>
+								<td><%= user.lastName %></td>
+								<td id="phone-hide"><%= user.email %></td>
+								<td id="phone-hide"><%= user.role %></td>
+								<% if (user.isAdmin) { %>
+									<td><input type="checkbox" checked disabled></td>
+								<% } else { %>
+									<td><input type="checkbox" disabled></td>
+								<% } %>
+								<td></td>
+								<td>
+									<a class="btn button-style btn-sm cape-btn px-3" href="/users/<%= user._id %>/edit" role="button">Edit</a>
+									<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+										<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
+									</form>
+								</td>
+							</tr>
+						<% }) %>
+					</tbody>
+				</table>	
+			<% } else { %>
+				<!-- Add all other companies here -->
+			<% } %>
 		</div>
 	</div>
 </div>

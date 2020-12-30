@@ -11,25 +11,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     	<link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
-		<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
-			<link rel="icon" type="image/png" href="/images/hcm-favicon-32x32.png"/>
-		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
-			<link rel="icon" type="image/png" href="/images/cape-favicon-32x32.png"/>
-		<% } else { %>
-			<!-- Add all other companies here -->
-		<% } %>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-				<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
-					<a class="navbar-brand" href="/"><img class="logo" src="/images/hcm-white-green-back.png"></a>
-				<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
-					<a class="navbar-brand" href="/"><img class="logo" src="/images/cape-medical-logo.png"></a>
-				<% } else { %>
-					<!-- Add all other companies here -->
-				<% } %>
+				<h3 class="global-logo">Physician Portal</h3>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,5 +68,3 @@
 			<% } %>
 		</div>
 		<div class="page-spacing">
-			
-		

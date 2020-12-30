@@ -1,12 +1,13 @@
 <%- include("partials/header") %>
 
 	<div class="container">
-		<h1 class="landing-header">Welcome, <%= currentUser.firstName %>!</h1>
+		<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+		<h1 class="landing-header-hcm">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/orders">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							Search Orders
 						</h4>
 					</div>
@@ -14,8 +15,8 @@
 			</div>
 			<div class="col-md-4">
 				<a href="/orders">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							How to Contact Us
 						</h4>
 					</div>
@@ -23,8 +24,8 @@
 			</div>
 			<div class="col-md-4">
 				<a href="/users/<%= currentUser._id %>">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							Profile
 						</h4>
 					</div>
@@ -34,8 +35,8 @@
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/blog/order-status-meaning">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							Order Status Meaning
 						</h4>
 					</div>
@@ -43,8 +44,8 @@
 			</div>
 			<div class="col-md-4">
 				<a href="/orders">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							FAQ's
 						</h4>
 					</div>
@@ -52,14 +53,75 @@
 			</div>
 			<div class="col-md-4">
 				<a href="http://www.healthcomplexmedical.com">
-					<div class="landing-grid">
-						<h4 class="landing-cta">
+					<div class="landing-grid-hcm">
+						<h4 class="landing-cta-hcm">
 							Website
 						</h4>
 					</div>
 				</a>
 			</div>
 		</div>
+		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+		<h1 class="landing-header-cape">Welcome, <%= currentUser.firstName %>!</h1>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							Search Orders
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							How to Contact Us
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/users/<%= currentUser._id %>">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							Profile
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/blog/order-status-meaning">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							Order Status Meaning
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							FAQ's
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="http://www.capemedical.com">
+					<div class="landing-grid-cape">
+						<h4 class="landing-cta-cape">
+							Website
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+		<% } %>
 	</div>
 
 <%- include("partials/footer") %>

@@ -5,7 +5,7 @@ const url = "/images/health_complex_icon_small.jpg"
 const UserSchema = new mongoose.Schema({
 	username: {type: String, unique: true, required: true},
 	password: String,
-	avatar: {type: String, default: url},
+	avatar: {type: String},
 	firstName: {type: String, required: true},
 	lastName: String,
 	email: {type: String, unique: true, required: true},

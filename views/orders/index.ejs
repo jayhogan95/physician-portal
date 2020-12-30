@@ -3,7 +3,13 @@
 	<div class="container">
 		<header class=jumbotron>
 			<div class="container">
-				<h1 class="order-header">Search Orders</h1>
+				<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+					<h1 class="hcm-order-header">Search Orders</h1>
+				<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+					<h1 class="cape-order-header">Search Orders</h1>
+				<% } else { %>
+					<!-- Add all other companies here -->
+				<% } %>
 				<hr>
 				<form class="form-group my-2 my-lg-0" action="/orders" method="GET">
 					<!-- <input class="form-control mr-sm-2" type="text" name="search" placeholder="Full Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full Name'"> -->
@@ -24,13 +30,25 @@
 						</div>
 					</div>
 					<div class="mt-3">
-						<input class="btn green-btn my-sm-0" type="submit" value="Search">
-						<a class="btn green-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
-						<span aria-hidden="true"></span> Advanced Search</a>
-						<!-- Refactor - two links in form -->
-						<form action="/orders">
-							<a class="btn green-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
-						</form>
+						<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+							<input class="btn hcm-btn my-sm-0" type="submit" value="Search">
+							<a class="btn hcm-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+							<span aria-hidden="true"></span> Advanced Search</a>
+							<!-- Refactor - two links in form -->
+							<form action="/orders">
+								<a class="btn hcm-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
+							</form>
+						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+							<input class="btn cape-btn my-sm-0" type="submit" value="Search">
+							<a class="btn cape-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+							<span aria-hidden="true"></span> Advanced Search</a>
+							<!-- Refactor - two links in form -->
+							<form action="/orders">
+								<a class="btn cape-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
+							</form>
+						<% } else { %>
+							<!-- Add all other companies here -->
+						<% } %>
 					</div>
 				</form>
 			</div>
@@ -61,11 +79,23 @@
 								<tr>
 									<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
 									<td><%= order.CreateDT %></td>
-									<td><a class="no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+									<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+										<td><a class="hcm-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+									<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+										<td><a class="cape-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+									<% } else { %>
+										<!-- Add all other companies here -->
+									<% } %>
 									<td><%= order.DOB.slice(0, -12) %></td>
 									<td><%= order.PatientBranch %></td>
 									<td id="phone-hide"><%= order.st %></td>
-									<td id="phone-hide"><a class="btn button-style btn-md green-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+									<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+										<td id="phone-hide"><a class="btn button-style btn-md hcm-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+									<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+										<td id="phone-hide"><a class="btn button-style btn-md cape-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+									<% } else { %>
+										<!-- Add all other companies here -->
+									<% } %>
 								</tr>
 							<% }) %>
 						</tbody>

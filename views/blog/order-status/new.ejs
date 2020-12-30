@@ -1,7 +1,13 @@
 <%- include("../../partials/header") %>
 
 <div class="container">
-	<h1 class="landing-header">New Order Status</h1>
+	<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+		<h1 class="landing-header-hcm">New Order Status</h1>
+	<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+		<h1 class="landing-header-cape">New Order Status</h1>
+	<% } else { %>
+		<!-- Add all other companies here -->
+	<% } %>
 	<form action="/blog/order-status-meaning" method="POST">
 		<div class="form-group form-width">
 			<label class="reg-label">Order Status Name</label>
@@ -12,7 +18,13 @@
 			<textarea name="orderStatusMeaning" id="orderStatusMeaning" class="form-control form-align" rows="4" cols="100%" required></textarea>
 		</div>
 		<div class="form-group form-width">
-			<button class="btn btn-md btn-default button-style btn-block green-btn mt-4">Submit</button>
+			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+				<button class="btn btn-md btn-default button-style btn-block hcm-btn mt-4">Submit</button>
+			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Submit</button>
+			<% } else { %>
+				<!-- Add all other companies here -->
+			<% } %>
 		</div>
 	</form>
 </div>

@@ -1,17 +1,28 @@
 <%- include("../../partials/header") %>
 
 	<div class="container">
-		<h1 class="landing-header">
-			Order Status
-		</h1>
-		<!-- <h2>
-			Clarification on where your patient stands in the setup process
-		</h2> -->
-		<% if (currentUser.isAdmin) { %>
-			<a class="btn button-style btn-md green-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+			<h1 class="landing-header-hcm">Order Status</h1>
+		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+			<h1 class="landing-header-cape">Order Status</h1>
+		<% } else { %>
+			<!-- Add all other companies here -->
+		<% } %>
+		<% if (currentUser.isAdmin && currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+			<a class="btn button-style btn-md hcm-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% } else if (currentUser.isAdmin && currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+			<a class="btn button-style btn-md cape-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% } else { %>
+			<!-- Add all other companies here -->
 		<% } %>
 		<form action="/blog/order-status-meaning">
-			<a class="btn green-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
+			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+				<a class="btn hcm-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
+			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+				<a class="btn cape-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
+			<% } else { %>
+				<!-- Add all other companies here -->
+			<% } %>
 		</form>
 		<form class="form-group admin-search float-right" id="phone-input" action="/blog/order-status-meaning" method="GET">
 			<input class="form-control col-lg-12 col-md-12 col-sm-12" type="text" name="search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
@@ -35,7 +46,13 @@
 						<% if (currentUser.isAdmin) { %>
 							<td></td>
 							<td style="display:flex">
-								<a class="btn button-style btn-sm green-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
+								<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+									<a class="btn button-style btn-sm hcm-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
+								<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+									<a class="btn button-style btn-sm cape-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
+								<% } else { %>
+									<!-- Add all other companies here -->
+								<% } %>
 								<form id="delete-form" action="order-status-meaning/<%= status._id %>?_method=DELETE" method="POST">
 									<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>
 								</form>

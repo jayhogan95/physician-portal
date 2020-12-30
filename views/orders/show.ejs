@@ -1,13 +1,25 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-	<a class="btn button-style btn-md green-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
+	<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+		<a class="btn button-style btn-md hcm-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
+	<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+		<a class="btn button-style btn-md cape-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
+	<% } else { %>
+		<!-- Add all other companies here -->
+	<% } %>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
+						<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+							<th class="hcm-table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
+						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+							<th class="cape-table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
+						<% } else { %>
+							<!-- Add all other companies here -->
+						<% } %>
 					</tr>
 				</thead>
 				<tbody>
@@ -115,7 +127,13 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="table-title" scope="col">Patient Information: <%= order.Patientid %></th>
+						<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+							<th class="hcm-table-title" scope="col">Patient Information: <%= order.Patientid %></th>
+						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+							<th class="cape-table-title" scope="col">Patient Information: <%= order.Patientid %></th>
+						<% } else { %>
+							<!-- Add all other companies here -->
+						<% } %>
 					</tr>
 				</thead>
 				<tbody>
@@ -167,58 +185,58 @@
 						<% for (i = 0; i < qualPending.length; i++) { %>
 						<% if (order["Work In Progress_WIP State"] === apptBooked[i]) { %>
 							<th scope="row">Appointment Booked</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The patient has scheduled their appointment</td>
 						<% } else if (order["Work In Progress_WIP State"] === awaitConfirmation[i]) { %>
 							<th scope="row">Awaiting Confirmation</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The setup is complete and/or the order has been delivered</td>
 						<% } else if (order["Work In Progress_WIP State"] === billingReview[i]) { %>
 							<th scope="row">Billing Review</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The order is being reviewed by our billing team</td>
 						<% } else if (order["Work In Progress_WIP State"] === delivered[i]) { %>
 							<th scope="row">Delivered</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The setup is complete and/or the order has been delivered</td>
 						<% } else if (order["Work In Progress_WIP State"] === idsOrdPending[i]) { %>
 							<th scope="row">IDS Order Pending</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We have received an IDS-Oximetry order and it is being processed</td>
 						<% } else if (order["Work In Progress_WIP State"] === idsOrdStaged[i]) { %>
 							<th scope="row">IDS Order Staged for Shipment</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We have coordinate a delivery date/time with the patient</td>
 						<% } else if (order["Work In Progress_WIP State"] === inWarehouse[i]) { %>
 							<th scope="row">In Warehouse, Awaiting Shipping</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We have coordinated a delivery date/time with the patient</td>
 						<% } else if (order["Work In Progress_WIP State"] === misc[i]) { %>
 							<th scope="row">Misc - Contact Provider for Additional Information</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>Please contact our team</td>
 						<% } else if (order["Work In Progress_WIP State"] === notApplic[i]) { %>
 							<th scope="row">Not Applicable</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>Not Applicable</td>
 						<% } else if (order["Work In Progress_WIP State"] === withScheduling[i]) { %>
 							<th scope="row">Order With Scheduling</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The Scheduling Team is trying to contact the patient to book an appointment</td>
 						<% } else if (order["Work In Progress_WIP State"] === pendingPatientContact[i]) { %>
 							<th scope="row">Pending Patient Contact</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We need information from the patient - we are awaiting a call back</td>
 						<% } else if (order["Work In Progress_WIP State"] === priAuthPending[i]) { %>
 							<th scope="row">Prior Authorization Pending</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We have submitted a prior authorization and are awaiting feedback from the insurance company</td>
 						<% } else if (order["Work In Progress_WIP State"] === ptReqDelay[i]) { %>
 							<th scope="row">PT Requested Delay</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The patient has requested we call back at a later date</td>
 						<% } else if (order["Work In Progress_WIP State"] === qualPending[i]) { %>
 							<th scope="row">Qualification Pending</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>We have received a new referral and are working on qualifying it with the patient's insurance company</td>
 						<% } else if (order["Work In Progress_WIP State"] === remoteSetupPend[i]) { %>
 							<th scope="row">Remote Setup Pending</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The patient has requested a remote setup, we are awaiting signed documents prior to shipping</td>
 						<% } else if (order["Work In Progress_WIP State"] === setupComplete[i]) { %>
 							<th scope="row">Setup Complete</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The setup is complete and/or the order has been delivered</td>
 						<% } else if (order["Work In Progress_WIP State"] === stagedDelivery[i]) { %>
 							<th scope="row">Staged for Delivery</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The order is approved and awaiting shipment in our warehouse</td>
 						<% } else if (order["Work In Progress_WIP State"] === stagedPickup[i]) { %>
 							<th scope="row">Staged for Pickup</th>
-							<td>A sentence clarifying further or what's the next status that the doctor would see, etc.</td>
+							<td>The order is approved and is staged for pickup at one of our locations</td>
 						<% } else { %>
 							
 						<% } %>
@@ -232,21 +250,28 @@
 			<h4 class="mt-5 mb-3">Progress</h4>
 			<div class="progress">
 				<% for (i = 0; i < qualPending.length; i++) { %>
-				<% if (order["Work In Progress_WIP State"] === apptBooked[i]) { %>
-					<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">10%</div>
-				<% } else if (order["Work In Progress_WIP State"] === awaitConfirmation[i]) { %>
-					<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"><strong>80%</strong></div>
-				<% } else { %>
-					<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">0%</div>
-				<% } %>
+					<% if (order["Work In Progress_WIP State"] === apptBooked[i]) { %>
+						<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">10%</div>
+					<% } else if (order["Work In Progress_WIP State"] === awaitConfirmation[i]) { %>
+						<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"><strong>80%</strong></div>
+					<% } else { %>
+						<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">0%</div>
+					<% } %>
 				<% } %>
 			</div>
 		</div>
 		
 		<div class="col-md-12">
 			<h4 class="mt-5 mb-3">Still Have Questions?</h4>
-			<a class="btn green-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
-			<span aria-hidden="true"></span>Send Email</a>
+			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+				<a class="btn hcm-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
+				<span aria-hidden="true"></span>Send Email</a>
+			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+				<a class="btn cape-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
+				<span aria-hidden="true"></span>Send Email</a>
+			<% } else { %>
+				<!-- Add all other companies here -->
+			<% } %>
 			<div class="collapse" id="collapseEmail">
 				<form action="/orders/<%= order._id %>" method="POST">
 					<div class="form-group mt-3">
@@ -266,7 +291,13 @@
 						<textarea name="message" autofocus class="form-control" rows="4" cols="100%" required></textarea>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn button-style btn-md green-btn" value="Send">
+						<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+							<input type="submit" class="btn button-style btn-md hcm-btn" value="Send">
+						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+							<input type="submit" class="btn button-style btn-md cape-btn" value="Send">
+						<% } else { %>
+							<!-- Add all other companies here -->
+						<% } %>
 					</div>
 				</form>
 			</div>
