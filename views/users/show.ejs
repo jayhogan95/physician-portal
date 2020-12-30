@@ -44,9 +44,9 @@
 					<% if (user.isAdmin) { %>
 						<tr>
 						<th scope="row">Admin</th>
-							<% if (!user.avatar && currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+							<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 								<td><a class="btn button-style btn-sm hcm-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
-							<% } else if (!user.avatar && currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+							<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 								<td><a class="btn button-style btn-sm cape-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
 							<% } else { %>
 							<!-- Add all other companies here -->

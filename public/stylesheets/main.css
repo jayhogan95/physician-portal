@@ -9,6 +9,10 @@
 .global-logo {
 	margin: 1.5%;
 	font-family: "Quicksand", sans-serif;
+}
+
+.global-logo a {
+	text-decoration: none;
 	color: #152E46;
 }
 

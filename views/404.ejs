@@ -6,7 +6,13 @@
 			<h1 class="display-4">404</h1>
 			<hr class="my-4">
 			<p class="lead">Page not found</p>
-        	<a class="btn button-style btn-md green-btn" href="/" role="button">Go to Home Page</a>
+			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+				<a class="btn button-style btn-md hcm-btn" href="/" role="button">Go to Home Page</a>
+			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+				<a class="btn button-style btn-md cape-btn" href="/" role="button">Go to Home Page</a>
+			<% } else { %>
+			<!-- Add all other companies here -->
+			<% } %>
 		</div>
 	</div>
 
