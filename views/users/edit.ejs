@@ -73,8 +73,15 @@
 					</tbody>
 				</table>
 				<div class="btn-inline">
-					<button class="btn btn-md btn-default button-style green-btn">Save</button>
-					<a class="btn button-style btn-md green-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
+					<% if (!user.avatar && user.branchAssoc == "Health Complex-Waterbury") { %>
+						<button class="btn btn-md btn-default button-style hcm-btn">Save</button>
+						<a class="btn button-style btn-md hcm-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
+					<% } else if (!user.avatar && user.branchAssoc == "Cape Medical Supply Sandwich") { %>
+						<button class="btn btn-md btn-default button-style cape-btn">Save</button>
+						<a class="btn button-style btn-md cape-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
+					<% } else { %>
+					<!-- Add all other companies here -->
+					<% } %>
 				</div>
 			</div>
 		</div>
