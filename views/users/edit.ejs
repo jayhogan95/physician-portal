@@ -67,16 +67,16 @@
 							</tr>
 							<tr>
 								<th scope="row">Associated Branch</th>
-								<td><input class="form-control" type="text" name="user[assocBranch]" value="<%= user.assocBranch %>" disabled></td>
+								<td><input class="form-control" type="text" name="user[assocBranch]" value="<%= user.branchAssoc %>" disabled></td>
 							</tr>
 						<% } %>
 					</tbody>
 				</table>
 				<div class="btn-inline">
-					<% if (user.branchAssoc == "Health Complex-Waterbury") { %>
+					<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 						<button class="btn btn-md btn-default button-style hcm-btn">Save</button>
 						<a class="btn button-style btn-md hcm-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
-					<% } else if (user.branchAssoc == "Cape Medical Supply Sandwich") { %>
+					<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 						<button class="btn btn-md btn-default button-style cape-btn">Save</button>
 						<a class="btn button-style btn-md cape-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
 					<% } else { %>
