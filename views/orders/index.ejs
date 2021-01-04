@@ -7,6 +7,8 @@
 					<h1 class="hcm-order-header">Search Orders</h1>
 				<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 					<h1 class="cape-order-header">Search Orders</h1>
+				<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+					<h1 class="cape-order-ahcah">Search Orders</h1>
 				<% } else { %>
 					<!-- Add all other companies here -->
 				<% } %>
@@ -46,6 +48,14 @@
 							<form action="/orders">
 								<a class="btn cape-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
 							</form>
+						<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+							<input class="btn ahcah-btn my-sm-0" type="submit" value="Search">
+							<a class="btn ahcah-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+							<span aria-hidden="true"></span> Advanced Search</a>
+							<!-- Refactor - two links in form -->
+							<form action="/orders">
+								<a class="btn ahcah-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
+							</form>
 						<% } else { %>
 							<!-- Add all other companies here -->
 						<% } %>
@@ -57,49 +67,57 @@
 		<% } else { %>
 			<div class="row">
 				<div class="col-md-12">
-					<% if (orders.length >= 1) { %>
-						<h6 class="float-right"><%= orders.length %> Result</h6>
-					<% } else { %>
-						<h6 class="float-right"><%= orders.length %> Results</h6>
-					<% } %>
-					<table class="table table-striped" id="order-table">
-						<thead>
-							<tr>
-								<th scope="col" id="phone-hide">Order ID</th>
-								<th scope="col">Date Created</th>
-								<th scope="col">Full Name</th>
-								<th scope="col">Date Of Birth</th>
-								<th scope="col">Branch</th>
-								<th scope="col" id="phone-hide">State</th>
-								<th scope="col" id="phone-hide"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<% orders.forEach(function(order){ %>
-								<tr>
-									<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
-									<td><%= order.CreateDT %></td>
-									<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
-										<td><a class="hcm-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
-									<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
-										<td><a class="cape-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
-									<% } else { %>
-										<!-- Add all other companies here -->
-									<% } %>
-									<td><%= order.DOB.slice(0, -12) %></td>
-									<td><%= order.PatientBranch %></td>
-									<td id="phone-hide"><%= order.st %></td>
-									<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
-										<td id="phone-hide"><a class="btn button-style btn-md hcm-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
-									<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
-										<td id="phone-hide"><a class="btn button-style btn-md cape-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
-									<% } else { %>
-										<!-- Add all other companies here -->
-									<% } %>
-								</tr>
-							<% }) %>
-						</tbody>
-					</table>
+					<% orders.forEach(function(order) { %>
+						<% if (currentUser.branchAssoc == order.PatientBranch) { %>
+							<% if (orders.length >= 1) { %>
+								<h6 class="float-right"><%= orders.length %> Result</h6>
+							<% } else { %>
+								<h6 class="float-right"><%= orders.length %> Results</h6>
+							<% } %>
+							<table class="table table-striped" id="order-table">
+								<thead>
+									<tr>
+										<th scope="col" id="phone-hide">Order ID</th>
+										<th scope="col">Date Created</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Date Of Birth</th>
+										<th scope="col">Branch</th>
+										<th scope="col" id="phone-hide">State</th>
+										<th scope="col" id="phone-hide"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<% orders.forEach(function(order){ %>
+										<tr>
+											<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
+											<td><%= order.CreateDT %></td>
+											<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+												<td><a class="hcm-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+											<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+												<td><a class="cape-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+											<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+												<td><a class="ahcah-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+											<% } else { %>
+												<!-- Add all other companies here -->
+											<% } %>
+											<td><%= order.DOB.slice(0, -12) %></td>
+											<td><%= order.PatientBranch %></td>
+											<td id="phone-hide"><%= order.st %></td>
+											<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
+												<td id="phone-hide"><a class="btn button-style btn-md hcm-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+											<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
+												<td id="phone-hide"><a class="btn button-style btn-md cape-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+											<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+												<td id="phone-hide"><a class="btn button-style btn-md ahcah-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+											<% } else { %>
+												<!-- Add all other companies here -->
+											<% } %>
+										</tr>
+									<% }) %>
+								</tbody>
+							</table>
+							<% } %>
+					<% }) %>
 				</div>
 			</div>
 		<% }%>

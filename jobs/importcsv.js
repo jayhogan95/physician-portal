@@ -116,7 +116,7 @@ module.exports = function(agenda) {
 					console.time("Time to import parsed objects to db");
 					return bulkImportToMongo(records);
 				})
-				.then(result => console.log("total batches instered: ", result, result.length))
+				.then(result => console.log("total batches inserted: ", result, result.length))
 				.then(() => {
 					disconnectFromMongo();
 					console.timeEnd("Time to import parsed objects to db");

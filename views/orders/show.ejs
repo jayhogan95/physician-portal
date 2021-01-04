@@ -5,6 +5,8 @@
 		<a class="btn button-style btn-md hcm-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
 	<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 		<a class="btn button-style btn-md cape-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
+	<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+		<a class="btn button-style btn-md ahcah-btn mb-5" href="/orders?lastName=<%= order.LastName %>&dob=<%= order.DOB.slice(0, -12) %>&address=<%= order.Street %>" role="button">Back To Order Search</a>
 	<% } else { %>
 		<!-- Add all other companies here -->
 	<% } %>
@@ -17,6 +19,8 @@
 							<th class="hcm-table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
 						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 							<th class="cape-table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
+						<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+							<th class="ahcah-table-title" scope="col">Sales Order: <%= order.SalesOrderId %></th>
 						<% } else { %>
 							<!-- Add all other companies here -->
 						<% } %>
@@ -131,6 +135,8 @@
 							<th class="hcm-table-title" scope="col">Patient Information: <%= order.Patientid %></th>
 						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 							<th class="cape-table-title" scope="col">Patient Information: <%= order.Patientid %></th>
+						<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+							<th class="ahcah-table-title" scope="col">Patient Information: <%= order.Patientid %></th>
 						<% } else { %>
 							<!-- Add all other companies here -->
 						<% } %>
@@ -269,6 +275,9 @@
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<a class="btn cape-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
 				<span aria-hidden="true"></span>Send Email</a>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<a class="btn ahcah-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
+				<span aria-hidden="true"></span>Send Email</a>
 			<% } else { %>
 				<!-- Add all other companies here -->
 			<% } %>
@@ -295,6 +304,8 @@
 							<input type="submit" class="btn button-style btn-md hcm-btn" value="Send">
 						<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 							<input type="submit" class="btn button-style btn-md cape-btn" value="Send">
+						<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+							<input type="submit" class="btn button-style btn-md ahcah-btn" value="Send">
 						<% } else { %>
 							<!-- Add all other companies here -->
 						<% } %>

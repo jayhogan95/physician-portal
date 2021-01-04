@@ -121,6 +121,66 @@
 				</a>
 			</div>
 		</div>
+		<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+		<h1 class="landing-header-ahcah">Welcome, <%= currentUser.firstName %>!</h1>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							Search Orders
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							How to Contact Us
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/users/<%= currentUser._id %>">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							Profile
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/blog/order-status-meaning">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							Order Status Meaning
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/orders">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							FAQ's
+						</h4>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="http://www.ahcah.com">
+					<div class="landing-grid-ahcah">
+						<h4 class="landing-cta-ahcah">
+							Website
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
 		<% } %>
 	</div>
 

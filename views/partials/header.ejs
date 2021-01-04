@@ -15,6 +15,8 @@
 			<link rel="icon" type="image/png" href="/images/hcm-favicon-32x32.png"/>
 		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 			<link rel="icon" type="image/png" href="/images/cape-favicon-32x32.png"/>
+		<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+			<link rel="icon" type="image/png" href="/images/ahcah-favicon-32x32.png"/>
 		<% } else { %>
 			<!-- Add all other companies here -->
 		<% } %>
@@ -27,6 +29,8 @@
 					<a class="navbar-brand" href="/"><img class="logo" src="/images/hcm-white-green-back.png"></a>
 				<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 					<a class="navbar-brand" href="/"><img class="logo" src="/images/cape-medical-logo.png"></a>
+				<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+					<a class="navbar-brand" href="/"><img class="large-logo" src="/images/ahcah-no-back.png"></a>
 				<% } else { %>
 					<!-- Add all other companies here -->
 				<% } %>

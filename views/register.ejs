@@ -5,8 +5,10 @@
 		<h1 class="landing-header-hcm">Register</h1>
 	<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 		<h1 class="landing-header-cape">Register</h1>
+	<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+		<h1 class="landing-header-ahcah">Register</h1>
 	<% } else { %>
-	<!-- Add all other companies here -->
+		<!-- Add all other companies here -->
 	<% } %>
 	<form action="/register" method="POST">
 		<div class="form-group form-width">
@@ -43,14 +45,18 @@
 			<label for="Health Complex-Waterbury"> Health Complex-Waterbury</label><br>
 			<input type="checkbox" id="branchAssoc" name="branchAssoc" value="Cape Medical Supply Sandwich">
 			<label for="Cape Medical Supply Sandwich"> Cape Medical Supply Sandwich</label><br>
+			<input type="checkbox" id="branchAssoc" name="branchAssoc" value="America's HealthCare at Home, Inc">
+			<label for="America's HealthCare at Home, Inc"> America's HealthCare at Home, Inc</label><br>
 		</div>
 		<div class="form-group form-width">
 			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 				<button class="btn btn-md btn-default button-style btn-block hcm-btn mt-4">Register</button>
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Register</button>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Register</button>
 			<% } else { %>
-			<!-- Add all other companies here -->
+				<!-- Add all other companies here -->
 			<% } %>
 		</div>
 	</form>
