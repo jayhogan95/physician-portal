@@ -79,8 +79,13 @@
 					<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 						<button class="btn btn-md btn-default button-style cape-btn">Save</button>
 						<a class="btn button-style btn-md cape-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
+					<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+						<button class="btn btn-md btn-default button-style ahcah-btn">Save</button>
+						<a class="btn button-style btn-md ahcah-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
 					<% } else { %>
 					<!-- Add all other companies here -->
+						<button class="btn btn-md btn-default button-style global-btn">Save</button>
+						<a class="btn button-style btn-md global-btn ml-2" href="/users/<%= user._id %>" role="button">Cancel</a>
 					<% } %>
 				</div>
 			</div>

@@ -10,8 +10,11 @@
 				<a class="btn button-style btn-md hcm-btn" href="/" role="button">Go to Home Page</a>
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<a class="btn button-style btn-md cape-btn" href="/" role="button">Go to Home Page</a>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<a class="btn button-style btn-md ahcah-btn" href="/" role="button">Go to Home Page</a>
 			<% } else { %>
-			<!-- Add all other companies here -->
+				<!-- Add all other companies here -->
+				<a class="btn button-style btn-md global-btn" href="/" role="button">Go to Home Page</a>
 			<% } %>
 		</div>
 	</div>

@@ -7,9 +7,9 @@
 }
 
 .large-logo {
-	height: 60px;
+	height: 40px;
 	width: auto;
-	margin-left: 20%;
+	margin: 5% 0 5% 20%;
 }
 
 .global-logo {
@@ -74,6 +74,12 @@
 	margin-bottom: 30px;
 }
 
+.landing-header-global {
+	color: #152E46;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
 .landing-grid-hcm {
 	display: flex;
 	text-align: center;
@@ -100,6 +106,16 @@
 	margin: 10px auto;
 	position: relative;
 	border: 2px solid #990000;
+	border-radius: 5%;
+	height: 200px;
+}
+
+.landing-grid-global {
+	display: flex;
+	text-align: center;
+	margin: 10px auto;
+	position: relative;
+	border: 2px solid #152E46;
 	border-radius: 5%;
 	height: 200px;
 }
@@ -140,7 +156,19 @@
 	position: absolute;
 }
 
-.landing-grid-hcm:hover, .landing-grid-cape:hover, .landing-grid-ahcah:hover {
+.landing-cta-global {
+	font-size: 26px;
+	color: #152E46;
+	text-align: center;
+	text-decoration: none;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+.landing-grid-hcm:hover, .landing-grid-cape:hover, .landing-grid-ahcah:hover, .landing-grid-global:hover {
 	background: #E9ECEF;
 }
 
@@ -193,6 +221,10 @@
 	color: #000090;
 }
 
+.global-no-match {
+	color: #152E46;
+}
+
 .hcm-no-match:hover {
 	color: #0E9D54;
 }
@@ -215,6 +247,10 @@
 
 .ahcah-table-title {
 	color: #000090;
+}
+
+.global-table-title {
+	color: #152E46;
 }
 
 .pagination-nav {
@@ -304,6 +340,11 @@
 .order-note {
 	position: relative;
   	display: inline-block;
+}
+
+.pap-neutral {
+	background-color: #E9ECEF;
+	color: #000000;
 }
 	
 #delete-form {

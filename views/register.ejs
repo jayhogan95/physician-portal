@@ -9,6 +9,7 @@
 		<h1 class="landing-header-ahcah">Register</h1>
 	<% } else { %>
 		<!-- Add all other companies here -->
+		<h1 class="landing-header-global">Register</h1>
 	<% } %>
 	<form action="/register" method="POST">
 		<div class="form-group form-width">
@@ -54,9 +55,10 @@
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Register</button>
 			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
-				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Register</button>
+				<button class="btn btn-md btn-default button-style btn-block ahcah-btn mt-4">Register</button>
 			<% } else { %>
 				<!-- Add all other companies here -->
+				<button class="btn btn-md btn-default button-style btn-block global-btn mt-4">Register</button>
 			<% } %>
 		</div>
 	</form>

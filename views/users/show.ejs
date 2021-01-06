@@ -9,6 +9,10 @@
 					<img class="avatar" src="/images/health_complex_icon_rgb.png" alt="Health Complex Logo">
 				<% } else if (!user.avatar && user.branchAssoc == "Cape Medical Supply Sandwich") { %>
 					<img class="avatar" src="/images/cape-orb-white-back.png" alt="Cape Medical Logo">
+				<% } else if (!user.avatar && user.branchAssoc == "America's HealthCare at Home, Inc") { %>
+					<img class="avatar" src="/images/ahcah-icon.png" alt="America's HC Logo">
+				<% } else if (!user.avatar && user.branchAssoc.length > 1) { %>
+					<i class="fa fa-picture-o fa-4x avatar" aria-hidden="true"></i>
 				<% } else { %>
 					<img class="avatar" src="<%= user.avatar %>" alt="Avatar">
 				<!-- Add all other companies here -->
@@ -18,8 +22,11 @@
 				<a class="btn button-style btn-md hcm-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<a class="btn button-style btn-md cape-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<a class="btn button-style btn-md ahcah-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
 			<% } else { %>
 				<!-- Add all other companies here -->
+				<a class="btn button-style btn-md global-btn float-right" id="md-spacing" href="/users/<%= user._id %>/edit" role="button">Edit Information</a>
 			<% } %>
 			<table class="table table-striped">
 				<tbody>
@@ -48,8 +55,11 @@
 								<td><a class="btn button-style btn-sm hcm-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
 							<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 								<td><a class="btn button-style btn-sm cape-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
+							<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+								<td><a class="btn button-style btn-sm ahcah-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
 							<% } else { %>
 							<!-- Add all other companies here -->
+								<td><a class="btn button-style btn-sm global-btn" id="md-spacing" href="/admin" role="button">Admin Page</a></td>
 							<% } %>
 						</tr>
 					<% } %>

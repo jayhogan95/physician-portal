@@ -5,13 +5,20 @@
 			<h1 class="landing-header-hcm">Order Status</h1>
 		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 			<h1 class="landing-header-cape">Order Status</h1>
+		<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+			<h1 class="landing-header-ahcah">Order Status</h1>
 		<% } else { %>
 			<!-- Add all other companies here -->
+			<h1 class="landing-header-global">Order Status</h1>
 		<% } %>
 		<% if (currentUser.isAdmin && currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 			<a class="btn button-style btn-md hcm-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
 		<% } else if (currentUser.isAdmin && currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 			<a class="btn button-style btn-md cape-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% } else if (currentUser.isAdmin && currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+			<a class="btn button-style btn-md ahcah-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
+		<% } else if (currentUser.isAdmin && currentUser.branchAssoc.length > 1) { %>
+			<a class="btn button-style btn-md global-btn float-left" href="order-status-meaning/new" role="button">New Order Status</a>
 		<% } else { %>
 			<!-- Add all other companies here -->
 		<% } %>
@@ -20,8 +27,11 @@
 				<a class="btn hcm-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<a class="btn cape-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<a class="btn ahcah-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
 			<% } else { %>
 				<!-- Add all other companies here -->
+				<a class="btn global-btn btn-md float-right ml-2 text-decoration-none" id="phone-hide" href="/blog/order-status-meaning">Reset Search</a>
 			<% } %>
 		</form>
 		<form class="form-group admin-search float-right" id="phone-input" action="/blog/order-status-meaning" method="GET">
@@ -50,8 +60,11 @@
 									<a class="btn button-style btn-sm hcm-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
 								<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 									<a class="btn button-style btn-sm cape-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
+								<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+									<a class="btn button-style btn-sm ahcah-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
 								<% } else { %>
 									<!-- Add all other companies here -->
+									<a class="btn button-style btn-sm global-btn px-3 mr-2" href="order-status-meaning/<%= status._id %>/edit" role="button">Edit</a>
 								<% } %>
 								<form id="delete-form" action="order-status-meaning/<%= status._id %>?_method=DELETE" method="POST">
 									<button class="btn button-style btn-sm delete-btn" id="delete-form">Delete</button>

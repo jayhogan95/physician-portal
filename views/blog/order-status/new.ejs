@@ -5,8 +5,11 @@
 		<h1 class="landing-header-hcm">New Order Status</h1>
 	<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 		<h1 class="landing-header-cape">New Order Status</h1>
+	<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+		<h1 class="landing-header-ahcah">New Order Status</h1>
 	<% } else { %>
 		<!-- Add all other companies here -->
+		<h1 class="landing-header-global">New Order Status</h1>
 	<% } %>
 	<form action="/blog/order-status-meaning" method="POST">
 		<div class="form-group form-width">
@@ -22,8 +25,11 @@
 				<button class="btn btn-md btn-default button-style btn-block hcm-btn mt-4">Submit</button>
 			<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 				<button class="btn btn-md btn-default button-style btn-block cape-btn mt-4">Submit</button>
+			<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
+				<button class="btn btn-md btn-default button-style btn-block ahcah-btn mt-4">Submit</button>
 			<% } else { %>
 				<!-- Add all other companies here -->
+				<button class="btn btn-md btn-default button-style btn-block global-btn mt-4">Submit</button>
 			<% } %>
 		</div>
 	</form>

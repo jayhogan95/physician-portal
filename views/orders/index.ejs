@@ -11,6 +11,7 @@
 					<h1 class="cape-order-ahcah">Search Orders</h1>
 				<% } else { %>
 					<!-- Add all other companies here -->
+					<h1 class="cape-order-global">Search Orders</h1>
 				<% } %>
 				<hr>
 				<form class="form-group my-2 my-lg-0" action="/orders" method="GET">
@@ -58,6 +59,13 @@
 							</form>
 						<% } else { %>
 							<!-- Add all other companies here -->
+							<input class="btn global-btn my-sm-0" type="submit" value="Search">
+							<a class="btn global-btn my-sm-0 mx-sm-1" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+							<span aria-hidden="true"></span> Advanced Search</a>
+							<!-- Refactor - two links in form -->
+							<form action="/orders">
+								<a class="btn global-btn my-2 my-sm-0 text-decoration-none" id="phone-hide" href="/orders">Reset Search</a>
+							</form>
 						<% } %>
 					</div>
 				</form>
@@ -69,11 +77,6 @@
 				<div class="col-md-12">
 					<% orders.forEach(function(order) { %>
 						<% if (currentUser.branchAssoc == order.PatientBranch) { %>
-							<% if (orders.length >= 1) { %>
-								<h6 class="float-right"><%= orders.length %> Result</h6>
-							<% } else { %>
-								<h6 class="float-right"><%= orders.length %> Results</h6>
-							<% } %>
 							<table class="table table-striped" id="order-table">
 								<thead>
 									<tr>
@@ -87,7 +90,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<% orders.forEach(function(order){ %>
 										<tr>
 											<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
 											<td><%= order.CreateDT %></td>
@@ -99,6 +101,7 @@
 												<td><a class="ahcah-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
 											<% } else { %>
 												<!-- Add all other companies here -->
+												<td><a class="global-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
 											<% } %>
 											<td><%= order.DOB.slice(0, -12) %></td>
 											<td><%= order.PatientBranch %></td>
@@ -111,16 +114,44 @@
 												<td id="phone-hide"><a class="btn button-style btn-md ahcah-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
 											<% } else { %>
 												<!-- Add all other companies here -->
+												<td id="phone-hide"><a class="btn button-style btn-md global-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
 											<% } %>
 										</tr>
-									<% }) %>
 								</tbody>
 							</table>
-							<% } %>
+							<!-- Change the second or statement when a fourth company comes on -->
+						<% } else if ((currentUser.branchAssoc[0] == order.PatientBranch || currentUser.branchAssoc[1] == order.PatientBranch) || (currentUser.branchAssoc[0] == order.PatientBranch || currentUser.branchAssoc[1] == order.PatientBranch || currentUser.branchAssoc[2] == order.PatientBranch)) { %>
+							<table class="table table-striped" id="order-table">
+								<thead>
+									<tr>
+										<th scope="col" id="phone-hide">Order ID</th>
+										<th scope="col">Date Created</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Date Of Birth</th>
+										<th scope="col">Branch</th>
+										<th scope="col" id="phone-hide">State</th>
+										<th scope="col" id="phone-hide"></th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td scope="row" id="phone-hide"><%= order.SalesOrderId %></td>
+											<td><%= order.CreateDT %></td>
+											<td><a class="global-no-match" href="/orders/<%= order._id %>"><%= order.FirstName + " " + order.LastName %></a></td>
+											<td><%= order.DOB.slice(0, -12) %></td>
+											<td><%= order.PatientBranch %></td>
+											<td id="phone-hide"><%= order.st %></td>
+											<td id="phone-hide"><a class="btn button-style btn-md global-btn" id="btn-spacing product-qty" href="/orders/<%= order._id %>" role="button">More Info</a></td>
+										</tr>
+								</tbody>
+							</table>
+						<% } else { %>
+						
+						<% } %>
 					<% }) %>
 				</div>
 			</div>
-		<% }%>
+		<% } %>
 
 		<nav class="pagination-nav" aria-label="Pagination">
 			<% if (pages && pages > 0) { %>
