@@ -83,7 +83,7 @@ function getFormattedDate(date) {
 	const year = date.getFullYear().toString().substr(-2);
 	const month = (1 + date.getMonth()).toString();
 	const day = date.getDate().toString();
-	return month + "-" + day + "-" + year;
+	return ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2) + "-" + year;
 }
 
 module.exports = function(agenda) {

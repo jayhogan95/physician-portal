@@ -7,6 +7,7 @@ const sgMail = require('@sendgrid/mail');
 const fs = require("fs");
 const _ = require("lodash");
 const wipState = require("../middleware/wip-states");
+const statusBarState = require("../middleware/statusbar-states");
 
 router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
 	let { lastName, dob, address } = req.query;
@@ -58,25 +59,41 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 			req.flash("error", "That order does not exist");
 			res.redirect("/orders");
 		} else {
-			res.render("orders/show", {order: foundOrder,  
-									   apptBooked: wipState.apptBooked, 
-									   awaitConfirmation: wipState.awaitConfirmation,
-									   billingReview: wipState.billingReview,
-									   delivered: wipState.delivered,
-									   idsOrdPending: wipState.idsOrdPending,
-									   idsOrdStaged: wipState.idsOrdStaged,
-									   inWarehouse: wipState.inWarehouse,
-									   misc: wipState.misc,
-									   notApplic: wipState.notApplic,
-									   withScheduling: wipState.withScheduling,
-									   pendingPatientContact: wipState.pendingPatientContact,
-									   priAuthPending: wipState.priAuthPending,
-									   ptReqDelay: wipState.ptReqDelay,
-									   qualPending: wipState.qualPending,
-									   remoteSetupPend: wipState.remoteSetupPend,
-									   setupComplete: wipState.setupComplete,
-									   stagedDelivery: wipState.stagedDelivery,
-									   stagedPickup: wipState.stagedPickup
+			res.render("orders/show", {
+				order: foundOrder,  
+				apptBooked: wipState.apptBooked, 
+				awaitConfirmation: wipState.awaitConfirmation,
+				billingReview: wipState.billingReview,
+				delivered: wipState.delivered,
+				idsOrdPending: wipState.idsOrdPending,
+				idsOrdStaged: wipState.idsOrdStaged,
+				inWarehouse: wipState.inWarehouse,
+				misc: wipState.misc,
+				notApplic: wipState.notApplic,
+				withScheduling: wipState.withScheduling,
+				pendingPatientContact: wipState.pendingPatientContact,
+				priAuthPending: wipState.priAuthPending,
+				ptReqDelay: wipState.ptReqDelay,
+				qualPending: wipState.qualPending,
+				pendingCopay: wipState.pendingCopay,
+				remoteSetupPend: wipState.remoteSetupPend,
+				setupComplete: wipState.setupComplete,
+				stagedDelivery: wipState.stagedDelivery,
+				stagedPickup: wipState.stagedPickup,
+				priAuthStatus: statusBarState.priAuthStatus,
+				priAuthPostStatus: statusBarState.priAuthPostStatus,
+				remoteShip: statusBarState.remoteShip,
+				deliveryStaged: statusBarState.deliveryStaged,
+				statusSetupComplete: statusBarState.statusSetupComplete,
+				resupplyQualPending: statusBarState.resupplyQualPending,
+				resupplyPA: statusBarState.resupplyPA,
+				resupplyPendingShip: statusBarState.resupplyPendingShip,
+				resupplyComplete: statusBarState.resupplyComplete,
+				idsOne: statusBarState.idsOne,
+				idsTwo: statusBarState.idsTwo,
+				idsThree: statusBarState.idsThree,
+				idsFour: statusBarState.idsFour,
+				idsFive: statusBarState.idsFive
 			});
 		}
 	});

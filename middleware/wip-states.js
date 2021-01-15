@@ -172,7 +172,6 @@ wipState.qualPending = ["All Call - Hold",
 						 "PAP Supply - 2d CMN Received",
 						 "PAP Supply - 2e Internal Follow Up",
 						 "PAP Supply - 3 PA Required",
-						 "PAP Supply - 4 Pending Copay",
 						 "PAP Supply - 5 Ready to Upload",
 						 "PAP Supply - Analytix 1 Approved",
 						 "PAP Supply - Analytix 2 NOT Approved",
@@ -185,6 +184,8 @@ wipState.qualPending = ["All Call - Hold",
 						 "Prochant - Back to Prochant",
 						 "Prochant - Insurance Verification"
 ];
+
+wipState.pendingCopay = ["PAP Supply - 4 Pending Copay"];
 
 wipState.remoteSetupPend = ["Remote Ship - 1 Order Item Updates",
 							"Remote Ship - 2 Send Setup Email",
