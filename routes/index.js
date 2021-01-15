@@ -29,10 +29,6 @@ router.post("/register", middleware.isAdmin, (req, res) => {
 		isAdmin: req.body.isAdmin
 	});
 	
-	let adminCode;
-	if(adminCode === process.env.ADMINCODE) {
-		newUser.isAdmin = true;
-	}
 	User.register(newUser, req.body.password, (err, user) => {
 		if (err) {
 			// req.flash("error", err.message);
