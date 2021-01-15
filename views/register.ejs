@@ -49,6 +49,18 @@
 			<input type="checkbox" id="branchAssoc" name="branchAssoc" value="America's HealthCare at Home, Inc">
 			<label for="America's HealthCare at Home, Inc"> America's HealthCare at Home, Inc</label><br>
 		</div>
+		<!-- <div class="form-group form-width">
+			<label class="reg-label">Admin</label>
+			<input class="form-control form-align" type="text" name="isAdmin" id="isAdmin" value="false" required>
+		</div> -->
+		<div class="form-group form-width">
+			<label class="reg-label">Admin</label>
+			<select name="isAdmin" id="isAdmin" class="form-control form-align" required>
+				<option disabled selected value>Select an Option</option>
+				<option value="false" name="role">No</option>
+				<option value="true" name="role">Yes</option>
+			</select>
+		</div>
 		<div class="form-group form-width">
 			<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 				<button class="btn btn-md btn-default button-style btn-block hcm-btn mt-4">Register</button>
