@@ -52,7 +52,7 @@ mongoose.connect(process.env.HEROKU_DBURL, {
 	if (jobTypes.length) {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
-		  // dropCollection();
+		  dropCollection();
 		  agenda.schedule("now", "importcsv");
 		  // agenda.every("30 11 * * *", "importcsv");
 	  })

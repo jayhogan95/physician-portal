@@ -96,7 +96,7 @@ router.post('/forgot', async (req, res) => {
 		user.resetPasswordExpires = Date.now() + 3600000;
 		await user.save();
 		
-		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+		sgMail.setApiKey(process.env.SENDGRID_API_KEY_RESET);
 		const msg = {
 			to: user.email,
 			from: 'info@hcmatco.com',
@@ -149,7 +149,7 @@ router.post('/reset/:token', async (req, res) => {
 				return res.redirect("back");
 			}
 		})
-		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+		sgMail.setApiKey(process.env.SENDGRID_API_KEY_RESET);
 		const msg = {
 			to: user.email,
 			from: 'info@hcmatco.com',

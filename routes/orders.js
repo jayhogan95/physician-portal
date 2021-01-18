@@ -99,11 +99,36 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 	});
 });
 
-router.post("/orders/:id", middleware.isLoggedIn, (req, res) => {
+// router.post("/orders/:id", middleware.isLoggedIn, async (req, res) => {
+// 	try {
+// 		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// 		const msg = {
+// 			to: 'info@hcmatco.com',
+// 			from: 'info@hcmatco.com',
+// 			subject: req.body.subject,
+// 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
+// 		}
+// 		sgMail
+// 		.send(msg)
+// 		.then(() => {
+// 			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
+// 			console.log('Email Sent');
+// 		})
+// 		.then(() => {
+// 			res.redirect("back");
+// 		});
+// 	}
+// 	catch (error) {
+// 		console.log(error);
+// 		res.redirect('back')
+// 	}
+// });
+
+router.post("/orders/:id", (req, res) => {
 	try {
-		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+		sgMail.setApiKey(process.env.SENDGRID_API_KEY_ORDER);
 		const msg = {
-			to: 'jasonhogan18@gmail.com',
+			to: 'info@hcmatco.com',
 			from: 'info@hcmatco.com',
 			subject: req.body.subject,
 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
@@ -116,13 +141,14 @@ router.post("/orders/:id", middleware.isLoggedIn, (req, res) => {
 		})
 		.then(() => {
 			res.redirect("back");
-		});
+		})
 	}
 	catch (error) {
 		console.log(error);
-		res.redirect('back')
-	}
-})
+		req.flash("error", "Please try again!");
+		res.redirect('back');
+}
+});
 
 
 function lastNameRegex(text) {

@@ -402,19 +402,19 @@
 				<form action="/orders/<%= order._id %>" method="POST">
 					<div class="form-group mt-3">
 						<label>From</label>
-						<input name="from" autofocus class="form-control" value="<%= currentUser.email %>" disabled>
+						<input type="email" name="from" id="name" autofocus class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>To</label>
-						<input name="to" autofocus class="form-control" value="info@hcmatco.com" disabled>
+						<input name="to" id="to" autofocus class="form-control" value="info@hcmatco.com" disabled>
 					</div>
 					<div class="form-group">
-						<label>Subject</label>
-						<input name="subject" autofocus class="form-control" value="Question Regarding Order #<%= order.SalesOrderId %>" disabled>
+						<label>Subject - Example Subject Line: Question Regarding Order #<%= order.SalesOrderId %></label>
+						<input name="subject" id="subject" autofocus class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Message</label>
-						<textarea name="message" autofocus class="form-control" rows="4" cols="100%" required></textarea>
+						<textarea name="message" id="message" autofocus class="form-control" rows="4" cols="100%" required></textarea>
 					</div>
 					<div class="form-group">
 						<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
