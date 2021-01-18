@@ -133,8 +133,8 @@ router.post("/orders/:id", async (req, res) => {
 			subject: req.body.subject,
 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
 		}
-		await sgMail
-		.send(msg)
+		sgMail
+		.send(await msg)
 		.then(() => {
 			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
 			console.log('Email Sent');
