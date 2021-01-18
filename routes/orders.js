@@ -124,7 +124,7 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 // 	}
 // });
 
-router.post("/orders/:id", (req, res) => {
+router.post("/orders/:id", async (req, res) => {
 	try {
 		sgMail.setApiKey(process.env.SENDGRID_API_KEY_ORDER);
 		const msg = {
@@ -133,7 +133,7 @@ router.post("/orders/:id", (req, res) => {
 			subject: req.body.subject,
 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
 		}
-		sgMail
+		await sgMail
 		.send(msg)
 		.then(() => {
 			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
