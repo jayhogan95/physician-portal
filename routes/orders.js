@@ -99,31 +99,6 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 	});
 });
 
-// router.post("/orders/:id", middleware.isLoggedIn, async (req, res) => {
-// 	try {
-// 		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// 		const msg = {
-// 			to: 'info@hcmatco.com',
-// 			from: 'info@hcmatco.com',
-// 			subject: req.body.subject,
-// 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
-// 		}
-// 		sgMail
-// 		.send(msg)
-// 		.then(() => {
-// 			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
-// 			console.log('Email Sent');
-// 		})
-// 		.then(() => {
-// 			res.redirect("back");
-// 		});
-// 	}
-// 	catch (error) {
-// 		console.log(error);
-// 		res.redirect('back')
-// 	}
-// });
-
 router.post("/orders/:id", async (req, res) => {
 	try {
 		sgMail.setApiKey(process.env.SENDGRID_API_KEY_ORDER);
@@ -131,7 +106,7 @@ router.post("/orders/:id", async (req, res) => {
 			to: 'info@hcmatco.com',
 			from: 'info@hcmatco.com',
 			subject: req.body.subject,
-			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal' + '</p>' + '<p style="font-size:16px;">' + 'www.mycpaporder.com' + '</p>',
+			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal - www.mycpaporder.com' + '</p>',
 		}
 		sgMail
 		.send(msg)

@@ -50,8 +50,8 @@ function bulkImportToMongo(arrayToImport) {
 }
 
 function sendConfirmationText() {
-	const accountSid = 'AC3099204fcc9c2e7c06f51825c6b1b6c7';
-	const authToken = '0b9a64457ca98c5c73542c3d46f4be07';
+	const accountSid = process.env.TWILIO_TEXT_ID;
+	const authToken = process.env.TWILIO_TEXT_TOKEN;
 	const client = require('twilio')(accountSid, authToken);
 
 	client.messages
