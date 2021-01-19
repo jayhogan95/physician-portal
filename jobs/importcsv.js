@@ -49,6 +49,20 @@ function bulkImportToMongo(arrayToImport) {
 	return Promise.all(ops);
 }
 
+function sendConfirmationText() {
+	const accountSid = 'AC3099204fcc9c2e7c06f51825c6b1b6c7';
+	const authToken = '0b9a64457ca98c5c73542c3d46f4be07';
+	const client = require('twilio')(accountSid, authToken);
+
+	client.messages
+		.create({
+			body: 'Data import is complete!',
+			from: '+17656814694',
+			to: '+12035287208'
+		})
+		.then(message => console.log(message.sid));
+}
+
 const options = {
 	delimiter: ",",
 	noheader: true,
@@ -120,6 +134,7 @@ module.exports = function(agenda) {
 				.then(() => {
 					disconnectFromMongo();
 					console.timeEnd("Time to import parsed objects to db");
+					sendConfirmationText();
 				})
 		}).catch(err => {
 			console.log(err.message);
@@ -130,6 +145,5 @@ module.exports = function(agenda) {
 	}).catch(err => {
 		console.error(err.message);
 	});
-
   });
 };

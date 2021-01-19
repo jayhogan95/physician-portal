@@ -102,7 +102,7 @@ router.post('/forgot', async (req, res) => {
 			from: 'info@hcmatco.com',
 			subject: 'HCM Physician Portal Password Reset',
 			html: '<p style="font-size:16px;line-height:20px">Hi ' + user.username + ',</p>' + '<p style="font-size:16px;">Forgot your password? No problem!</p>' + '<p style="font-size:16px;">Please click the following link, or paste it into your browser to change your password:</p>' + '<p style="font-size:16px;line-height:20px">' +
-				'http://' + req.headers.host + '/reset/' + reset_token + '</p>' + '<p style="font-size:16px;line-height:20px">If you did not request this, please ignore this email and your password will remain unchanged.</p>' + '<p style="font-size:16px;line-height:20px">If you have any trouble, please respond back to this email and we will get back to you as soon as possible!</p>' + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Health Complex Medical Team</p>',
+				'http://' + req.headers.host + '/reset/' + reset_token + '</p>' + '<p style="font-size:16px;line-height:20px">If you did not request this, please ignore this email and your password will remain unchanged.</p>' + '<p style="font-size:16px;line-height:20px">If you have any trouble, please respond back to this email and we will get back to you as soon as possible!</p>' + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Physician Portal</p>',
 		}
 		sgMail
 		.send(msg)
@@ -270,6 +270,10 @@ router.get("/reset-confirmation", (req, res) => {
 
 // 404 page
 router.get("/404", (req, res) => {
+	res.render("404");
+});
+
+router.get("*", (req, res) => {
 	res.render("404");
 });
 

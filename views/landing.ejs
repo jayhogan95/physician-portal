@@ -4,20 +4,12 @@
 		<% if (currentUser.branchAssoc == "Health Complex-Waterbury") { %>
 		<h1 class="landing-header-hcm">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
+			<div class="col-md-2"></div>
 			<div class="col-md-4">
 				<a href="/orders">
 					<div class="landing-grid-hcm">
 						<h4 class="landing-cta-hcm">
 							Search Orders
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-hcm">
-						<h4 class="landing-cta-hcm">
-							How to Contact Us
 						</h4>
 					</div>
 				</a>
@@ -31,22 +23,15 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-2"></div>
 		</div>
 		<div class="row">
+			<div class="col-md-2"></div>
 			<div class="col-md-4">
 				<a href="/blog/order-status-meaning">
 					<div class="landing-grid-hcm">
 						<h4 class="landing-cta-hcm">
 							Order Status Meaning
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-hcm">
-						<h4 class="landing-cta-hcm">
-							FAQ's
 						</h4>
 					</div>
 				</a>
@@ -60,11 +45,13 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-2"></div>
 		</div>
 		<% } else if (currentUser.branchAssoc == "Cape Medical Supply Sandwich") { %>
 		<h1 class="landing-header-cape">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 				<a href="/orders">
 					<div class="landing-grid-cape">
 						<h4 class="landing-cta-cape">
@@ -73,16 +60,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-cape">
-						<h4 class="landing-cta-cape">
-							How to Contact Us
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<a href="/users/<%= currentUser._id %>">
 					<div class="landing-grid-cape">
 						<h4 class="landing-cta-cape">
@@ -91,9 +69,11 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 				<a href="/blog/order-status-meaning">
 					<div class="landing-grid-cape">
 						<h4 class="landing-cta-cape">
@@ -102,16 +82,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-cape">
-						<h4 class="landing-cta-cape">
-							FAQ's
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<a href="http://www.capemedical.com">
 					<div class="landing-grid-cape">
 						<h4 class="landing-cta-cape">
@@ -120,11 +91,13 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<% } else if (currentUser.branchAssoc == "America's HealthCare at Home, Inc") { %>
 		<h1 class="landing-header-ahcah">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 				<a href="/orders">
 					<div class="landing-grid-ahcah">
 						<h4 class="landing-cta-ahcah">
@@ -133,16 +106,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-ahcah">
-						<h4 class="landing-cta-ahcah">
-							How to Contact Us
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<a href="/users/<%= currentUser._id %>">
 					<div class="landing-grid-ahcah">
 						<h4 class="landing-cta-ahcah">
@@ -151,9 +115,11 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 				<a href="/blog/order-status-meaning">
 					<div class="landing-grid-ahcah">
 						<h4 class="landing-cta-ahcah">
@@ -162,16 +128,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-ahcah">
-						<h4 class="landing-cta-ahcah">
-							FAQ's
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<a href="http://www.ahcah.com">
 					<div class="landing-grid-ahcah">
 						<h4 class="landing-cta-ahcah">
@@ -180,11 +137,11 @@
 					</div>
 				</a>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<% } else { %>
 		<h1 class="landing-header-global">Welcome, <%= currentUser.firstName %>!</h1>
 		<div class="row">
-			<div class="col-md-2"></div>
 			<div class="col-md-4">
 				<a href="/orders">
 					<div class="landing-grid-global">
@@ -195,18 +152,6 @@
 				</a>
 			</div>
 			<div class="col-md-4">
-				<a href="/users/<%= currentUser._id %>">
-					<div class="landing-grid-global">
-						<h4 class="landing-cta-global">
-							Profile
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
 				<a href="/blog/order-status-meaning">
 					<div class="landing-grid-global">
 						<h4 class="landing-cta-global">
@@ -216,19 +161,10 @@
 				</a>
 			</div>
 			<div class="col-md-4">
-				<a href="/orders">
+				<a href="/users/<%= currentUser._id %>">
 					<div class="landing-grid-global">
 						<h4 class="landing-cta-global">
-							FAQ's
-						</h4>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="/orders">
-					<div class="landing-grid-global">
-						<h4 class="landing-cta-global">
-							How to Contact Us
+							Profile
 						</h4>
 					</div>
 				</a>

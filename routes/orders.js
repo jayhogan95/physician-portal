@@ -29,7 +29,7 @@ router.get("/orders", middleware.isLoggedIn, async (req, res, next) => {
             		console.log(err);
         		} else {
             	if (allOrders.length < 1) {
-					req.flash("error", "No order matches that search. Please try again!");
+					req.flash("error", "No order matches that search. Please try again or hit the Reset Search button!");
 					return res.redirect("back");
             	}
 				res.render("orders/index", {orders: allOrders, current: pageNumber, pages: Math.ceil(count / perPage), noSearch: false});
@@ -131,10 +131,10 @@ router.post("/orders/:id", async (req, res) => {
 			to: 'info@hcmatco.com',
 			from: 'info@hcmatco.com',
 			subject: req.body.subject,
-			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + req.body.message + '</p>',
+			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal' + '</p>' + '<p style="font-size:16px;">' + 'www.mycpaporder.com' + '</p>',
 		}
 		sgMail
-		.send(await msg)
+		.send(msg)
 		.then(() => {
 			req.flash("success", "Email sent!"); // We can change this to be whatever we want it to say
 			console.log('Email Sent');

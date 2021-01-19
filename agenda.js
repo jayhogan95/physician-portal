@@ -53,10 +53,22 @@ mongoose.connect(process.env.HEROKU_DBURL, {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
 		  dropCollection();
-		  agenda.schedule("now", "importcsv");
-		  // agenda.every("30 11 * * *", "importcsv");
+		  // agenda.schedule("now", "importcsv");
+		  agenda.every("30 11 * * *", "importcsv");
 	  })
 	}
+}).then(() => {
+	const accountSid = 'AC3099204fcc9c2e7c06f51825c6b1b6c7';
+	const authToken = '0b9a64457ca98c5c73542c3d46f4be07';
+	const client = require('twilio')(accountSid, authToken);
+
+	client.messages
+		.create({
+			body: 'Data import is running...',
+			from: '+17656814694',
+			to: '+12035287208'
+		})
+		.then(message => console.log(message.sid));
 })
 .catch(error => console.log(error.message));
 
