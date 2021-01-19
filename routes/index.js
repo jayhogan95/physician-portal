@@ -273,10 +273,6 @@ router.get("/404", (req, res) => {
 	res.render("404");
 });
 
-router.get("*", (req, res) => {
-	res.render("404");
-});
-
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
