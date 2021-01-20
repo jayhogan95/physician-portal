@@ -233,7 +233,7 @@ router.get("/admin", middleware.isAdmin, async (req, res, next) => {
 			{$or:[
 				{username: regex}, 
 				{lastName: regex}, 
-				{role: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName : 1}).exec(function(err, allUsers) {
+				{role: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName : 1, firstName: 1}).exec(function(err, allUsers) {
 			User.countDocuments().exec(function (err, count) {
 				if(err) {
 					res.render("404");
@@ -249,7 +249,7 @@ router.get("/admin", middleware.isAdmin, async (req, res, next) => {
 		})
     } else {
         // Get all users from DB
-        User.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName: 1}).exec(function(err, allUsers) {
+        User.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName: 1, firstName: 1}).exec(function(err, allUsers) {
 			User.countDocuments().exec(function (err, count) {
 				if (err) {
             		console.log(err);
