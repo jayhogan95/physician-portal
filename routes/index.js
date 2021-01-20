@@ -221,36 +221,6 @@ router.put("/users/:id", (req, res) => {
 	});
 });
 
-// ADMIN route 
-// router.get("/admin", middleware.isAdmin, (req, res) => {
-// 	const querySearch = req.query.search;
-//     if(req.query.search) {
-//         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-//         // Get all users from DB
-//         User.find({$or:[{username: regex}, {lastName: regex}, {role: regex}]}, (err, allUsers) => {
-//            if(err){
-// 			   res.render("404");
-//                console.log(err);
-//            } else {
-//               if(allUsers.length < 1) {
-//                   req.flash("error", "No user matches that search. Please try again!");
-// 				  return res.redirect("back");
-//               }
-//               res.render("admin", {users: allUsers});
-//            }
-//         });
-//     } else {
-//         // Get all users from DB
-//         User.find({}, (err, allUsers) => {
-//            if(err){
-//                console.log(err);
-//            } else {
-//               res.render("admin", {users: allUsers});
-//            }
-//         });
-//     }
-// });
-
 router.get("/admin", middleware.isAdmin, async (req, res, next) => {
 	const querySearch = req.query.search;
 	const perPage = 8;
@@ -263,7 +233,7 @@ router.get("/admin", middleware.isAdmin, async (req, res, next) => {
 			{$or:[
 				{username: regex}, 
 				{lastName: regex}, 
-				{role: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({username : -1}).exec(function(err, allUsers) {
+				{role: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName : 1}).exec(function(err, allUsers) {
 			User.countDocuments().exec(function (err, count) {
 				if(err) {
 					res.render("404");
@@ -279,7 +249,7 @@ router.get("/admin", middleware.isAdmin, async (req, res, next) => {
 		})
     } else {
         // Get all users from DB
-        User.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allUsers) {
+        User.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).sort({lastName: 1}).exec(function(err, allUsers) {
 			User.countDocuments().exec(function (err, count) {
 				if (err) {
             		console.log(err);
