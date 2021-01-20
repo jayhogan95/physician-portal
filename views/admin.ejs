@@ -203,6 +203,51 @@
 			<% } %>
 		</div>
 	</div>
+	
+	<nav class="pagination-nav" aria-label="Pagination">
+			<% if (pages && pages > 0) { %>
+			<ul class="pagination justify-content-center">
+				<% if (current == 1) { %>
+				<li class="page-item"><a class="page-link">First</a></li>
+				<% } else { %>
+				<li class="page-item"><a class="page-link" href="/admin">First</a></li>
+				<% } %>
+
+				<% if (current == 1) { %>
+				<li class="page-item"><a class="page-link">«</a></li>
+				<% } else { %>
+				<li class="page-item"><a class="page-link" href="/admin?page=<%= Number(current) - 1 %>">«</a></li>
+				<% } %>
+
+				<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+				<% if (i !== 1) { %>
+				<li class="page-item"><a class="page-link">...</a></li>
+				<% } %>
+				<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+				<% if (i == current) { %>
+				<li class="active"><a class="page-link"><%= i %></a></li>
+				<% } else { %>
+				<li class="page-item"><a class="page-link" href="/admin?page=<%= i %>"><%= i %></a></li>
+				<% } %>
+				<% if (i == Number(current) + 4 && i < pages) { %>
+				<li class="page-item"><a class="page-link">...</a></li>
+				<% } %>
+				<% } %>
+
+				<% if (current == pages) { %>
+				<li class="page-item"><a class="page-link">»</a></li>
+				<% } else { %>
+				<li class="page-item"><a class="page-link" href="/admin?page=<%= Number(current) + 1 %>">»</a></li>
+				<% } %>
+
+				<% if (current == pages) { %>
+				<li class="page-item"><a class="page-link">Last</a></li>
+				<% } else { %>
+				<li class="page-item"><a class="page-link" href="/admin?page=<%= pages %>">Last</a></li>
+				<% } %>
+			</ul>
+			<% } %>
+		</nav>
 </div>
 
 <%- include("./partials/footer") %>
