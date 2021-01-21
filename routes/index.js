@@ -100,9 +100,9 @@ router.post('/forgot', async (req, res) => {
 		const msg = {
 			to: user.email,
 			from: 'info@hcmatco.com',
-			subject: 'HCM Physician Portal Password Reset',
+			subject: 'Physician Portal Password Reset',
 			html: '<p style="font-size:16px;line-height:20px">Hi ' + user.username + ',</p>' + '<p style="font-size:16px;">Forgot your password? No problem!</p>' + '<p style="font-size:16px;">Please click the following link, or paste it into your browser to change your password:</p>' + '<p style="font-size:16px;line-height:20px">' +
-				'http://' + req.headers.host + '/reset/' + reset_token + '</p>' + '<p style="font-size:16px;line-height:20px">If you did not request this, please ignore this email and your password will remain unchanged.</p>' + '<p style="font-size:16px;line-height:20px">If you have any trouble, please respond back to this email and we will get back to you as soon as possible!</p>' + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Physician Portal</p>',
+				'http://' + req.headers.host + '/reset/' + reset_token + '</p>' + '<p style="font-size:16px;line-height:20px">If you did not request this, please ignore this email and your password will remain unchanged.</p>' + '<p style="font-size:16px;line-height:20px">If you have any trouble, please respond back to this email and we will get back to you as soon as possible!</p>' + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Physician Portal - www.mycpaporder.com</p>',
 		}
 		sgMail
 		.send(msg)
@@ -127,6 +127,16 @@ router.get('/reset/:token', async (req, res) => {
     res.render('reset', {token: req.params.token});
   });
 });
+
+// router.get('/reset/:token', async (req, res) => {
+//   let user = await User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, (err, user) => {
+//     if (!user) {
+//       req.flash('error', 'Password reset token is invalid or has expired.');
+//       return res.redirect('/forgot');
+//     }
+//     res.render('reset', {token: req.params.token});
+//   });
+// });
 
 router.post('/reset/:token', async (req, res) => {
 	try {
@@ -167,6 +177,40 @@ router.post('/reset/:token', async (req, res) => {
 	catch (error) {
 		console.log(error);
 	};
+});
+
+// Forgot username
+router.get('/retrieve-username', (req, res) => {
+  res.render('retrieve-username');
+});
+
+router.post('/retrieve-username', async (req, res) => {
+	try {
+		let user = await User.findOne({email: req.body.email});
+		if (!user) {
+			req.flash('error', 'No account with that email address exists.');
+			return res.redirect('/retrieve-username');
+		}
+		
+		sgMail.setApiKey(process.env.SENDGRID_API_KEY_RESET);
+		const msg = {
+			to: user.email,
+			from: 'info@hcmatco.com',
+			subject: 'Physician Portal Forgot Username',
+			html: '<p style="font-size:16px;line-height:20px">Hi ' + user.firstName + ',</p>' + '<p style="font-size:16px;">Your username is: </p>' + user.username + '<p style="font-size:16px;line-height:20px">Thank you,</p>' + '<p style="font-size:16px;">Physician Portal - www.mycpaporder.com</p>',
+		}
+		sgMail
+		.send(msg)
+		.then(() => {
+			req.flash('success', 'Email has been sent!');
+			console.log('Username Email sent');
+			res.redirect('/login');
+		})
+	}
+	catch (error) {
+		console.log(error);
+		res.redirect('/retrieve-username');
+	}
 });
 
 // Temp Password
