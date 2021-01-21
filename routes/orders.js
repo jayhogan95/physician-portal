@@ -101,9 +101,25 @@ router.get("/orders/:id", middleware.isLoggedIn, (req, res) => {
 
 router.post("/orders/:id", async (req, res) => {
 	try {
+		// let msg = [];
 		sgMail.setApiKey(process.env.SENDGRID_API_KEY_ORDER);
+		// if (Order["Marketing Rep_Full Name"] === "Deakin, Ryan") {
+		// 	msg = {
+		// 	to: req.body.to,
+		// 	from: 'info@hcmatco.com',
+		// 	subject: req.body.subject,
+		// 	html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal - www.mycpaporder.com' + '</p>',
+		// 	}
+		// } else {
+		// 	msg = {
+		// 	to: 'info@hcmatco.com',
+		// 	from: 'info@hcmatco.com',
+		// 	subject: req.body.subject,
+		// 	html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal - www.mycpaporder.com' + '</p>',
+		// 	}	
+		// }
 		const msg = {
-			to: 'info@hcmatco.com',
+			to: req.body.to,
 			from: 'info@hcmatco.com',
 			subject: req.body.subject,
 			html: '<p style="font-size:16px;line-height:10px">From: ' + req.body.from + '</p>' + '<p style="font-size:16px;line-height:10px">' + 'Message: ' + req.body.message + '</p>' + '<br>' + '<p style="font-size:16px;">' + 'Physician Portal - www.mycpaporder.com' + '</p>',

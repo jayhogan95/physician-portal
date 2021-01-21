@@ -53,8 +53,8 @@ mongoose.connect(process.env.HEROKU_DBURL, {
 	  agenda.start().then(() => {
 		  console.log('Agenda Started');
 		  dropCollection();
-		  agenda.schedule("now", "importcsv");
-		  // agenda.every("30 11 * * *", "importcsv");
+		  // agenda.schedule("now", "importcsv");
+		  agenda.every("30 11 * * *", "importcsv");
 	  })
 	}
 }).then(() => {
